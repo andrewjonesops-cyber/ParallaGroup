@@ -1,318 +1,304 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Paralla Group — Designing systems that help people and hold up under scrutiny." />
-  <title>Paralla Group — Launching Soon</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Paralla Group — Designing systems that help people and hold up under scrutiny.">
+<title>Paralla Group — Launching Soon</title>
 
-  <style>
-    :root{
-      --cobalt:#0B4DFF;
-      --ink:#101828;
-      --muted:#667085;
-      --line:#E6EAF2;
-      --panel:#F7F9FC;
-      --bg:#FFFFFF;
-      --radius:16px;
-      --shadow:0 10px 25px rgba(16,24,40,.08);
-      --max:1000px;
-      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-    }
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
 
-    *{ box-sizing:border-box; }
+*{ box-sizing:border-box; }
 
-    body{
-      margin:0;
-      font-family:var(--font);
-      color:var(--ink);
-      background:var(--bg);
-      line-height:1.5;
-    }
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
 
-    .wrap{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-    }
+/* ================= HEADER ================= */
 
-    header{
-      padding:18px 20px;
-      border-bottom:1px solid var(--line);
-      background:#fff;
-    }
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
 
-    .topbar{
-      max-width:var(--max);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      color:inherit;
-      min-width:0;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
 
-    .brand img{
-      height:42px;
-      width:auto;
-      display:block;
-    }
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
 
-    .brand .name{
-      font-weight:600;
-      letter-spacing:.2px;
-      font-size:18px;
-      white-space:nowrap;
-    }
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
 
-    .badge{
-      padding:8px 14px;
-      border:1px solid rgba(11,77,255,.25);
-      background:rgba(11,77,255,.06);
-      color:var(--cobalt);
-      border-radius:999px;
-      font-size:13px;
-      font-weight:500;
-      white-space:nowrap;
-    }
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
 
-    .accent{
-      height:3px;
-      background:linear-gradient(90deg, var(--cobalt), rgba(11,77,255,.2), transparent);
-    }
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
 
-    main{
-      flex:1;
-      padding:60px 20px 40px;
-    }
+/* ================= MAIN ================= */
 
-    .container{
-      max-width:var(--max);
-      margin:0 auto;
-      position:relative;
-    }
+main{
+  padding:70px 24px 50px;
+}
 
-    /* watermark is purely decorative and cannot block clicks */
-    .watermark{
-      position:absolute;
-      right:0;
-      top:-40px;
-      width:min(460px, 60vw);
-      height:auto;
-      opacity:.05;
-      pointer-events:none;
-      z-index:0;
-    }
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+  position:relative;
+}
 
-    .grid{
-      position:relative;
-      z-index:1;
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:32px;
-      align-items:start;
-    }
+.watermark{
+  position:absolute;
+  right:0;
+  top:-40px;
+  width:min(480px,60vw);
+  opacity:.05;
+  pointer-events:none;
+}
 
-    h1{
-      font-size:clamp(30px, 3.5vw, 46px);
-      line-height:1.1;
-      margin:0 0 18px;
-      letter-spacing:-.5px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:40px;
+  align-items:start;
+}
 
-    .lead{
-      font-size:18px;
-      color:var(--muted);
-      max-width:60ch;
-      margin:0 0 28px;
-    }
+h1{
+  font-size:clamp(32px,3.5vw,48px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
 
-    .rule{
-      height:1px;
-      background:linear-gradient(90deg, rgba(11,77,255,.5), transparent);
-      margin:28px 0;
-    }
+.lead{
+  font-size:18px;
+  color:var(--muted);
+  margin-bottom:30px;
+  max-width:60ch;
+}
 
-    .section-label{
-      font-size:12px;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 14px;
-    }
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.5),transparent);
+  margin:30px 0;
+}
 
-    .capabilities{
-      display:grid;
-      gap:14px;
-    }
+.section-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
 
-    .cap-item{
-      padding:14px 16px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:#fff;
-    }
+.capabilities{
+  display:grid;
+  gap:16px;
+}
 
-    .cap-item strong{
-      display:block;
-      margin:0 0 4px;
-      font-weight:600;
-    }
+.cap-item{
+  padding:16px 18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+}
 
-    .cap-item span{
-      color:var(--muted);
-      font-size:14px;
-    }
+.cap-item strong{
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
+}
 
-    .card{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow:var(--shadow);
-    }
+.cap-item span{
+  color:var(--muted);
+  font-size:14px;
+}
 
-    .card h2{
-      margin:0 0 12px;
-      font-size:17px;
-    }
+/* ================= SIDEBAR CARD ================= */
 
-    .email-box{
-      margin-top:18px;
-      padding:14px 16px;
-      border-radius:14px;
-      border:1px solid rgba(11,77,255,.25);
-      background:#fff;
-    }
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:28px;
+}
 
-    .email-box a{
-      color:var(--cobalt);
-      text-decoration:none;
-      font-weight:600;
-      font-size:15px;
-      word-break:break-word;
-    }
+.card h2{
+  margin:0 0 14px;
+  font-size:18px;
+}
 
-    .email-box a:hover{ text-decoration:underline; }
+.email-box{
+  margin-top:20px;
+  padding:14px 16px;
+  border-radius:12px;
+  border:1px solid rgba(11,77,255,.25);
+  background:#ffffff;
+}
 
-    footer{
-      border-top:1px solid var(--line);
-      padding:22px 20px;
-      font-size:13px;
-      color:var(--muted);
-      background:#fff;
-    }
+.email-box a{
+  color:var(--cobalt);
+  font-weight:600;
+  text-decoration:none;
+}
 
-    .footer-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
-    }
+.email-box a:hover{
+  text-decoration:underline;
+}
 
-        @media (max-width:900px){
-      .grid{
-        grid-template-columns:1fr;
-      }
-      .watermark{
-        position:static;
-        width:200px;
-        margin:0 0 30px;
-      }
-    }
-  </style>
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .watermark{
+    position:static;
+    width:200px;
+    margin-bottom:30px;
+  }
+
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
 
-    <header>
-      <div class="topbar">
-        <a class="brand" href="/" aria-label="Paralla Group Home">
-          <img src="logo.png" alt="Paralla Group logo" />
-          <div class="name">Paralla Group™</div>
-        </a>
-        <div class="badge">Launching Soon</div>
-      </div>
-    </header>
-
-    <div class="accent" aria-hidden="true"></div>
-
-    <main>
-      <div class="container">
-        <img class="watermark" src="logo.png" alt="" aria-hidden="true" />
-
-        <div class="grid">
-          <section>
-            <h1>Design systems that help people—and hold up under scrutiny.</h1>
-
-            <p class="lead">
-              Paralla Group is preparing the launch of its full digital platform.
-              We deliver practical consulting frameworks that produce measurable human
-              impact and operational results.
-            </p>
-
-            <div class="rule" aria-hidden="true"></div>
-
-            <div class="section-label">Core Focus Areas</div>
-
-            <div class="capabilities">
-              <div class="cap-item">
-                <strong>Systems Architecture & Operational Integrity</strong>
-                <span>Structures designed to remain stable under real-world constraints.</span>
-              </div>
-
-              <div class="cap-item">
-                <strong>Human-Centered Workflow Design</strong>
-                <span>Reducing friction, burnout, and failure points while improving outcomes.</span>
-              </div>
-
-              <div class="cap-item">
-                <strong>Governance-Ready Documentation</strong>
-                <span>Clear, auditable materials built for stakeholders and reviewers.</span>
-              </div>
-            </div>
-          </section>
-
-          <aside class="card">
-            <h2>Inquiries & Partnerships</h2>
-
-            <p>
-              For consulting engagements, program collaboration, or early discussions,
-              please reach out below.
-            </p>
-
-            <div class="email-box">
-              <a href="mailto:info@parallagroup.com">info@parallagroup.com</a>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </main>
-
-    <footer>
-      <div class="footer-inner">
-        <div>© <span id="year"></span> Paralla Group™. All rights reserved.</div>
-      </div>
-    </footer>
-
+<header>
+  <div class="topbar">
+    <a class="brand" href="/">
+      <img src="logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
   </div>
+</header>
 
-  <script>
-    (function () {
-      var el = document.getElementById("year");
-      if (el) el.textContent = new Date().getFullYear();
-    })();
-  </script>
+<div class="accent"></div>
+
+<main>
+  <div class="container">
+
+    <img class="watermark" src="logo.png" alt="">
+
+    <div class="grid">
+
+      <section>
+        <h1>Design systems that help people—and hold up under scrutiny.</h1>
+
+        <p class="lead">
+          Paralla Group is preparing the launch of its full digital platform.
+          We deliver practical consulting frameworks that produce measurable
+          human impact and operational results.
+        </p>
+
+        <div class="rule"></div>
+
+        <div class="section-label">Core Focus Areas</div>
+
+        <div class="capabilities">
+          <div class="cap-item">
+            <strong>Systems Architecture & Operational Integrity</strong>
+            <span>Structures designed to remain stable under real-world constraints.</span>
+          </div>
+
+          <div class="cap-item">
+            <strong>Human-Centered Workflow Design</strong>
+            <span>Reducing friction, burnout, and failure points while improving outcomes.</span>
+          </div>
+
+          <div class="cap-item">
+            <strong>Governance-Ready Documentation</strong>
+            <span>Clear, auditable materials built for stakeholders and reviewers.</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2>Inquiries & Partnerships</h2>
+
+        <p>
+          For consulting engagements, program collaboration, or early discussions,
+          please reach out below.
+        </p>
+
+        <div class="email-box">
+          <a href="mailto:info@parallagroup.com">info@parallagroup.com</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
 </body>
 </html>

@@ -220,8 +220,99 @@
       gap:10px;
     }
 
-    @media (max-width:900px){
-      .grid{ grid-template-columns:1fr; }
+        @media (max-width:900px){
+      .grid{
+        grid-template-columns:1fr;
+      }
       .watermark{
         position:static;
         width:200px;
+        margin:0 0 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="topbar">
+        <a class="brand" href="/" aria-label="Paralla Group Home">
+          <img src="logo.png" alt="Paralla Group logo" />
+          <div class="name">Paralla Group™</div>
+        </a>
+        <div class="badge">Launching Soon</div>
+      </div>
+    </header>
+
+    <div class="accent" aria-hidden="true"></div>
+
+    <main>
+      <div class="container">
+        <img class="watermark" src="logo.png" alt="" aria-hidden="true" />
+
+        <div class="grid">
+          <section>
+            <h1>Design systems that help people—and hold up under scrutiny.</h1>
+
+            <p class="lead">
+              Paralla Group is preparing the launch of its full digital platform.
+              We deliver practical consulting frameworks that produce measurable human
+              impact and operational results.
+            </p>
+
+            <div class="rule" aria-hidden="true"></div>
+
+            <div class="section-label">Core Focus Areas</div>
+
+            <div class="capabilities">
+              <div class="cap-item">
+                <strong>Systems Architecture & Operational Integrity</strong>
+                <span>Structures designed to remain stable under real-world constraints.</span>
+              </div>
+
+              <div class="cap-item">
+                <strong>Human-Centered Workflow Design</strong>
+                <span>Reducing friction, burnout, and failure points while improving outcomes.</span>
+              </div>
+
+              <div class="cap-item">
+                <strong>Governance-Ready Documentation</strong>
+                <span>Clear, auditable materials built for stakeholders and reviewers.</span>
+              </div>
+            </div>
+          </section>
+
+          <aside class="card">
+            <h2>Inquiries & Partnerships</h2>
+
+            <p>
+              For consulting engagements, program collaboration, or early discussions,
+              please reach out below.
+            </p>
+
+            <div class="email-box">
+              <a href="mailto:info@parallagroup.com">info@parallagroup.com</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Paralla Group™. All rights reserved.</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var el = document.getElementById("year");
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

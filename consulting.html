@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Business Consulting — Paralla Group builds systems that work, not presentations or theory.">
+<title>Business Consulting — Paralla Group</title>
+
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
+
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
+
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
+
+/* ================= NAV ================= */
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{
+  display:none;
+}
+
+.nav-inner a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:70px 24px 60px;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+}
+
+/* ================= PAGE HERO ================= */
+
+.page-hero{
+  max-width:680px;
+  margin-bottom:56px;
+}
+
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
+
+.page-hero .lead{
+  font-size:18px;
+  color:var(--muted);
+  margin:0 0 14px;
+  max-width:60ch;
+}
+
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.5),transparent);
+  margin:40px 0;
+}
+
+/* ================= SECTION LABEL ================= */
+
+.section-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+/* ================= TWO COL GRID ================= */
+
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:20px;
+}
+
+/* ================= ITEM CARDS ================= */
+
+.item-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.item-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--cobalt);
+  flex-shrink:0;
+  margin-top:6px;
+}
+
+.item-card span{
+  font-size:14px;
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* ================= PROCESS STEPS ================= */
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.step{
+  padding:20px 16px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+  text-align:center;
+}
+
+.step-num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:rgba(11,77,255,.08);
+  color:var(--cobalt);
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.step strong{
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:4px;
+}
+
+.step span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ================= DIFFERENTIATORS ================= */
+
+.diff-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.diff-item{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+}
+
+.diff-item strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--cobalt);
+  margin-bottom:6px;
+}
+
+.diff-item span{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* ================= ENGAGEMENT MODEL ================= */
+
+.engagement-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:20px;
+  margin-top:20px;
+}
+
+.engagement-card{
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--panel);
+}
+
+.engagement-card strong{
+  display:block;
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+
+.engagement-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= BOTTOM LINE ================= */
+
+.bottom-line{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  border-radius:var(--radius);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.bottom-line p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:56ch;
+  line-height:1.6;
+}
+
+.bottom-line p em{
+  color:var(--muted);
+  font-style:normal;
+  font-size:14px;
+  display:block;
+  margin-top:6px;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .two-col,
+  .engagement-grid{
+    grid-template-columns:1fr;
+  }
+
+  .steps{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media (max-width:500px){
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html">Homepage</a>
+    <a href="about.html">About Paralla Group</a>
+    <a href="changeworks.html">ChangeWorks™</a>
+    <a href="countercore.html">CounterCore™</a>
+    <a href="consulting.html" class="active">Business Consulting</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <h1>We don't sell advice. We build systems that work.</h1>
+      <p class="lead">
+        Paralla Group provides business consulting for organizations that need structure,
+        clarity, and execution — not presentations, not theory, and not recycled frameworks.
+      </p>
+      <p class="lead">
+        Our work is designed for environments where decisions carry weight, operations must
+        hold under pressure, and outcomes need to be measurable.
+      </p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- What We Do -->
+    <div class="section-label">What We Do</div>
+    <div class="two-col">
+      <div class="item-card"><div class="item-dot"></div><span>Operational structure design</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Process development and correction</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Accountability systems</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Decision frameworks</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>System integration</span></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- How We Work -->
+    <div class="section-label">How We Work</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <strong>Reality Assessment</strong>
+        <span>Understand your actual operating environment and pressure points.</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <strong>System Design</strong>
+        <span>Human-centered structure built through ChangeWorks™.</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <strong>Validation</strong>
+        <span>Assumptions tested and pressure-checked through CounterCore™.</span>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <strong>Implementation</strong>
+        <span>Aligned rollout with your team and operating reality.</span>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <strong>Measurement</strong>
+        <span>Ongoing tracking and adjustment against real outcomes.</span>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Who We Work With -->
+    <div class="section-label">Who We Work With</div>
+    <div class="two-col">
+      <div class="item-card"><div class="item-dot"></div><span>Organizations with operational friction or breakdowns</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Regulated or high-accountability environments</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Scaling businesses needing structure</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Smaller organizations building a foundation</span></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- What Makes This Different -->
+    <div class="section-label">What Makes This Different</div>
+    <div class="diff-grid">
+      <div class="diff-item">
+        <strong>No dependency model</strong>
+        <span>We build systems you own and can run without us.</span>
+      </div>
+      <div class="diff-item">
+        <strong>No abstraction</strong>
+        <span>Everything is grounded in your real operating conditions.</span>
+      </div>
+      <div class="diff-item">
+        <strong>Direct accountability</strong>
+        <span>We're accountable to outcomes, not deliverable counts.</span>
+      </div>
+      <div class="diff-item">
+        <strong>Built for execution</strong>
+        <span>Systems designed to actually run, not sit in a binder.</span>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Deliverables -->
+    <div class="section-label">Deliverables</div>
+    <div class="two-col">
+      <div class="item-card"><div class="item-dot"></div><span>Operational system maps</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>SOPs and workflows</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Accountability structures</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Decision frameworks</span></div>
+      <div class="item-card"><div class="item-dot"></div><span>Implementation plans</span></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Engagement Model -->
+    <div class="section-label">Engagement Model</div>
+    <div class="engagement-grid">
+      <div class="engagement-card">
+        <strong>Targeted Engagements</strong>
+        <p>Focused work on a specific problem, process, or system. Defined scope, clear outcome, finite timeline.</p>
+      </div>
+      <div class="engagement-card">
+        <strong>Full System Builds</strong>
+        <p>End-to-end design and implementation of an operational system — from assessment through measurement.</p>
+      </div>
+      <div class="engagement-card">
+        <strong>Advisory Support</strong>
+        <p>Ongoing access to Paralla Group expertise for organizations navigating change, growth, or complexity.</p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Bottom Line -->
+    <div class="section-label">Bottom Line</div>
+    <div class="bottom-line">
+      <p>
+        If you're looking for systems that actually run your business better, that's where we come in.
+        <em>If you're looking for ideas, there are cheaper options.</em>
+      </p>
+      <a class="cta-link" href="contact.html">Get in Touch</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

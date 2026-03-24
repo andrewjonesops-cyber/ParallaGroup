@@ -78,6 +78,52 @@ header{
   background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
 }
 
+/* ================= NAV ================= */
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{
+  display:none;
+}
+
+.nav-inner a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
 /* ================= MAIN ================= */
 
 main{
@@ -266,6 +312,17 @@ footer{
 </header>
 
 <div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="active">Homepage</a>
+    <a href="about.html">About Paralla Group</a>
+    <a href="changeworks.html">ChangeWorks™</a>
+    <a href="countercore.html">CounterCore™</a>
+    <a href="consulting.html">Business Consulting</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
 
 <main>
   <div class="container">

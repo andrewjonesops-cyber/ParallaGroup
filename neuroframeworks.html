@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NeuroFrameWorks™ by Paralla Group — Neurodivergent-centered accessibility and practical systems design that reduces friction and cognitive load.">
+<title>NeuroFrameWorks™ — Paralla Group</title>
+
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --violet:#6D28D9;
+  --violet-light:rgba(109,40,217,.07);
+  --violet-border:rgba(109,40,217,.22);
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
+
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
+
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
+
+/* ================= NAV ================= */
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+  position:relative;
+  z-index:100;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-inner > a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner > a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+/* ================= DROPDOWN ================= */
+
+.nav-dropdown{
+  position:relative;
+  margin:6px 0;
+}
+
+.nav-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-dropdown > a::after{
+  content:'';
+  display:inline-block;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid currentColor;
+  margin-top:1px;
+  transition:transform .2s ease;
+}
+
+.nav-dropdown:hover > a,
+.nav-dropdown:focus-within > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.09);
+  padding:8px;
+  z-index:200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu{
+  display:block;
+}
+
+.dropdown-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  padding:6px 10px 4px;
+  font-weight:600;
+}
+
+.dropdown-divider{
+  height:1px;
+  background:var(--line);
+  margin:6px 0;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:8px;
+  transition:background .12s ease, color .12s ease;
+  white-space:nowrap;
+}
+
+.dropdown-menu a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.dropdown-menu a.parent-link{
+  font-weight:700;
+  color:var(--cobalt);
+  font-size:14px;
+}
+
+.dropdown-menu a.active-program{
+  font-weight:700;
+  color:var(--violet);
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:70px 24px 60px;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+}
+
+/* ================= PAGE HERO ================= */
+
+.page-hero{
+  max-width:740px;
+  margin-bottom:56px;
+}
+
+.program-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:600;
+  color:var(--violet);
+  background:var(--violet-light);
+  border:1px solid var(--violet-border);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:20px;
+}
+
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
+
+.page-hero .lead{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+  max-width:64ch;
+  line-height:1.7;
+}
+
+/* ================= RULES ================= */
+
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(109,40,217,.35),transparent);
+  margin:44px 0;
+}
+
+.rule-cobalt{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.4),transparent);
+  margin:44px 0;
+}
+
+/* ================= SECTION LABEL ================= */
+
+.section-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+/* ================= FOCUS CARDS ================= */
+
+.focus-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.focus-card{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+}
+
+.focus-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--violet);
+  margin-bottom:8px;
+}
+
+.focus-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* ================= HOW WE WORK ================= */
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.work-card{
+  padding:22px;
+  border:1px solid var(--violet-border);
+  border-radius:14px;
+  background:var(--violet-light);
+}
+
+.work-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--violet);
+  margin-bottom:6px;
+}
+
+.work-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink);
+  line-height:1.6;
+}
+
+/* ================= FRAMING BOX ================= */
+
+.framing-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:var(--violet-light);
+  border:1px solid var(--violet-border);
+  border-radius:var(--radius);
+}
+
+.framing-box p{
+  margin:0;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.7;
+}
+
+.framing-box strong{
+  color:var(--violet);
+}
+
+/* ================= WHAT WE'RE NOT ================= */
+
+.not-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.not-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.not-x{
+  font-size:16px;
+  font-weight:800;
+  color:#dc2626;
+  flex-shrink:0;
+  line-height:1.4;
+}
+
+.not-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= GUARDRAILS BOX ================= */
+
+.guardrail-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:rgba(11,77,255,.03);
+  border:1px solid rgba(11,77,255,.2);
+  border-radius:var(--radius);
+}
+
+.guardrail-box p{
+  margin:0 0 10px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.guardrail-box p:last-child{
+  margin-bottom:0;
+}
+
+/* ================= GRANT CARDS ================= */
+
+.grant-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.grant-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.grant-badge{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  padding:3px 8px;
+  border-radius:999px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+
+.grant-badge.primary{
+  background:var(--violet-light);
+  color:var(--violet);
+  border:1px solid var(--violet-border);
+}
+
+.grant-badge.secondary{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.grant-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* ================= CTA BOX ================= */
+
+.cta-box{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  border-radius:var(--radius);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.cta-box p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:56ch;
+  line-height:1.6;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .focus-grid,
+  .work-grid,
+  .not-grid,
+  .grant-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+
+    <a href="index.html">Homepage</a>
+    <a href="about.html">About Paralla Group</a>
+
+    <!-- ChangeWorks Dropdown -->
+    <div class="nav-dropdown">
+      <a href="changeworks.html" class="active">ChangeWorks™</a>
+      <div class="dropdown-menu">
+        <a href="changeworks.html" class="parent-link">ChangeWorks™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="earthformworks.html">EarthFormWorks™</a>
+        <a href="greenleafworks.html">GreenLeafWorks™</a>
+        <a href="heartlineworks.html">HeartLineWorks™</a>
+        <a href="neuroframeworks.html" class="active-program">NeuroFrameWorks™</a>
+        <a href="petcareworks.html">PetCareWorks™</a>
+        <a href="ribbonpathworks.html">RibbonPathWorks™</a>
+      </div>
+    </div>
+
+    <!-- CounterCore Dropdown -->
+    <div class="nav-dropdown">
+      <a href="countercore.html">CounterCore™</a>
+      <div class="dropdown-menu">
+        <a href="countercore.html" class="parent-link">CounterCore™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="controlframeworkscore.html">ControlFrameworksCore™</a>
+        <a href="impactstresscore.html">ImpactStressCore™</a>
+        <a href="optiondesigncore.html">OptionDesignCore™</a>
+        <a href="primeassumptioncore.html">PrimeAssumptionCore™</a>
+        <a href="truenorthcore.html">TrueNorthCore™</a>
+        <a href="validationmetricscore.html">ValidationMetricsCore™</a>
+      </div>
+    </div>
+
+    <a href="consulting.html">Business Consulting</a>
+    <a href="contact.html">Contact Us</a>
+
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="program-tag">ChangeWorks™ Program</div>
+      <h1>Systems should fit real people — not the other way around.</h1>
+      <p class="lead">
+        NeuroFrameWorks™ is Paralla Group's neurodivergent-centered accessibility
+        program, focused on making everyday systems more functional and accessible
+        for ND people. It helps teams, schools, and organizations redesign workflows,
+        communication, and spaces so people do not need to mask constantly,
+        overcompensate, or burn out just to keep up.
+      </p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- What We Do -->
+    <div class="section-label">What NeuroFrameWorks™ Does</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      A non-clinical, systems design program — supporting better lives through better
+      structures, not diagnosis or treatment.
+    </p>
+
+    <div class="focus-grid">
+      <div class="focus-card">
+        <strong>Executive-Function–Aware Workflows</strong>
+        <p>Redesigning task structures, documentation, and processes to work with executive function realities — reducing the cognitive overhead of getting work done for ND people without adding burden to everyone else.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Cognitive Load Reduction</strong>
+        <p>Identifying and removing unnecessary friction in digital and physical systems — unclear instructions, excessive context-switching, ambiguous expectations — so people can focus energy on the actual work.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Sensory Environment Planning</strong>
+        <p>Assessing and improving physical and digital spaces to reduce sensory overload — lighting, noise, visual clutter, notification design — so environments support rather than undermine the people working in them.</p>
+      </div>
+      <div class="focus-card">
+        <strong>ND-Accessible Communication Standards</strong>
+        <p>Building communication norms and documentation standards that reduce friction across mixed neurotypes — clear, direct, and structured without being rigid or exclusionary.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Transition &amp; Reentry Support</strong>
+        <p>Practical support for ND individuals navigating transitions across school, work, and life disruption — designed around real constraints, not idealized expectations of how transitions are "supposed" to go.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Neurodivergence as Design Advantage</strong>
+        <p>NeuroFrameWorks™ treats neurodivergence as both a design constraint and a genuine advantage — building systems that fit real humans and unlock what ND minds do exceptionally well, instead of forcing compliance with brittle norms.</p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- How We Work -->
+    <div class="section-label">How We Work</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <strong>Systems, Not Individuals</strong>
+        <p>We change environments, workflows, and structures — not people. ND people are not the problem to be solved. The systems they're asked to operate in often are.</p>
+      </div>
+      <div class="work-card">
+        <strong>ND-Positive Design</strong>
+        <p>Neurodivergence is not a deficit. Every engagement is built on the premise that good design includes — and benefits from — the full range of how human minds work.</p>
+      </div>
+      <div class="work-card">
+        <strong>Privacy &amp; Consent-Respecting</strong>
+        <p>No individual is required to disclose a diagnosis to benefit from NeuroFrameWorks™ design. Better systems help everyone — and that is exactly the point.</p>
+      </div>
+      <div class="work-card">
+        <strong>Non-Clinical Throughout</strong>
+        <p>NeuroFrameWorks™ does not assess, diagnose, or treat. It designs environments and operational structures. Clinical needs belong with qualified professionals.</p>
+      </div>
+    </div>
+
+    <!-- Framing Box -->
+    <div class="framing-box">
+      <p><strong>On neurodivergence and design:</strong> When systems are built for the full range of how people actually work — including those with ADHD, autism, dyslexia, and other ND profiles — they tend to work better for everyone. NeuroFrameWorks™ is not an accommodation add-on. It is a design philosophy that produces more functional, more humane systems from the ground up.</p>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- What We Are Not -->
+    <div class="section-label">What NeuroFrameWorks™ Is Not</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      These guardrails keep the program firmly grounded in ethical, ND-positive
+      systems design.
+    </p>
+
+    <div class="not-grid">
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>Diagnosis, clinical assessment, or medical treatment</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A substitute for legal ADA/504 or workplace-compliance counsel</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A one-size-fits-all accommodation template</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A program that frames neurodivergence as a deficit to be "fixed"</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A promise of outcomes without testing, feedback loops, and real constraints</p>
+      </div>
+    </div>
+
+    <div class="guardrail-box" style="margin-top:24px;">
+      <p>All NeuroFrameWorks™ work must avoid clinical language that implies diagnosis or treatment; respect privacy, consent, and ND self-definition; focus on environmental and systems changes rather than "normalizing" individuals; and document assumptions, adaptations, and limitations transparently.</p>
+      <p>These guardrails keep the program firmly grounded in ethical, ND-positive systems design — not a compliance checkbox or a deficit-reduction exercise.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Philanthropic Alignment -->
+    <div class="section-label">Philanthropic Alignment</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      NeuroFrameWorks™ is supported by and aligned with the following Paralla Group grant and philanthropy initiatives.
+    </p>
+
+    <div class="grant-grid">
+      <div class="grant-card">
+        <div class="grant-badge primary">Primary</div>
+        <p>Neurodivergent Advancement Grant</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-badge secondary">Secondary</div>
+        <p>Employee Empowerment Mini-Grant</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-badge secondary">Secondary</div>
+        <p>Community Resilience Fund</p>
+      </div>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>If your organization is ready to build systems that actually work for the full range of people in them — not just the ones who fit the default — NeuroFrameWorks™ is built for that work.</p>
+      <a class="cta-link" href="contact.html">Get in Touch</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

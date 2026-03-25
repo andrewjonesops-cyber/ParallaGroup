@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ChangeWorks™ by Paralla Group — Launching Soon.">
-<title>ChangeWorks™ — Paralla Group</title>
+<meta name="description" content="ChangeWorks™ by Paralla Group — Human-centered systems design for durable, measurable change.">
+<title>ChangeWorks™ by Paralla Group</title>
 
 <style>
 :root{
   --cobalt:#0B4DFF;
+  --teal:#0F766E;
+  --teal-light:rgba(15,118,110,.07);
+  --teal-border:rgba(15,118,110,.22);
   --ink:#101828;
   --muted:#667085;
   --line:#E6EAF2;
@@ -230,7 +233,7 @@ nav{
 /* ================= MAIN ================= */
 
 main{
-  padding:100px 24px 80px;
+  padding:70px 24px 60px;
 }
 
 .container{
@@ -238,93 +241,250 @@ main{
   margin:0 auto;
 }
 
-/* ================= COMING SOON ================= */
+/* ================= PAGE HERO ================= */
 
-.coming-soon{
-  max-width:600px;
-  margin:0 auto;
-  text-align:center;
+.page-hero{
+  max-width:740px;
+  margin-bottom:56px;
 }
 
-.cs-badge{
-  display:inline-block;
+.umbrella-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
   font-size:12px;
   text-transform:uppercase;
-  letter-spacing:.15em;
-  color:var(--cobalt);
-  background:rgba(11,77,255,.07);
-  border:1px solid rgba(11,77,255,.2);
-  border-radius:999px;
-  padding:6px 16px;
-  margin-bottom:28px;
+  letter-spacing:.12em;
   font-weight:600;
+  color:var(--teal);
+  background:var(--teal-light);
+  border:1px solid var(--teal-border);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:20px;
 }
 
-.coming-soon h1{
-  font-size:clamp(32px,3.5vw,48px);
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
   line-height:1.1;
   margin:0 0 20px;
   letter-spacing:-.5px;
 }
 
-.coming-soon h1 span{
-  color:var(--cobalt);
-}
-
-.coming-soon p{
-  font-size:17px;
+.page-hero .lead{
+  font-size:18px;
   color:var(--muted);
-  margin:0 0 40px;
-  max-width:52ch;
-  margin-left:auto;
-  margin-right:auto;
+  margin:0;
+  max-width:64ch;
+  line-height:1.7;
 }
 
-.rule-center{
+/* ================= RULES ================= */
+
+.rule{
   height:1px;
-  background:linear-gradient(90deg,transparent,rgba(11,77,255,.4),transparent);
-  margin:40px 0;
+  background:linear-gradient(90deg,rgba(15,118,110,.35),transparent);
+  margin:44px 0;
 }
 
-.teaser-label{
+.rule-cobalt{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.4),transparent);
+  margin:44px 0;
+}
+
+/* ================= SECTION LABEL ================= */
+
+.section-label{
   font-size:12px;
   text-transform:uppercase;
   letter-spacing:.15em;
   color:var(--muted);
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 
-.teaser-pills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-  margin-bottom:48px;
+/* ================= PRINCIPLES ================= */
+
+.principles-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
 }
 
-.teaser-pill{
-  padding:8px 16px;
-  border:1px solid var(--line);
-  border-radius:999px;
+.principle-card{
+  padding:22px;
+  border:1px solid var(--teal-border);
+  border-radius:14px;
+  background:var(--teal-light);
+}
+
+.principle-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--teal);
+  margin-bottom:8px;
+}
+
+.principle-card p{
+  margin:0;
   font-size:13px;
   color:var(--ink);
-  background:#ffffff;
+  line-height:1.6;
 }
 
-.back-link{
-  display:inline-block;
-  padding:12px 24px;
-  border:1px solid rgba(11,77,255,.3);
-  border-radius:999px;
-  font-size:14px;
+/* ================= PROGRAM CARDS ================= */
+
+.program-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(320px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+
+.program-card{
+  padding:26px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:#ffffff;
+  text-decoration:none;
+  color:inherit;
+  display:block;
+  transition:box-shadow .15s ease, border-color .15s ease;
+}
+
+.program-card:hover{
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  border-color:rgba(11,77,255,.2);
+}
+
+.program-card-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.program-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+
+.program-card-header strong{
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+}
+
+.program-card p{
+  margin:0 0 16px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.program-card-link{
+  font-size:13px;
   font-weight:600;
   color:var(--cobalt);
-  text-decoration:none;
-  transition:background .15s ease;
 }
 
-.back-link:hover{
-  background:rgba(11,77,255,.06);
+/* ================= WHAT WE'RE NOT ================= */
+
+.not-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.not-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.not-x{
+  font-size:16px;
+  font-weight:800;
+  color:#dc2626;
+  flex-shrink:0;
+  line-height:1.4;
+}
+
+.not-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= GUARDRAILS BOX ================= */
+
+.guardrail-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:rgba(11,77,255,.03);
+  border:1px solid rgba(11,77,255,.2);
+  border-radius:var(--radius);
+}
+
+.guardrail-box p{
+  margin:0 0 10px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.guardrail-box p:last-child{
+  margin-bottom:0;
+}
+
+/* ================= CTA BOX ================= */
+
+.cta-box{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  border-radius:var(--radius);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.cta-box p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:56ch;
+  line-height:1.6;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
 }
 
 /* ================= FOOTER ================= */
@@ -343,6 +503,18 @@ footer{
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .principles-grid,
+  .program-grid,
+  .not-grid{
+    grid-template-columns:1fr;
+  }
+
 }
 </style>
 </head>
@@ -363,6 +535,7 @@ footer{
 
 <nav>
   <div class="nav-inner">
+
     <a href="index.html">Homepage</a>
     <a href="about.html">About Paralla Group</a>
 
@@ -400,37 +573,174 @@ footer{
 
     <a href="consulting.html">Business Consulting</a>
     <a href="contact.html">Contact Us</a>
+
   </div>
 </nav>
 
 <main>
   <div class="container">
-    <div class="coming-soon">
 
-      <div class="cs-badge">Coming Soon</div>
-
-      <h1><span>ChangeWorks™</span><br>is on its way.</h1>
-
-      <p>
-        Our human-centered systems design practice is preparing for launch.
-        Full program details, frameworks, and engagement options will be
-        available here shortly.
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="umbrella-tag">Umbrella Framework</div>
+      <h1>Human-centered systems design for durable, measurable change.</h1>
+      <p class="lead">
+        ChangeWorks™ by Paralla Group is the umbrella framework that powers Paralla
+        Group's human-centered systems work. It provides the shared structure, ethics,
+        and operating principles that keep each program clear, consistent, and
+        scalable — without fragmentation or mission drift.
       </p>
+    </div>
 
-      <div class="rule-center"></div>
+    <div class="rule"></div>
 
-      <div class="teaser-label">What to expect</div>
-      <div class="teaser-pills">
-        <div class="teaser-pill">Human-Centered Design</div>
-        <div class="teaser-pill">Friction Reduction</div>
-        <div class="teaser-pill">Operational Resilience</div>
-        <div class="teaser-pill">Workflow Improvement</div>
-        <div class="teaser-pill">Practical Frameworks</div>
+    <!-- Shared Principles -->
+    <div class="section-label">Shared Principles Across Every ChangeWorks™ Program</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Each ChangeWorks™ program operates independently while adhering to these
+      shared principles — the philosophical anchor that keeps every program aligned
+      to a cohesive mission.
+    </p>
+
+    <div class="principles-grid">
+      <div class="principle-card">
+        <strong>Systems-Level Thinking</strong>
+        <p>Every ChangeWorks™ program addresses the structures and conditions that produce outcomes — not one-off interventions that treat symptoms without touching causes.</p>
       </div>
+      <div class="principle-card">
+        <strong>Evidence-Aware Design</strong>
+        <p>Non-performative and grounded in what is measurable. ChangeWorks™ programs avoid symbolic gestures and prioritize changes that can be validated against real outcomes.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Human Impact as Operational Core</strong>
+        <p>The people affected by a system are not secondary considerations — they are a primary design input. ChangeWorks™ treats human impact as integral to operational design, not adjacent to it.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Responsible Design with Measurable Outcomes</strong>
+        <p>Every engagement documents what is intended to change, how change will be measured, and what constraints apply — so results are accountable rather than assumed.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Long-Term Stability Over Short-Term Optimization</strong>
+        <p>ChangeWorks™ prioritizes systems that remain stable and sustainable over time — not solutions optimized for immediate metrics that erode under real-world conditions.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Governance Without Fragmentation</strong>
+        <p>ChangeWorks™ functions as both the structural governance layer and the philosophical foundation — ensuring every program stays aligned to a cohesive mission regardless of how distinct its domain is.</p>
+      </div>
+    </div>
 
-      <a class="back-link" href="index.html">← Back to Homepage</a>
+    <div class="rule"></div>
+
+    <!-- The Six Programs -->
+    <div class="section-label">The Six ChangeWorks™ Programs</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Each program operates independently within a specific domain while staying
+      aligned to the shared principles above. Click any program to learn more.
+    </p>
+
+    <div class="program-grid">
+
+      <a class="program-card" href="earthformworks.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#15803D;"></div>
+          <strong>EarthFormWorks™</strong>
+        </div>
+        <p>Practical sustainability and environmental stability — for organizations that need real operational improvements, not symbolic green initiatives or carbon-credit optics.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="greenleafworks.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#4D7C0F;"></div>
+          <strong>GreenLeafWorks™</strong>
+        </div>
+        <p>Operational compliance and evidence-informed education for the cannabis industry — bringing structure to compliance and clarity to a heavily stigmatized conversation.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="heartlineworks.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#BE123C;"></div>
+          <strong>HeartLineWorks™</strong>
+        </div>
+        <p>Trauma-aware resilience and emotional sustainability through operational design — treating emotional load as a systems problem, not an individual failure.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="neuroframeworks.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#6D28D9;"></div>
+          <strong>NeuroFrameWorks™</strong>
+        </div>
+        <p>Neurodivergent-centered accessibility and practical systems design — building environments and workflows that fit real people instead of forcing people to fit brittle systems.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="petcareworks.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#92400E;"></div>
+          <strong>PetCareWorks™</strong>
+        </div>
+        <p>Practical operations and workflow design for consistent, humane animal care — helping pet care organizations run smoother so staff can focus on animals instead of chaos.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="ribbonpathworks.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#A21CAF;"></div>
+          <strong>RibbonPathWorks™</strong>
+        </div>
+        <p>Long-term continuity and support through the phases of cancer and beyond — practical structures for the phases where formal care steps back but the impact on daily life remains.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
 
     </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- What ChangeWorks Is Not -->
+    <div class="section-label">What ChangeWorks™ Is Not</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      These guardrails ensure ChangeWorks™ remains a disciplined, durable systems
+      framework rather than a loose collection of disconnected initiatives.
+    </p>
+
+    <div class="not-grid">
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A single "one-size-fits-all" product or generic self-help platform</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A political advocacy body or ideological movement</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A clinical, medical, or therapeutic service provider</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A replacement for licensed legal, medical, or regulatory advice</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A branding exercise that prioritizes narrative over measurable outcomes</p>
+      </div>
+    </div>
+
+    <div class="guardrail-box" style="margin-top:24px;">
+      <p>All ChangeWorks™ programs must align to human-centered, evidence-aware design; avoid performative or purely symbolic interventions; operate within applicable legal and regulatory constraints; document assumptions, constraints, and risks; and demonstrate measurable, context-aware outcomes over time.</p>
+      <p>These shared guardrails ensure every program under the ChangeWorks™ umbrella remains a disciplined, durable contribution to human-centered change — rather than a loosely connected collection of good intentions.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>If your organization is ready to build systems that actually work for the people in them — practically, durably, and with measurable results — ChangeWorks™ is the framework that makes that possible.</p>
+      <a class="cta-link" href="contact.html">Get in Touch</a>
+    </div>
+
   </div>
 </main>
 

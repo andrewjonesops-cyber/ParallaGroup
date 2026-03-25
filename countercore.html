@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CounterCore™ by Paralla Group — Launching Soon.">
-<title>CounterCore™ — Paralla Group</title>
+<meta name="description" content="CounterCore™ by Paralla Group — Structured skepticism and decision accountability through evidence-based review.">
+<title>CounterCore™ by Paralla Group</title>
 
 <style>
 :root{
   --cobalt:#0B4DFF;
+  --indigo:#4338CA;
+  --indigo-light:rgba(67,56,202,.07);
+  --indigo-border:rgba(67,56,202,.22);
   --ink:#101828;
   --muted:#667085;
   --line:#E6EAF2;
@@ -230,7 +233,7 @@ nav{
 /* ================= MAIN ================= */
 
 main{
-  padding:100px 24px 80px;
+  padding:70px 24px 60px;
 }
 
 .container{
@@ -238,93 +241,312 @@ main{
   margin:0 auto;
 }
 
-/* ================= COMING SOON ================= */
+/* ================= PAGE HERO ================= */
 
-.coming-soon{
-  max-width:600px;
-  margin:0 auto;
-  text-align:center;
+.page-hero{
+  max-width:740px;
+  margin-bottom:56px;
 }
 
-.cs-badge{
-  display:inline-block;
+.umbrella-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
   font-size:12px;
   text-transform:uppercase;
-  letter-spacing:.15em;
-  color:var(--cobalt);
-  background:rgba(11,77,255,.07);
-  border:1px solid rgba(11,77,255,.2);
-  border-radius:999px;
-  padding:6px 16px;
-  margin-bottom:28px;
+  letter-spacing:.12em;
   font-weight:600;
+  color:var(--indigo);
+  background:var(--indigo-light);
+  border:1px solid var(--indigo-border);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:20px;
 }
 
-.coming-soon h1{
-  font-size:clamp(32px,3.5vw,48px);
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
   line-height:1.1;
   margin:0 0 20px;
   letter-spacing:-.5px;
 }
 
-.coming-soon h1 span{
-  color:var(--cobalt);
-}
-
-.coming-soon p{
-  font-size:17px;
+.page-hero .lead{
+  font-size:18px;
   color:var(--muted);
-  margin:0 0 40px;
-  max-width:52ch;
-  margin-left:auto;
-  margin-right:auto;
+  margin:0;
+  max-width:64ch;
+  line-height:1.7;
 }
 
-.rule-center{
+/* ================= RULES ================= */
+
+.rule{
   height:1px;
-  background:linear-gradient(90deg,transparent,rgba(11,77,255,.4),transparent);
-  margin:40px 0;
+  background:linear-gradient(90deg,rgba(67,56,202,.35),transparent);
+  margin:44px 0;
 }
 
-.teaser-label{
+.rule-cobalt{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.4),transparent);
+  margin:44px 0;
+}
+
+/* ================= SECTION LABEL ================= */
+
+.section-label{
   font-size:12px;
   text-transform:uppercase;
   letter-spacing:.15em;
   color:var(--muted);
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 
-.teaser-pills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-  margin-bottom:48px;
+/* ================= HOW IT WORKS ================= */
+
+.loop-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:20px;
 }
 
-.teaser-pill{
-  padding:8px 16px;
-  border:1px solid var(--line);
-  border-radius:999px;
+.loop-card{
+  padding:22px;
+  border:1px solid var(--indigo-border);
+  border-radius:14px;
+  background:var(--indigo-light);
+  text-align:center;
+}
+
+.loop-num{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:700;
+  color:var(--indigo);
+  margin-bottom:10px;
+}
+
+.loop-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+
+.loop-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= PRINCIPLES ================= */
+
+.principles-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.principle-card{
+  padding:22px;
+  border:1px solid var(--indigo-border);
+  border-radius:14px;
+  background:var(--indigo-light);
+}
+
+.principle-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--indigo);
+  margin-bottom:8px;
+}
+
+.principle-card p{
+  margin:0;
   font-size:13px;
   color:var(--ink);
-  background:#ffffff;
+  line-height:1.6;
 }
 
-.back-link{
-  display:inline-block;
-  padding:12px 24px;
-  border:1px solid rgba(11,77,255,.3);
-  border-radius:999px;
-  font-size:14px;
+/* ================= FRAMING BOX ================= */
+
+.framing-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:var(--indigo-light);
+  border:1px solid var(--indigo-border);
+  border-radius:var(--radius);
+}
+
+.framing-box p{
+  margin:0;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.7;
+}
+
+.framing-box strong{
+  color:var(--indigo);
+}
+
+/* ================= PROGRAM CARDS ================= */
+
+.program-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(320px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+
+.program-card{
+  padding:26px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:#ffffff;
+  text-decoration:none;
+  color:inherit;
+  display:block;
+  transition:box-shadow .15s ease, border-color .15s ease;
+}
+
+.program-card:hover{
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  border-color:rgba(11,77,255,.2);
+}
+
+.program-card-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.program-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+
+.program-card-header strong{
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+}
+
+.program-card p{
+  margin:0 0 16px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.program-card-link{
+  font-size:13px;
   font-weight:600;
   color:var(--cobalt);
-  text-decoration:none;
-  transition:background .15s ease;
 }
 
-.back-link:hover{
-  background:rgba(11,77,255,.06);
+/* ================= WHAT WE'RE NOT ================= */
+
+.not-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.not-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.not-x{
+  font-size:16px;
+  font-weight:800;
+  color:#dc2626;
+  flex-shrink:0;
+  line-height:1.4;
+}
+
+.not-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= GUARDRAILS BOX ================= */
+
+.guardrail-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:rgba(11,77,255,.03);
+  border:1px solid rgba(11,77,255,.2);
+  border-radius:var(--radius);
+}
+
+.guardrail-box p{
+  margin:0 0 10px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.guardrail-box p:last-child{
+  margin-bottom:0;
+}
+
+/* ================= CTA BOX ================= */
+
+.cta-box{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  border-radius:var(--radius);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.cta-box p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:56ch;
+  line-height:1.6;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
 }
 
 /* ================= FOOTER ================= */
@@ -343,6 +565,30 @@ footer{
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .loop-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .principles-grid,
+  .program-grid,
+  .not-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media (max-width:500px){
+
+  .loop-grid{
+    grid-template-columns:1fr;
+  }
+
 }
 </style>
 </head>
@@ -363,6 +609,7 @@ footer{
 
 <nav>
   <div class="nav-inner">
+
     <a href="index.html">Homepage</a>
     <a href="about.html">About Paralla Group</a>
 
@@ -400,37 +647,214 @@ footer{
 
     <a href="consulting.html">Business Consulting</a>
     <a href="contact.html">Contact Us</a>
+
   </div>
 </nav>
 
 <main>
   <div class="container">
-    <div class="coming-soon">
 
-      <div class="cs-badge">Coming Soon</div>
-
-      <h1><span>CounterCore™</span><br>is on its way.</h1>
-
-      <p>
-        Our disciplined skepticism and risk validation practice is preparing
-        for launch. Full program details, analytical frameworks, and engagement
-        options will be available here shortly.
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="umbrella-tag">Umbrella Framework</div>
+      <h1>Structured skepticism and decision accountability through evidence-based review.</h1>
+      <p class="lead">
+        CounterCore™ by Paralla Group is Paralla's structured counterbalance — the
+        layer that tests assumptions, challenges weak reasoning, and verifies whether
+        systems and decisions can withstand scrutiny. It improves decision quality and
+        operational integrity by using structured skepticism, evidence-aware review,
+        and red-team style methods to reveal blind spots, unintended consequences,
+        and drift from stated objectives.
       </p>
+    </div>
 
-      <div class="rule-center"></div>
+    <div class="rule"></div>
 
-      <div class="teaser-label">What to expect</div>
-      <div class="teaser-pills">
-        <div class="teaser-pill">Risk Analysis</div>
-        <div class="teaser-pill">Control Thinking</div>
-        <div class="teaser-pill">Evidence Validation</div>
-        <div class="teaser-pill">Assumption Testing</div>
-        <div class="teaser-pill">Accountability Frameworks</div>
+    <!-- The Closed Loop -->
+    <div class="section-label">The CounterCore™ Closed Loop</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      CounterCore™ works alongside ChangeWorks™ to create a complete closed loop —
+      design, challenge, control, and accountability — so progress is not just fast,
+      but defensible, disciplined, and aligned.
+    </p>
+
+    <div class="loop-grid">
+      <div class="loop-card">
+        <div class="loop-num">Step 1</div>
+        <strong>What must be true?</strong>
+        <p>Surface the assumptions a plan stands on before resources and reputations are committed.</p>
       </div>
+      <div class="loop-card">
+        <div class="loop-num">Step 2</div>
+        <strong>What breaks under stress?</strong>
+        <p>Model failure paths, identify single points of failure, and clarify consequence before launch.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">Step 3</div>
+        <strong>What evidence proves performance?</strong>
+        <p>Set standards for what counts as credible proof — and verify outcomes against those standards.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">Step 4</div>
+        <strong>Are we still oriented toward what is right?</strong>
+        <p>Confirm decisions remain aligned to stated values as conditions, incentives, and pressures evolve.</p>
+      </div>
+    </div>
 
-      <a class="back-link" href="index.html">← Back to Homepage</a>
+    <!-- Framing Box -->
+    <div class="framing-box" style="margin-top:24px;">
+      <p><strong>On the purpose of structured skepticism:</strong> CounterCore™ does not exist to slow progress or create adversarial friction. It exists because unchallenged momentum — even well-intentioned momentum — is one of the most reliable paths to avoidable failure. The questions CounterCore™ asks are not obstacles. They are the difference between progress that holds and progress that collapses.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Core Mandates -->
+    <div class="section-label">What CounterCore™ Is Mandated to Do</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Every CounterCore™ program operates within these shared mandates — the
+      analytical discipline that keeps each program grounded in rigor rather than
+      becoming a tool for obstruction or politics.
+    </p>
+
+    <div class="principles-grid">
+      <div class="principle-card">
+        <strong>Challenge Assumptions, Not People</strong>
+        <p>All CounterCore™ work focuses on arguments, evidence, and premises — never on personalities, seniority, or who proposed the plan being reviewed.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Document the Basis for Every Challenge</strong>
+        <p>Every challenge and finding is documented with its supporting reasoning — so the analytical work is auditable, revisable, and useful beyond the immediate engagement.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Operate Independently of Incentives</strong>
+        <p>CounterCore™ programs operate independently of short-term incentives, organizational momentum, and internal politics — its mandate is clarity, not alignment with preferred outcomes.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Produce Decision-Useful Outputs</strong>
+        <p>Every engagement ends with outputs that enable clearer decisions — not endless debate, hedged conclusions, or reports that require further reports to be actionable.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Respect Legal &amp; Ethical Boundaries</strong>
+        <p>All CounterCore™ work operates within applicable legal, regulatory, and ethical constraints — and never uses the mandate for structured skepticism as cover for overreach.</p>
+      </div>
+      <div class="principle-card">
+        <strong>Strengthen Good Decisions, Not Obstruct Them</strong>
+        <p>CounterCore™ is a strengthening layer — not a veto authority. Its purpose is to make good decisions more defensible and catch weak ones before they cause damage.</p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- The Six Programs -->
+    <div class="section-label">The Six CounterCore™ Programs</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Each program applies structured skepticism to a specific dimension of decision
+      quality and operational integrity. Click any program to learn more.
+    </p>
+
+    <div class="program-grid">
+
+      <a class="program-card" href="controlframeworkscore.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#0E7490;"></div>
+          <strong>ControlFrameworksCore™</strong>
+        </div>
+        <p>Building the standards, controls, and guardrails that hold systems within approved boundaries — especially when pressure, incentives, or complexity push against them.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="impactstresscore.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#C2410C;"></div>
+          <strong>ImpactStressCore™</strong>
+        </div>
+        <p>Stress-testing systems for risk, failure, and real-world consequence before they break — modeling concrete failure paths instead of producing risk lists no one reads.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="optiondesigncore.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#4338CA;"></div>
+          <strong>OptionDesignCore™</strong>
+        </div>
+        <p>Replacing false binaries with structured options, clear tradeoffs, and defensible decision rationale — so leaders choose with full visibility, not momentum.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="primeassumptioncore.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#B45309;"></div>
+          <strong>PrimeAssumptionCore™</strong>
+        </div>
+        <p>Making the implicit explicit — surfacing hidden assumptions, mapping dependencies, and running counterfactual checks to strengthen decisions before resources are committed.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="truenorthcore.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#7E22CE;"></div>
+          <strong>TrueNorthCore™</strong>
+        </div>
+        <p>Ethical orientation and structural accountability — keeping decisions aligned to stated values when incentives, urgency, and pressure make drift feel justified.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
+
+      <a class="program-card" href="validationmetricscore.html">
+        <div class="program-card-header">
+          <div class="program-dot" style="background:#0369A1;"></div>
+          <strong>ValidationMetricsCore™</strong>
+        </div>
+        <p>Evidence standards and outcome validation that hold up under review — cutting through vanity metrics and selective reporting to confirm what is actually working.</p>
+        <div class="program-card-link">Learn more →</div>
+      </a>
 
     </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- What CounterCore Is Not -->
+    <div class="section-label">What CounterCore™ Is Not</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      These guardrails keep CounterCore™ functioning as a disciplined analytical
+      layer — not an obstacle, a veto authority, or an internal power tool.
+    </p>
+
+    <div class="not-grid">
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A veto authority or "stop office" with power over operational decisions</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A political, adversarial, or personal-criticism forum</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A compliance audit function or legal enforcement arm</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A substitute for executive accountability and decision-making</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A tool to justify inaction, obstruction, or power consolidation</p>
+      </div>
+    </div>
+
+    <div class="guardrail-box" style="margin-top:24px;">
+      <p>All CounterCore™ work must focus on arguments, assumptions, and evidence rather than personalities; document the basis for challenges and findings; respect legal, regulatory, and ethical boundaries; operate independently of short-term incentives or internal politics; and produce decision-useful outputs, not endless debate.</p>
+      <p>These guardrails keep CounterCore™ functioning as a disciplined analytical layer that strengthens good decisions — rather than becoming an obstacle, a blame mechanism, or a tool for internal power dynamics.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>If your organization wants decisions that hold up under pressure, scrutiny, and changing conditions — CounterCore™ is the discipline that makes that possible.</p>
+      <a class="cta-link" href="contact.html">Get in Touch</a>
+    </div>
+
   </div>
 </main>
 

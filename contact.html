@@ -265,8 +265,6 @@ main{
   margin:40px 0;
 }
 
-/* ================= SECTION LABEL ================= */
-
 .section-label{
   font-size:12px;
   text-transform:uppercase;
@@ -382,13 +380,40 @@ footer{
 /* ================= RESPONSIVE ================= */
 
 @media (max-width:700px){
-
   .contact-grid{
     grid-template-columns:1fr;
   }
-
 }
 </style>
+
+<script>
+function em(id, u) {
+  var d = 'parallagroup.com';
+  var el = document.getElementById(id);
+  if(el){ el.href = 'mailto:' + u + '@' + d; el.textContent = u + '@' + d; }
+}
+window.addEventListener('DOMContentLoaded', function(){
+  em('e-support','support');
+  em('e-sales','sales');
+  em('e-clients','clients');
+  em('e-billing','billing');
+  em('e-partnerships','partnerships');
+  em('e-press','press');
+  em('e-investors','investors');
+  em('e-vendors','vendors');
+  em('e-legal','legal');
+  em('e-privacy','privacy');
+  em('e-security','security');
+  em('e-abuse','abuse');
+  em('e-accessibility','accessibility');
+  em('e-subpoenas','subpoenas');
+  em('e-grants','grants');
+  em('e-philanthropy','philanthropy');
+  em('e-careers','careers');
+  em('e-community','community');
+  em('e-contact','contact');
+});
+</script>
 </head>
 
 <body>
@@ -407,6 +432,7 @@ footer{
 
 <nav>
   <div class="nav-inner">
+
     <a href="index.html">Homepage</a>
     <a href="about.html">About Paralla Group</a>
 
@@ -444,6 +470,7 @@ footer{
 
     <a href="consulting.html">Business Consulting</a>
     <a href="contact.html" class="active">Contact Us</a>
+
   </div>
 </nav>
 
@@ -468,19 +495,19 @@ footer{
         <h3>Support &amp; Sales</h3>
         <div class="contact-item">
           <div class="role">Support</div>
-          <a href="/cdn-cgi/l/email-protection#7f0c0a0f0f100d0b3f0f1e0d1e13131e180d100a0f511c1012"><span class="__cf_email__" data-cfemail="71020401011e030531011003101d1d1016031e04015f121e1c">[email&#160;protected]</span></a>
+          <a id="e-support" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Sales (New Business)</div>
-          <a href="/cdn-cgi/l/email-protection#6615070a031526160714070a0a0701140913164805090b"><span class="__cf_email__" data-cfemail="780b19141d0b3808190a191414191f0a170d08561b1715">[email&#160;protected]</span></a>
+          <a id="e-sales" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Account Management (Clients)</div>
-          <a href="/cdn-cgi/l/email-protection#4a2926232f243e390a3a2b382b26262b2d38253f3a64292527"><span class="__cf_email__" data-cfemail="51323d38343f252211213023303d3d3036233e24217f323e3c">[email&#160;protected]</span></a>
+          <a id="e-clients" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Billing</div>
-          <a href="/cdn-cgi/l/email-protection#b0d2d9dcdcd9ded7f0c0d1c2d1dcdcd1d7c2dfc5c09ed3dfdd"><span class="__cf_email__" data-cfemail="3153585d5d585f5671415043505d5d5056435e44411f525e5c">[email&#160;protected]</span></a>
+          <a id="e-billing" href="#"></a>
         </div>
       </div>
     </div>
@@ -494,19 +521,19 @@ footer{
         <h3>External Relations</h3>
         <div class="contact-item">
           <div class="role">Partnerships / Business Development</div>
-          <a href="/cdn-cgi/l/email-protection#81f1e0f3f5efe4f3f2e9e8f1f2c1f1e0f3e0edede0e6f3eef4f1afe2eeec"><span class="__cf_email__" data-cfemail="13637261677d7661607b7a636053637261727f7f7274617c66633d707c7e">[email&#160;protected]</span></a>
+          <a id="e-partnerships" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Press / Media</div>
-          <a href="/cdn-cgi/l/email-protection#c1b1b3a4b2b281b1a0b3a0adada0a6b3aeb4b1efa2aeac"><span class="__cf_email__" data-cfemail="8bfbf9eef8f8cbfbeaf9eae7e7eaecf9e4fefba5e8e4e6">[email&#160;protected]</span></a>
+          <a id="e-press" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Investors</div>
-          <a href="/cdn-cgi/l/email-protection#b0d9dec6d5c3c4dfc2c3f0c0d1c2d1dcdcd1d7c2dfc5c09ed3dfdd"><span class="__cf_email__" data-cfemail="f79e9981928483988584b7879685969b9b969085988287d994989a">[email&#160;protected]</span></a>
+          <a id="e-investors" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Vendors &amp; Procurement</div>
-          <a href="/cdn-cgi/l/email-protection#a4d2c1cac0cbd6d7e4d4c5d6c5c8c8c5c3d6cbd1d48ac7cbc9"><span class="__cf_email__" data-cfemail="bec8dbd0dad1cccdfecedfccdfd2d2dfd9ccd1cbce90ddd1d3">[email&#160;protected]</span></a>
+          <a id="e-vendors" href="#"></a>
         </div>
       </div>
     </div>
@@ -520,24 +547,85 @@ footer{
         <h3>Legal &amp; Compliance</h3>
         <div class="contact-item">
           <div class="role">Legal</div>
-          <a href="/cdn-cgi/l/email-protection#274b4240464b67574655464b4b4640554852570944484a"><span class="__cf_email__" data-cfemail="fb979e9c9a97bb8b9a899a97979a9c89948e8bd5989496">[email&#160;protected]</span></a>
+          <a id="e-legal" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Privacy</div>
-          <a href="/cdn-cgi/l/email-protection#acdcdec5dacdcfd5ecdccddecdc0c0cdcbdec3d9dc82cfc3c1"><span class="__cf_email__" data-cfemail="c2b2b0abb4a3a1bb82b2a3b0a3aeaea3a5b0adb7b2eca1adaf">[email&#160;protected]</span></a>
+          <a id="e-privacy" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Security</div>
-          <a href="/cdn-cgi/l/email-protection#89faeceafcfbe0fdf0c9f9e8fbe8e5e5e8eefbe6fcf9a7eae6e4"><span class="__cf_email__" data-cfemail="196a7c7a6c6b706d605969786b787575787e6b766c69377a7674">[email&#160;protected]</span></a>
+          <a id="e-security" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Abuse / Misuse Reports</div>
-          <a href="/cdn-cgi/l/email-protection#3d5c5f484e587d4d5c4f5c51515c5a4f52484d135e5250"><span class="__cf_email__" data-cfemail="b0d1d2c5c3d5f0c0d1c2d1dcdcd1d7c2dfc5c09ed3dfdd">[email&#160;protected]</span></a>
+          <a id="e-abuse" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Accessibility Requests</div>
-          <a href="/cdn-cgi/l/email-protection#9efffdfdfbededf7fcf7f2f7eae7deeeffecfff2f2fff9ecf1ebeeb0fdf1f3"><span class="__cf_email__" data-cfemail="c8a9ababadbbbba1aaa1a4a1bcb188b8a9baa9a4a4a9afbaa7bdb8e6aba7a5">[email&#160;protected]</span></a>
+          <a id="e-accessibility" href="#"></a>
         </div>
         <div class="contact-item">
           <div class="role">Law Enforcement / Legal Process</div>
-          <a href=
+          <a id="e-subpoenas" href="#"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Grants & Philanthropy + Careers & Community -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; flex-wrap:wrap;">
+
+      <div>
+        <div class="section-label">Grants &amp; Philanthropy</div>
+        <div class="contact-card">
+          <h3>Giving &amp; Funding</h3>
+          <div class="contact-item">
+            <div class="role">Grants</div>
+            <a id="e-grants" href="#"></a>
+          </div>
+          <div class="contact-item">
+            <div class="role">Philanthropy</div>
+            <a id="e-philanthropy" href="#"></a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">Careers &amp; Community</div>
+        <div class="contact-card">
+          <h3>People &amp; Outreach</h3>
+          <div class="contact-item">
+            <div class="role">Careers</div>
+            <a id="e-careers" href="#"></a>
+          </div>
+          <div class="contact-item">
+            <div class="role">Community Outreach</div>
+            <a id="e-community" href="#"></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- General -->
+    <div class="section-label">General</div>
+    <div class="general-box">
+      <p>Not sure where to start? Send us a general inquiry and we'll route you to the right team.</p>
+      <a id="e-contact" href="#"></a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

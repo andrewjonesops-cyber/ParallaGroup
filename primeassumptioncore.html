@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PrimeAssumptionCore™ by Paralla Group — Making the implicit explicit to strengthen decisions.">
+<title>PrimeAssumptionCore™ — Paralla Group</title>
+
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --amber:#B45309;
+  --amber-light:rgba(180,83,9,.07);
+  --amber-border:rgba(180,83,9,.22);
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
+
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
+
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
+
+/* ================= NAV ================= */
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+  position:relative;
+  z-index:100;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-inner > a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner > a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+/* ================= DROPDOWN ================= */
+
+.nav-dropdown{
+  position:relative;
+  margin:6px 0;
+}
+
+.nav-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-dropdown > a::after{
+  content:'';
+  display:inline-block;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid currentColor;
+  margin-top:1px;
+  transition:transform .2s ease;
+}
+
+.nav-dropdown:hover > a,
+.nav-dropdown:focus-within > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.09);
+  padding:8px;
+  z-index:200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu{
+  display:block;
+}
+
+.dropdown-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  padding:6px 10px 4px;
+  font-weight:600;
+}
+
+.dropdown-divider{
+  height:1px;
+  background:var(--line);
+  margin:6px 0;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:8px;
+  transition:background .12s ease, color .12s ease;
+  white-space:nowrap;
+}
+
+.dropdown-menu a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.dropdown-menu a.parent-link{
+  font-weight:700;
+  color:var(--cobalt);
+  font-size:14px;
+}
+
+.dropdown-menu a.active-program{
+  font-weight:700;
+  color:var(--amber);
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:70px 24px 60px;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+}
+
+/* ================= PAGE HERO ================= */
+
+.page-hero{
+  max-width:740px;
+  margin-bottom:56px;
+}
+
+.program-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:600;
+  color:var(--amber);
+  background:var(--amber-light);
+  border:1px solid var(--amber-border);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:20px;
+}
+
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
+
+.page-hero .lead{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+  max-width:64ch;
+  line-height:1.7;
+}
+
+/* ================= RULES ================= */
+
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(180,83,9,.35),transparent);
+  margin:44px 0;
+}
+
+.rule-cobalt{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.4),transparent);
+  margin:44px 0;
+}
+
+/* ================= SECTION LABEL ================= */
+
+.section-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+/* ================= ASSUMPTION TYPES ================= */
+
+.assumption-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:20px;
+}
+
+.assumption-card{
+  padding:24px;
+  border:1px solid var(--amber-border);
+  border-radius:14px;
+  background:var(--amber-light);
+  text-align:center;
+}
+
+.assumption-card .type-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:700;
+  color:var(--amber);
+  margin-bottom:10px;
+}
+
+.assumption-card strong{
+  display:block;
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+
+.assumption-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= FOCUS CARDS ================= */
+
+.focus-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.focus-card{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+}
+
+.focus-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--amber);
+  margin-bottom:8px;
+}
+
+.focus-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* ================= HOW WE WORK ================= */
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.work-card{
+  padding:22px;
+  border:1px solid var(--amber-border);
+  border-radius:14px;
+  background:var(--amber-light);
+}
+
+.work-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--amber);
+  margin-bottom:6px;
+}
+
+.work-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink);
+  line-height:1.6;
+}
+
+/* ================= FRAMING BOX ================= */
+
+.framing-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:var(--amber-light);
+  border:1px solid var(--amber-border);
+  border-radius:var(--radius);
+}
+
+.framing-box p{
+  margin:0;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.7;
+}
+
+.framing-box strong{
+  color:var(--amber);
+}
+
+/* ================= WHAT WE'RE NOT ================= */
+
+.not-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.not-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.not-x{
+  font-size:16px;
+  font-weight:800;
+  color:#dc2626;
+  flex-shrink:0;
+  line-height:1.4;
+}
+
+.not-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= GUARDRAILS BOX ================= */
+
+.guardrail-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:rgba(11,77,255,.03);
+  border:1px solid rgba(11,77,255,.2);
+  border-radius:var(--radius);
+}
+
+.guardrail-box p{
+  margin:0 0 10px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.guardrail-box p:last-child{
+  margin-bottom:0;
+}
+
+/* ================= CTA BOX ================= */
+
+.cta-box{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  border-radius:var(--radius);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.cta-box p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:56ch;
+  line-height:1.6;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .assumption-grid,
+  .focus-grid,
+  .work-grid,
+  .not-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+
+    <a href="index.html">Homepage</a>
+    <a href="about.html">About Paralla Group</a>
+
+    <!-- ChangeWorks Dropdown -->
+    <div class="nav-dropdown">
+      <a href="changeworks.html">ChangeWorks™</a>
+      <div class="dropdown-menu">
+        <a href="changeworks.html" class="parent-link">ChangeWorks™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="earthformworks.html">EarthFormWorks™</a>
+        <a href="greenleafworks.html">GreenLeafWorks™</a>
+        <a href="heartlineworks.html">HeartLineWorks™</a>
+        <a href="neuroframeworks.html">NeuroFrameWorks™</a>
+        <a href="petcareworks.html">PetCareWorks™</a>
+        <a href="ribbonpathworks.html">RibbonPathWorks™</a>
+      </div>
+    </div>
+
+    <!-- CounterCore Dropdown -->
+    <div class="nav-dropdown">
+      <a href="countercore.html" class="active">CounterCore™</a>
+      <div class="dropdown-menu">
+        <a href="countercore.html" class="parent-link">CounterCore™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="controlframeworkscore.html">ControlFrameworksCore™</a>
+        <a href="impactstresscore.html">ImpactStressCore™</a>
+        <a href="optiondesigncore.html">OptionDesignCore™</a>
+        <a href="primeassumptioncore.html" class="active-program">PrimeAssumptionCore™</a>
+        <a href="truenorthcore.html">TrueNorthCore™</a>
+        <a href="validationmetricscore.html">ValidationMetricsCore™</a>
+      </div>
+    </div>
+
+    <a href="consulting.html">Business Consulting</a>
+    <a href="contact.html">Contact Us</a>
+
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="program-tag">CounterCore™ Program</div>
+      <h1>Every decision stands on assumptions. Most of them are never examined.</h1>
+      <p class="lead">
+        PrimeAssumptionCore™ makes hidden assumptions visible so leaders know exactly
+        what must be true for a decision to succeed. It identifies implicit premises,
+        maps dependencies, and runs "what breaks if…?" checks to reduce avoidable
+        surprises and overconfident bets. It does not pick the strategy — it clarifies
+        the ground that strategy stands on.
+      </p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Three Types of Hidden Assumptions -->
+    <div class="section-label">Three Types of Assumptions That Undermine Decisions</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Not all hidden assumptions carry the same risk. PrimeAssumptionCore™ distinguishes
+      between three categories that each require different handling.
+    </p>
+
+    <div class="assumption-grid">
+      <div class="assumption-card">
+        <div class="type-label">Type 1</div>
+        <strong>Implicit Premises</strong>
+        <p>Things everyone believes to be true but no one has stated — often because they seem obvious. These are the assumptions most likely to be wrong and least likely to be challenged.</p>
+      </div>
+      <div class="assumption-card">
+        <div class="type-label">Type 2</div>
+        <strong>Hidden Dependencies</strong>
+        <p>Conditions that must hold for a plan to work — but which are outside the control of the people executing it. When these fail, plans collapse without warning.</p>
+      </div>
+      <div class="assumption-card">
+        <div class="type-label">Type 3</div>
+        <strong>Ideology-Driven Beliefs</strong>
+        <p>Assumptions that are held because of values, identity, or organizational culture rather than evidence. These are the hardest to surface and the most resistant to revision.</p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- What We Do -->
+    <div class="section-label">What PrimeAssumptionCore™ Does</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      By highlighting weak, untested, or ideology-driven assumptions early,
+      PrimeAssumptionCore™ helps teams adjust plans before launch — not after failure.
+    </p>
+
+    <div class="focus-grid">
+      <div class="focus-card">
+        <strong>Assumption Identification &amp; Mapping</strong>
+        <p>Surfacing the implicit premises embedded in a plan or decision — the things everyone is treating as given without having verified they are. Mapping them so their scope, interdependencies, and risk are visible.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Hidden Dependency Exposure</strong>
+        <p>Identifying the external conditions a plan relies on — market behavior, regulatory stability, third-party performance, stakeholder alignment — and clarifying which are assumptions versus verified facts.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Counterfactual Analysis</strong>
+        <p>Running structured "what breaks if this assumption is wrong?" checks against the most critical premises — so the consequences of assumption failure are understood before they occur.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Pre-Decision Challenge Sessions</strong>
+        <p>Structured facilitated sessions that separate signal from noise in complex proposals — giving teams a disciplined opportunity to stress-test their own thinking before resources and reputations are committed.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Assumption Risk Prioritization</strong>
+        <p>Not all assumptions carry equal risk. PrimeAssumptionCore™ prioritizes based on how critical an assumption is to the plan's success and how uncertain or unverified it currently is.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Documented Assumption Register</strong>
+        <p>Every engagement produces a documented record of the assumptions identified, their tested counterfactuals, and their current status — so the foundation of a decision is auditable over time.</p>
+      </div>
+    </div>
+
+    <!-- Framing Box -->
+    <div class="framing-box" style="margin-top:24px;">
+      <p><strong>On confidence and assumption blindness:</strong> The most dangerous decisions are not the ones made with uncertainty — those at least carry appropriate caution. The most dangerous decisions are the ones made with high confidence on unexamined premises. PrimeAssumptionCore™ exists specifically for those moments: when a plan feels solid, momentum is building, and the most important questions have never been asked aloud.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- How We Work -->
+    <div class="section-label">How We Work</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <strong>Arguments, Not Personalities</strong>
+        <p>Assumption challenges focus on the premises and evidence — not on who proposed the plan or who holds the most authority. The goal is clearer thinking, not political friction.</p>
+      </div>
+      <div class="work-card">
+        <strong>Politically Neutral</strong>
+        <p>PrimeAssumptionCore™ operates independently of organizational momentum, hierarchy, and preferred outcomes. Its mandate is clarity — not alignment with any particular direction.</p>
+      </div>
+      <div class="work-card">
+        <strong>Documented &amp; Traceable</strong>
+        <p>Every assumption identified and counterfactual tested is documented — so the analytical work can be reviewed, updated, and referenced as conditions change over time.</p>
+      </div>
+      <div class="work-card">
+        <strong>Sharpens Decisions, Doesn't Stall Them</strong>
+        <p>Assumption analysis is time-boxed and oriented toward decision readiness — not indefinite deliberation. The output is a stronger decision, not a reason to delay making one.</p>
+      </div>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- What We Are Not -->
+    <div class="section-label">What PrimeAssumptionCore™ Is Not</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      These guardrails ensure the program sharpens decisions instead of becoming
+      a power tool, obstruction mechanism, or political forum.
+    </p>
+
+    <div class="not-grid">
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A veto authority over decisions</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A strategy or ideation function</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A compliance checklist or risk register</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>An adversarial or political forum</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A mechanism to justify inaction or stall decisions indefinitely</p>
+      </div>
+    </div>
+
+    <div class="guardrail-box" style="margin-top:24px;">
+      <p>All PrimeAssumptionCore™ work must focus on assumptions and evidence rather than personalities; document the assumptions identified and their tested counterfactuals; avoid being used to justify inaction or stall decisions indefinitely; and remain neutral with respect to organizational politics or preferred outcomes.</p>
+      <p>These guardrails ensure the program operates as a disciplined analytical layer — sharpening decisions rather than becoming an obstacle or a tool for internal power dynamics.</p>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>If your organization is about to commit resources, reputation, or people to a plan built on unexamined premises — PrimeAssumptionCore™ is built to surface what needs to be true before you find out the hard way that it isn't.</p>
+      <a class="cta-link" href="contact.html">Get in Touch</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

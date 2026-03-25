@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CounterCore™ by Paralla Group — Launching Soon.">
+<title>CounterCore™ — Paralla Group</title>
+
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
+
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
+
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
+
+/* ================= NAV ================= */
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{
+  display:none;
+}
+
+.nav-inner a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:100px 24px 80px;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+}
+
+/* ================= COMING SOON ================= */
+
+.coming-soon{
+  max-width:600px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.cs-badge{
+  display:inline-block;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--cobalt);
+  background:rgba(11,77,255,.07);
+  border:1px solid rgba(11,77,255,.2);
+  border-radius:999px;
+  padding:6px 16px;
+  margin-bottom:28px;
+  font-weight:600;
+}
+
+.coming-soon h1{
+  font-size:clamp(32px,3.5vw,48px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
+
+.coming-soon h1 span{
+  color:var(--cobalt);
+}
+
+.coming-soon p{
+  font-size:17px;
+  color:var(--muted);
+  margin:0 0 40px;
+  max-width:52ch;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.rule-center{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(11,77,255,.4),transparent);
+  margin:40px 0;
+}
+
+.teaser-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+.teaser-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:48px;
+}
+
+.teaser-pill{
+  padding:8px 16px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:13px;
+  color:var(--ink);
+  background:#ffffff;
+}
+
+.back-link{
+  display:inline-block;
+  padding:12px 24px;
+  border:1px solid rgba(11,77,255,.3);
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--cobalt);
+  text-decoration:none;
+  transition:background .15s ease;
+}
+
+.back-link:hover{
+  background:rgba(11,77,255,.06);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html">Homepage</a>
+    <a href="about.html">About Paralla Group</a>
+    <a href="changeworks.html">ChangeWorks™</a>
+    <a href="countercore.html" class="active">CounterCore™</a>
+    <a href="consulting.html">Business Consulting</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="coming-soon">
+
+      <div class="cs-badge">Coming Soon</div>
+
+      <h1><span>CounterCore™</span><br>is on its way.</h1>
+
+      <p>
+        Our disciplined skepticism and risk validation practice is preparing
+        for launch. Full program details, analytical frameworks, and engagement
+        options will be available here shortly.
+      </p>
+
+      <div class="rule-center"></div>
+
+      <div class="teaser-label">What to expect</div>
+      <div class="teaser-pills">
+        <div class="teaser-pill">Risk Analysis</div>
+        <div class="teaser-pill">Control Thinking</div>
+        <div class="teaser-pill">Evidence Validation</div>
+        <div class="teaser-pill">Assumption Testing</div>
+        <div class="teaser-pill">Accountability Frameworks</div>
+      </div>
+
+      <a class="back-link" href="index.html">← Back to Homepage</a>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TrueNorthCore™ by Paralla Group — Ethical orientation and structural accountability that keeps decisions aligned to stated values.">
+<title>TrueNorthCore™ — Paralla Group</title>
+
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --plum:#7E22CE;
+  --plum-light:rgba(126,34,206,.07);
+  --plum-border:rgba(126,34,206,.22);
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
+
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
+
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
+
+/* ================= NAV ================= */
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+  position:relative;
+  z-index:100;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-inner > a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner > a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+/* ================= DROPDOWN ================= */
+
+.nav-dropdown{
+  position:relative;
+  margin:6px 0;
+}
+
+.nav-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-dropdown > a::after{
+  content:'';
+  display:inline-block;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid currentColor;
+  margin-top:1px;
+  transition:transform .2s ease;
+}
+
+.nav-dropdown:hover > a,
+.nav-dropdown:focus-within > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.09);
+  padding:8px;
+  z-index:200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu{
+  display:block;
+}
+
+.dropdown-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  padding:6px 10px 4px;
+  font-weight:600;
+}
+
+.dropdown-divider{
+  height:1px;
+  background:var(--line);
+  margin:6px 0;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:8px;
+  transition:background .12s ease, color .12s ease;
+  white-space:nowrap;
+}
+
+.dropdown-menu a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.dropdown-menu a.parent-link{
+  font-weight:700;
+  color:var(--cobalt);
+  font-size:14px;
+}
+
+.dropdown-menu a.active-program{
+  font-weight:700;
+  color:var(--plum);
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:70px 24px 60px;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+}
+
+/* ================= PAGE HERO ================= */
+
+.page-hero{
+  max-width:740px;
+  margin-bottom:56px;
+}
+
+.program-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:600;
+  color:var(--plum);
+  background:var(--plum-light);
+  border:1px solid var(--plum-border);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:20px;
+}
+
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
+
+.page-hero .lead{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+  max-width:64ch;
+  line-height:1.7;
+}
+
+/* ================= RULES ================= */
+
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(126,34,206,.35),transparent);
+  margin:44px 0;
+}
+
+.rule-cobalt{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.4),transparent);
+  margin:44px 0;
+}
+
+/* ================= SECTION LABEL ================= */
+
+.section-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+/* ================= CORE FUNCTIONS ================= */
+
+.function-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.function-card{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+}
+
+.function-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--plum);
+  margin-bottom:8px;
+}
+
+.function-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* ================= ROLE IN COUNTERCORE ================= */
+
+.role-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:20px;
+}
+
+.role-card{
+  padding:24px;
+  border:1px solid var(--plum-border);
+  border-radius:14px;
+  background:var(--plum-light);
+  text-align:center;
+}
+
+.role-card .role-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:700;
+  color:var(--plum);
+  margin-bottom:10px;
+}
+
+.role-card strong{
+  display:block;
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+
+.role-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= HOW WE WORK ================= */
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.work-card{
+  padding:22px;
+  border:1px solid var(--plum-border);
+  border-radius:14px;
+  background:var(--plum-light);
+}
+
+.work-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--plum);
+  margin-bottom:6px;
+}
+
+.work-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink);
+  line-height:1.6;
+}
+
+/* ================= FRAMING BOX ================= */
+
+.framing-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:var(--plum-light);
+  border:1px solid var(--plum-border);
+  border-radius:var(--radius);
+}
+
+.framing-box p{
+  margin:0;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.7;
+}
+
+.framing-box strong{
+  color:var(--plum);
+}
+
+/* ================= WHAT WE'RE NOT ================= */
+
+.not-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.not-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.not-x{
+  font-size:16px;
+  font-weight:800;
+  color:#dc2626;
+  flex-shrink:0;
+  line-height:1.4;
+}
+
+.not-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= GUARDRAILS BOX ================= */
+
+.guardrail-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:rgba(11,77,255,.03);
+  border:1px solid rgba(11,77,255,.2);
+  border-radius:var(--radius);
+}
+
+.guardrail-box p{
+  margin:0 0 10px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.guardrail-box p:last-child{
+  margin-bottom:0;
+}
+
+/* ================= CTA BOX ================= */
+
+.cta-box{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  border-radius:var(--radius);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.cta-box p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:56ch;
+  line-height:1.6;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .role-grid,
+  .function-grid,
+  .work-grid,
+  .not-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+
+    <a href="index.html">Homepage</a>
+    <a href="about.html">About Paralla Group</a>
+
+    <!-- ChangeWorks Dropdown -->
+    <div class="nav-dropdown">
+      <a href="changeworks.html">ChangeWorks™</a>
+      <div class="dropdown-menu">
+        <a href="changeworks.html" class="parent-link">ChangeWorks™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="earthformworks.html">EarthFormWorks™</a>
+        <a href="greenleafworks.html">GreenLeafWorks™</a>
+        <a href="heartlineworks.html">HeartLineWorks™</a>
+        <a href="neuroframeworks.html">NeuroFrameWorks™</a>
+        <a href="petcareworks.html">PetCareWorks™</a>
+        <a href="ribbonpathworks.html">RibbonPathWorks™</a>
+      </div>
+    </div>
+
+    <!-- CounterCore Dropdown -->
+    <div class="nav-dropdown">
+      <a href="countercore.html" class="active">CounterCore™</a>
+      <div class="dropdown-menu">
+        <a href="countercore.html" class="parent-link">CounterCore™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="controlframeworkscore.html">ControlFrameworksCore™</a>
+        <a href="impactstresscore.html">ImpactStressCore™</a>
+        <a href="optiondesigncore.html">OptionDesignCore™</a>
+        <a href="primeassumptioncore.html">PrimeAssumptionCore™</a>
+        <a href="truenorthcore.html" class="active-program">TrueNorthCore™</a>
+        <a href="validationmetricscore.html">ValidationMetricsCore™</a>
+      </div>
+    </div>
+
+    <a href="consulting.html">Business Consulting</a>
+    <a href="contact.html">Contact Us</a>
+
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="program-tag">CounterCore™ Program</div>
+      <h1>Progress that is fast but misaligned is not progress — it is drift with momentum.</h1>
+      <p class="lead">
+        TrueNorthCore™ keeps decisions and systems ethically oriented, no matter the
+        pressure. It maps accountability so authority comes with real responsibility,
+        documents ethical tradeoffs at key decision points, and flags when incentives
+        or urgency pull away from stated values. As CounterCore's final check,
+        TrueNorthCore™ ensures progress stays defensible — not just effective,
+        but aligned.
+      </p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Role in CounterCore -->
+    <div class="section-label">TrueNorthCore™ as CounterCore's Final Check</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Within the CounterCore™ suite, TrueNorthCore™ serves as the ethical anchor —
+      the program that asks whether what is being built, decided, or launched remains
+      aligned with what the organization has committed to being.
+    </p>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-label">Orientation</div>
+        <strong>Define True North</strong>
+        <p>Establishing the ethical reference points against which decisions and actions are measured — making "what we stand for" operational rather than decorative.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-label">Accountability</div>
+        <strong>Map Who Owns What</strong>
+        <p>Tying authority to consequence — so decisions have named owners, responsibilities are explicit, and there is no ambiguity about who is accountable when alignment fails.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-label">Escalation</div>
+        <strong>Flag &amp; Correct Drift</strong>
+        <p>Identifying when incentives, urgency, or organizational pressure are pulling decisions away from stated values — and escalating constructively for correction before divergence becomes entrenched.</p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- What We Do -->
+    <div class="section-label">What TrueNorthCore™ Does</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Ethics that remain operational under pressure — not symbolic commitments that
+      dissolve when stakes are high.
+    </p>
+
+    <div class="function-grid">
+      <div class="function-card">
+        <strong>Ethical Orientation Frameworks</strong>
+        <p>Defining what "north" means for a specific organization — translating stated values into concrete decision criteria that can be applied at real decision points, not just cited in mission statements.</p>
+      </div>
+      <div class="function-card">
+        <strong>Accountability Mapping</strong>
+        <p>Linking authority to consequence across the organization — so every significant decision has a named owner, and responsibility is explicit rather than assumed, shared, or invisible.</p>
+      </div>
+      <div class="function-card">
+        <strong>Ethical Tradeoff Documentation</strong>
+        <p>At key decision points, documenting the ethical dimensions of the choice — what values are in tension, what tradeoffs are being accepted, and why the decision remains aligned with stated commitments despite those tradeoffs.</p>
+      </div>
+      <div class="function-card">
+        <strong>Harm &amp; Unintended Consequence Review</strong>
+        <p>Examining decisions for foreseeable harm — to stakeholders, communities, employees, and others who may be affected — before those harms occur and become harder to address.</p>
+      </div>
+      <div class="function-card">
+        <strong>Misalignment Escalation</strong>
+        <p>When decisions or actions are identified as drifting from stated values, TrueNorthCore™ escalates constructively — creating structured pathways for correction rather than silent divergence or adversarial confrontation.</p>
+      </div>
+      <div class="function-card">
+        <strong>Post-Decision Divergence Review</strong>
+        <p>Reviewing what actually happened against what was decided — identifying where execution diverged from ethical intent and closing the feedback loop so the same drift does not repeat.</p>
+      </div>
+    </div>
+
+    <!-- Framing Box -->
+    <div class="framing-box" style="margin-top:24px;">
+      <p><strong>On ethics as operational discipline:</strong> Most organizations have values statements. Very few have mechanisms that make those values operational under pressure — when incentives push against them, when urgency makes shortcuts feel justified, when the cost of alignment is visible and the cost of drift is deferred. TrueNorthCore™ is not about aspiration. It is about the structural conditions that keep ethics operational when it is hardest to do so.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- How We Work -->
+    <div class="section-label">How We Work</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <strong>Systemic, Not Personal</strong>
+        <p>TrueNorthCore™ focuses on structural alignment — decision systems, accountability structures, and escalation pathways — not on judging the character or motives of individuals.</p>
+      </div>
+      <div class="work-card">
+        <strong>Documented Transparently</strong>
+        <p>All ethical rationale, tradeoffs, and escalation decisions are documented — so the basis for alignment claims is auditable over time, not just asserted in the moment.</p>
+      </div>
+      <div class="work-card">
+        <strong>Politically Neutral</strong>
+        <p>TrueNorthCore™ operates independently of partisan cultural frameworks and internal power dynamics. Its reference point is the organization's own stated values — not external ideology.</p>
+      </div>
+      <div class="work-card">
+        <strong>Constructive Escalation</strong>
+        <p>When misalignment is identified, the output is a structured pathway for correction — not blame assignment, public accusation, or adversarial confrontation. The goal is resolution.</p>
+      </div>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- What We Are Not -->
+    <div class="section-label">What TrueNorthCore™ Is Not</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      These guardrails position the program as an ethical compass that strengthens
+      resolve — not a source of division, control, or personal judgment.
+    </p>
+
+    <div class="not-grid">
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A moral police or culture police function</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A substitute for executive accountability or leadership judgment</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A political or ideological litmus test</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A veto power over operational decisions</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A post-hoc blame assignment tool</p>
+      </div>
+    </div>
+
+    <div class="guardrail-box" style="margin-top:24px;">
+      <p>All TrueNorthCore™ work must focus on systemic alignment rather than individual morality; document ethical rationale transparently; avoid partisan or cultural weaponization; respect legal and operational boundaries; and escalate constructively for correction, not punishment.</p>
+      <p>These guardrails position TrueNorthCore™ as an ethical compass that strengthens organizational resolve — rather than becoming a source of division, control, or internal conflict.</p>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>If your organization wants ethics that hold when pressure is highest — not just when conditions are comfortable — TrueNorthCore™ is built to create the structural conditions for that.</p>
+      <a class="cta-link" href="contact.html">Get in Touch</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

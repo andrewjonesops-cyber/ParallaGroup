@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ImpactStressCore™ by Paralla Group — Stress-testing systems for risk, failure, and real-world consequence before they break.">
+<title>ImpactStressCore™ — Paralla Group</title>
+
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --orange:#C2410C;
+  --orange-light:rgba(194,65,12,.07);
+  --orange-border:rgba(194,65,12,.22);
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
+
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
+
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
+
+/* ================= NAV ================= */
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+  position:relative;
+  z-index:100;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-inner > a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner > a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+/* ================= DROPDOWN ================= */
+
+.nav-dropdown{
+  position:relative;
+  margin:6px 0;
+}
+
+.nav-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-dropdown > a::after{
+  content:'';
+  display:inline-block;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid currentColor;
+  margin-top:1px;
+  transition:transform .2s ease;
+}
+
+.nav-dropdown:hover > a,
+.nav-dropdown:focus-within > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.09);
+  padding:8px;
+  z-index:200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu{
+  display:block;
+}
+
+.dropdown-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  padding:6px 10px 4px;
+  font-weight:600;
+}
+
+.dropdown-divider{
+  height:1px;
+  background:var(--line);
+  margin:6px 0;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:8px;
+  transition:background .12s ease, color .12s ease;
+  white-space:nowrap;
+}
+
+.dropdown-menu a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.dropdown-menu a.parent-link{
+  font-weight:700;
+  color:var(--cobalt);
+  font-size:14px;
+}
+
+.dropdown-menu a.active-program{
+  font-weight:700;
+  color:var(--orange);
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:70px 24px 60px;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+}
+
+/* ================= PAGE HERO ================= */
+
+.page-hero{
+  max-width:740px;
+  margin-bottom:56px;
+}
+
+.program-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:600;
+  color:var(--orange);
+  background:var(--orange-light);
+  border:1px solid var(--orange-border);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:20px;
+}
+
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
+
+.page-hero .lead{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+  max-width:64ch;
+  line-height:1.7;
+}
+
+/* ================= RULES ================= */
+
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(194,65,12,.35),transparent);
+  margin:44px 0;
+}
+
+.rule-cobalt{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.4),transparent);
+  margin:44px 0;
+}
+
+/* ================= SECTION LABEL ================= */
+
+.section-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+/* ================= FAILURE DIMENSIONS ================= */
+
+.dimension-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:20px;
+}
+
+.dimension-card{
+  padding:24px;
+  border:1px solid var(--orange-border);
+  border-radius:14px;
+  background:var(--orange-light);
+  text-align:center;
+}
+
+.dimension-card .dim-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:700;
+  color:var(--orange);
+  margin-bottom:10px;
+}
+
+.dimension-card strong{
+  display:block;
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+
+.dimension-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= FOCUS CARDS ================= */
+
+.focus-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.focus-card{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+}
+
+.focus-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--orange);
+  margin-bottom:8px;
+}
+
+.focus-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* ================= HOW WE WORK ================= */
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.work-card{
+  padding:22px;
+  border:1px solid var(--orange-border);
+  border-radius:14px;
+  background:var(--orange-light);
+}
+
+.work-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--orange);
+  margin-bottom:6px;
+}
+
+.work-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink);
+  line-height:1.6;
+}
+
+/* ================= FRAMING BOX ================= */
+
+.framing-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:var(--orange-light);
+  border:1px solid var(--orange-border);
+  border-radius:var(--radius);
+}
+
+.framing-box p{
+  margin:0;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.7;
+}
+
+.framing-box strong{
+  color:var(--orange);
+}
+
+/* ================= WHAT WE'RE NOT ================= */
+
+.not-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.not-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.not-x{
+  font-size:16px;
+  font-weight:800;
+  color:#dc2626;
+  flex-shrink:0;
+  line-height:1.4;
+}
+
+.not-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= GUARDRAILS BOX ================= */
+
+.guardrail-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:rgba(11,77,255,.03);
+  border:1px solid rgba(11,77,255,.2);
+  border-radius:var(--radius);
+}
+
+.guardrail-box p{
+  margin:0 0 10px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.guardrail-box p:last-child{
+  margin-bottom:0;
+}
+
+/* ================= CTA BOX ================= */
+
+.cta-box{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  border-radius:var(--radius);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.cta-box p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:56ch;
+  line-height:1.6;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .dimension-grid{
+    grid-template-columns:1fr;
+  }
+
+  .focus-grid,
+  .work-grid,
+  .not-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+
+    <a href="index.html">Homepage</a>
+    <a href="about.html">About Paralla Group</a>
+
+    <!-- ChangeWorks Dropdown -->
+    <div class="nav-dropdown">
+      <a href="changeworks.html">ChangeWorks™</a>
+      <div class="dropdown-menu">
+        <a href="changeworks.html" class="parent-link">ChangeWorks™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="earthformworks.html">EarthFormWorks™</a>
+        <a href="greenleafworks.html">GreenLeafWorks™</a>
+        <a href="heartlineworks.html">HeartLineWorks™</a>
+        <a href="neuroframeworks.html">NeuroFrameWorks™</a>
+        <a href="petcareworks.html">PetCareWorks™</a>
+        <a href="ribbonpathworks.html">RibbonPathWorks™</a>
+      </div>
+    </div>
+
+    <!-- CounterCore Dropdown -->
+    <div class="nav-dropdown">
+      <a href="countercore.html" class="active">CounterCore™</a>
+      <div class="dropdown-menu">
+        <a href="countercore.html" class="parent-link">CounterCore™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="controlframeworkscore.html">ControlFrameworksCore™</a>
+        <a href="impactstresscore.html" class="active-program">ImpactStressCore™</a>
+        <a href="optiondesigncore.html">OptionDesignCore™</a>
+        <a href="primeassumptioncore.html">PrimeAssumptionCore™</a>
+        <a href="truenorthcore.html">TrueNorthCore™</a>
+        <a href="validationmetricscore.html">ValidationMetricsCore™</a>
+      </div>
+    </div>
+
+    <a href="consulting.html">Business Consulting</a>
+    <a href="contact.html">Contact Us</a>
+
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="program-tag">CounterCore™ Program</div>
+      <h1>Find out how your system breaks before reality does it for you.</h1>
+      <p class="lead">
+        ImpactStressCore™ stress-tests systems before reality does. It shows leaders
+        how things actually fail — where brittleness lives, how problems cascade, and
+        what damage looks like when conditions push a system past its limits. Instead
+        of long risk lists no one reads, ImpactStressCore™ models concrete failure
+        paths, highlights single points of failure, and clarifies what must be
+        strengthened, redesigned, or delayed before scaling.
+      </p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Three Failure Dimensions -->
+    <div class="section-label">Three Questions Every Stress Test Answers</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      For every failure path identified, ImpactStressCore™ evaluates across three
+      dimensions that determine how much it actually matters.
+    </p>
+
+    <div class="dimension-grid">
+      <div class="dimension-card">
+        <div class="dim-label">Dimension 1</div>
+        <strong>Severity</strong>
+        <p>How bad is the damage if this failure occurs? What systems, people, or operations are affected — and to what degree?</p>
+      </div>
+      <div class="dimension-card">
+        <div class="dim-label">Dimension 2</div>
+        <strong>Likelihood</strong>
+        <p>How probable is this failure under real operating conditions — including stress, human error, and foreseeable change?</p>
+      </div>
+      <div class="dimension-card">
+        <div class="dim-label">Dimension 3</div>
+        <strong>Recoverability</strong>
+        <p>If this failure happens, how quickly and completely can the system recover — and what is required to get there?</p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- What We Do -->
+    <div class="section-label">What ImpactStressCore™ Does</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Preemptive analysis and foresight — modeling how systems actually fail so
+      leaders can make clearer decisions before committing resources, people, or
+      reputation to a system that hasn't been tested.
+    </p>
+
+    <div class="focus-grid">
+      <div class="focus-card">
+        <strong>Failure Mode &amp; Effects Analysis</strong>
+        <p>Adapted FMEA methodology applied to human and organizational systems — not just machinery. Identifying how each component can fail, what the downstream effects are, and where the highest-risk failure paths cluster.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Risk Pathway Mapping</strong>
+        <p>Tracing failure paths from initial trigger through downstream impact — so leaders understand not just what breaks, but how a small problem becomes a large one and where the cascade can be interrupted.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Single Point of Failure Identification</strong>
+        <p>Finding the brittle dependencies — the places where one person, one system, or one decision carries disproportionate load, and where failure means total breakdown rather than degraded function.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Severity, Likelihood &amp; Recoverability Classification</strong>
+        <p>Prioritizing which failure paths matter most — not all risks are equal, and ImpactStressCore™ produces decision-grade clarity about what requires immediate attention versus what can be monitored over time.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Pre-Launch &amp; Pre-Scale Review</strong>
+        <p>The highest-value moment for stress testing is before a system goes live or before it scales. ImpactStressCore™ identifies what must change before launch to avoid unacceptable exposure at scale.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Decision-Grade Clarity</strong>
+        <p>The output of every ImpactStressCore™ engagement is not a risk register — it is a set of clear, prioritized decisions about what must be strengthened, redesigned, or delayed, with the reasoning documented.</p>
+      </div>
+    </div>
+
+    <!-- Framing Box -->
+    <div class="framing-box" style="margin-top:24px;">
+      <p><strong>On risk lists vs. failure models:</strong> Most organizations produce risk registers — long lists of things that could go wrong, rated by probability and impact on a five-point scale. These lists rarely produce decisions. ImpactStressCore™ builds failure models instead: concrete scenarios, specific cascades, and named single points of failure. The difference is the difference between a weather report and a flood map.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- How We Work -->
+    <div class="section-label">How We Work</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <strong>Systems Behavior Under Stress</strong>
+        <p>We focus on how systems actually behave when pushed past design parameters — not how they are intended to behave in ideal conditions.</p>
+      </div>
+      <div class="work-card">
+        <strong>Preemptive, Not Reactive</strong>
+        <p>ImpactStressCore™ is a foresight function. It is not incident response, crisis management, or post-mortem analysis — it operates before failures occur, not after.</p>
+      </div>
+      <div class="work-card">
+        <strong>Not Individual Blame</strong>
+        <p>Stress testing focuses on system behavior — structural brittleness, dependency chains, and design gaps — not on identifying who will fail under pressure.</p>
+      </div>
+      <div class="work-card">
+        <strong>Documented &amp; Bounded</strong>
+        <p>Every modeled scenario, assumption, and limitation is documented clearly. ImpactStressCore™ does not claim to predict all failures — it claims to model the ones that matter most under realistic conditions.</p>
+      </div>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- What We Are Not -->
+    <div class="section-label">What ImpactStressCore™ Is Not</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      These guardrails keep the program oriented toward early understanding and
+      structural improvement — not reactive policing or ongoing enforcement.
+    </p>
+
+    <div class="not-grid">
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A compliance or audit function</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A legal or insurance risk office</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A security monitoring or incident response team</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A crisis management or recovery operation</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A policy or checklist generator</p>
+      </div>
+    </div>
+
+    <div class="guardrail-box" style="margin-top:24px;">
+      <p>All ImpactStressCore™ work must focus on system behavior under stress rather than individual blame; avoid being repurposed as a punitive or performance-evaluation tool; clearly document modeled scenarios, assumptions, and limitations; and coordinate with — but not replace — formal risk, security, legal, and crisis-management functions.</p>
+      <p>These guardrails keep the program oriented toward early understanding and structural improvement rather than reactive policing or enforcement.</p>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>If you want to know where your system breaks before it breaks under real conditions — ImpactStressCore™ is built to show you that, clearly and without the noise of a risk register no one will read.</p>
+      <a class="cta-link" href="contact.html">Get in Touch</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

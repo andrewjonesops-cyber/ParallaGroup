@@ -84,6 +84,8 @@ nav{
   background:#ffffff;
   border-bottom:1px solid var(--line);
   padding:0 24px;
+  position:relative;
+  z-index:100;
 }
 
 .nav-inner{
@@ -92,15 +94,9 @@ nav{
   display:flex;
   align-items:center;
   gap:4px;
-  overflow-x:auto;
-  scrollbar-width:none;
 }
 
-.nav-inner::-webkit-scrollbar{
-  display:none;
-}
-
-.nav-inner a{
+.nav-inner > a{
   display:inline-block;
   padding:12px 16px;
   font-size:14px;
@@ -113,15 +109,122 @@ nav{
   transition:background .15s ease, color .15s ease;
 }
 
-.nav-inner a:hover{
+.nav-inner > a:hover{
   background:rgba(11,77,255,.07);
   color:var(--cobalt);
 }
 
-.nav-inner a.active{
+.nav-inner > a.active{
   background:rgba(11,77,255,.07);
   color:var(--cobalt);
   font-weight:600;
+}
+
+/* ================= DROPDOWN ================= */
+
+.nav-dropdown{
+  position:relative;
+  margin:6px 0;
+}
+
+.nav-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-dropdown > a::after{
+  content:'';
+  display:inline-block;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid currentColor;
+  margin-top:1px;
+  transition:transform .2s ease;
+}
+
+.nav-dropdown:hover > a,
+.nav-dropdown:focus-within > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.09);
+  padding:8px;
+  z-index:200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu{
+  display:block;
+}
+
+.dropdown-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  padding:6px 10px 4px;
+  font-weight:600;
+}
+
+.dropdown-divider{
+  height:1px;
+  background:var(--line);
+  margin:6px 0;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:8px;
+  transition:background .12s ease, color .12s ease;
+  white-space:nowrap;
+}
+
+.dropdown-menu a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.dropdown-menu a.parent-link{
+  font-weight:700;
+  color:var(--cobalt);
+  font-size:14px;
 }
 
 /* ================= MAIN ================= */
@@ -355,8 +458,39 @@ footer{
   <div class="nav-inner">
     <a href="index.html">Homepage</a>
     <a href="about.html" class="active">About Paralla Group</a>
-    <a href="changeworks.html">ChangeWorks™</a>
-    <a href="countercore.html">CounterCore™</a>
+
+    <!-- ChangeWorks Dropdown -->
+    <div class="nav-dropdown">
+      <a href="changeworks.html">ChangeWorks™</a>
+      <div class="dropdown-menu">
+        <a href="changeworks.html" class="parent-link">ChangeWorks™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="earthformworks.html">EarthFormWorks™</a>
+        <a href="greenleafworks.html">GreenLeafWorks™</a>
+        <a href="heartlineworks.html">HeartLineWorks™</a>
+        <a href="neuroframeworks.html">NeuroFrameWorks™</a>
+        <a href="petcareworks.html">PetCareWorks™</a>
+        <a href="ribbonpathworks.html">RibbonPathWorks™</a>
+      </div>
+    </div>
+
+    <!-- CounterCore Dropdown -->
+    <div class="nav-dropdown">
+      <a href="countercore.html">CounterCore™</a>
+      <div class="dropdown-menu">
+        <a href="countercore.html" class="parent-link">CounterCore™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="controlframeworkscore.html">ControlFrameworksCore™</a>
+        <a href="impactstresscore.html">ImpactStressCore™</a>
+        <a href="optiondesigncore.html">OptionDesignCore™</a>
+        <a href="primeassumptioncore.html">PrimeAssumptionCore™</a>
+        <a href="truenorthcore.html">TrueNorthCore™</a>
+        <a href="validationmetricscore.html">ValidationMetricsCore™</a>
+      </div>
+    </div>
+
     <a href="consulting.html">Business Consulting</a>
     <a href="contact.html">Contact Us</a>
   </div>

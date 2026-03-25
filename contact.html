@@ -84,6 +84,8 @@ nav{
   background:#ffffff;
   border-bottom:1px solid var(--line);
   padding:0 24px;
+  position:relative;
+  z-index:100;
 }
 
 .nav-inner{
@@ -92,15 +94,9 @@ nav{
   display:flex;
   align-items:center;
   gap:4px;
-  overflow-x:auto;
-  scrollbar-width:none;
 }
 
-.nav-inner::-webkit-scrollbar{
-  display:none;
-}
-
-.nav-inner a{
+.nav-inner > a{
   display:inline-block;
   padding:12px 16px;
   font-size:14px;
@@ -113,15 +109,122 @@ nav{
   transition:background .15s ease, color .15s ease;
 }
 
-.nav-inner a:hover{
+.nav-inner > a:hover{
   background:rgba(11,77,255,.07);
   color:var(--cobalt);
 }
 
-.nav-inner a.active{
+.nav-inner > a.active{
   background:rgba(11,77,255,.07);
   color:var(--cobalt);
   font-weight:600;
+}
+
+/* ================= DROPDOWN ================= */
+
+.nav-dropdown{
+  position:relative;
+  margin:6px 0;
+}
+
+.nav-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-dropdown > a::after{
+  content:'';
+  display:inline-block;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid currentColor;
+  margin-top:1px;
+  transition:transform .2s ease;
+}
+
+.nav-dropdown:hover > a,
+.nav-dropdown:focus-within > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.09);
+  padding:8px;
+  z-index:200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu{
+  display:block;
+}
+
+.dropdown-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  padding:6px 10px 4px;
+  font-weight:600;
+}
+
+.dropdown-divider{
+  height:1px;
+  background:var(--line);
+  margin:6px 0;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:8px;
+  transition:background .12s ease, color .12s ease;
+  white-space:nowrap;
+}
+
+.dropdown-menu a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.dropdown-menu a.parent-link{
+  font-weight:700;
+  color:var(--cobalt);
+  font-size:14px;
 }
 
 /* ================= MAIN ================= */
@@ -306,8 +409,39 @@ footer{
   <div class="nav-inner">
     <a href="index.html">Homepage</a>
     <a href="about.html">About Paralla Group</a>
-    <a href="changeworks.html">ChangeWorks™</a>
-    <a href="countercore.html">CounterCore™</a>
+
+    <!-- ChangeWorks Dropdown -->
+    <div class="nav-dropdown">
+      <a href="changeworks.html">ChangeWorks™</a>
+      <div class="dropdown-menu">
+        <a href="changeworks.html" class="parent-link">ChangeWorks™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="earthformworks.html">EarthFormWorks™</a>
+        <a href="greenleafworks.html">GreenLeafWorks™</a>
+        <a href="heartlineworks.html">HeartLineWorks™</a>
+        <a href="neuroframeworks.html">NeuroFrameWorks™</a>
+        <a href="petcareworks.html">PetCareWorks™</a>
+        <a href="ribbonpathworks.html">RibbonPathWorks™</a>
+      </div>
+    </div>
+
+    <!-- CounterCore Dropdown -->
+    <div class="nav-dropdown">
+      <a href="countercore.html">CounterCore™</a>
+      <div class="dropdown-menu">
+        <a href="countercore.html" class="parent-link">CounterCore™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="controlframeworkscore.html">ControlFrameworksCore™</a>
+        <a href="impactstresscore.html">ImpactStressCore™</a>
+        <a href="optiondesigncore.html">OptionDesignCore™</a>
+        <a href="primeassumptioncore.html">PrimeAssumptionCore™</a>
+        <a href="truenorthcore.html">TrueNorthCore™</a>
+        <a href="validationmetricscore.html">ValidationMetricsCore™</a>
+      </div>
+    </div>
+
     <a href="consulting.html">Business Consulting</a>
     <a href="contact.html" class="active">Contact Us</a>
   </div>
@@ -334,19 +468,19 @@ footer{
         <h3>Support &amp; Sales</h3>
         <div class="contact-item">
           <div class="role">Support</div>
-          <a href="mailto:support@parallagroup.com">support@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#7f0c0a0f0f100d0b3f0f1e0d1e13131e180d100a0f511c1012"><span class="__cf_email__" data-cfemail="71020401011e030531011003101d1d1016031e04015f121e1c">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Sales (New Business)</div>
-          <a href="mailto:sales@parallagroup.com">sales@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#6615070a031526160714070a0a0701140913164805090b"><span class="__cf_email__" data-cfemail="780b19141d0b3808190a191414191f0a170d08561b1715">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Account Management (Clients)</div>
-          <a href="mailto:clients@parallagroup.com">clients@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#4a2926232f243e390a3a2b382b26262b2d38253f3a64292527"><span class="__cf_email__" data-cfemail="51323d38343f252211213023303d3d3036233e24217f323e3c">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Billing</div>
-          <a href="mailto:billing@parallagroup.com">billing@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#b0d2d9dcdcd9ded7f0c0d1c2d1dcdcd1d7c2dfc5c09ed3dfdd"><span class="__cf_email__" data-cfemail="3153585d5d585f5671415043505d5d5056435e44411f525e5c">[email&#160;protected]</span></a>
         </div>
       </div>
     </div>
@@ -360,19 +494,19 @@ footer{
         <h3>External Relations</h3>
         <div class="contact-item">
           <div class="role">Partnerships / Business Development</div>
-          <a href="mailto:partnerships@parallagroup.com">partnerships@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#81f1e0f3f5efe4f3f2e9e8f1f2c1f1e0f3e0edede0e6f3eef4f1afe2eeec"><span class="__cf_email__" data-cfemail="13637261677d7661607b7a636053637261727f7f7274617c66633d707c7e">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Press / Media</div>
-          <a href="mailto:press@parallagroup.com">press@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#c1b1b3a4b2b281b1a0b3a0adada0a6b3aeb4b1efa2aeac"><span class="__cf_email__" data-cfemail="8bfbf9eef8f8cbfbeaf9eae7e7eaecf9e4fefba5e8e4e6">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Investors</div>
-          <a href="mailto:investors@parallagroup.com">investors@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#b0d9dec6d5c3c4dfc2c3f0c0d1c2d1dcdcd1d7c2dfc5c09ed3dfdd"><span class="__cf_email__" data-cfemail="f79e9981928483988584b7879685969b9b969085988287d994989a">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Vendors &amp; Procurement</div>
-          <a href="mailto:vendors@parallagroup.com">vendors@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#a4d2c1cac0cbd6d7e4d4c5d6c5c8c8c5c3d6cbd1d48ac7cbc9"><span class="__cf_email__" data-cfemail="bec8dbd0dad1cccdfecedfccdfd2d2dfd9ccd1cbce90ddd1d3">[email&#160;protected]</span></a>
         </div>
       </div>
     </div>
@@ -386,85 +520,24 @@ footer{
         <h3>Legal &amp; Compliance</h3>
         <div class="contact-item">
           <div class="role">Legal</div>
-          <a href="mailto:legal@parallagroup.com">legal@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#274b4240464b67574655464b4b4640554852570944484a"><span class="__cf_email__" data-cfemail="fb979e9c9a97bb8b9a899a97979a9c89948e8bd5989496">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Privacy</div>
-          <a href="mailto:privacy@parallagroup.com">privacy@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#acdcdec5dacdcfd5ecdccddecdc0c0cdcbdec3d9dc82cfc3c1"><span class="__cf_email__" data-cfemail="c2b2b0abb4a3a1bb82b2a3b0a3aeaea3a5b0adb7b2eca1adaf">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Security</div>
-          <a href="mailto:security@parallagroup.com">security@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#89faeceafcfbe0fdf0c9f9e8fbe8e5e5e8eefbe6fcf9a7eae6e4"><span class="__cf_email__" data-cfemail="196a7c7a6c6b706d605969786b787575787e6b766c69377a7674">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Abuse / Misuse Reports</div>
-          <a href="mailto:abuse@parallagroup.com">abuse@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#3d5c5f484e587d4d5c4f5c51515c5a4f52484d135e5250"><span class="__cf_email__" data-cfemail="b0d1d2c5c3d5f0c0d1c2d1dcdcd1d7c2dfc5c09ed3dfdd">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Accessibility Requests</div>
-          <a href="mailto:accessibility@parallagroup.com">accessibility@parallagroup.com</a>
+          <a href="/cdn-cgi/l/email-protection#9efffdfdfbededf7fcf7f2f7eae7deeeffecfff2f2fff9ecf1ebeeb0fdf1f3"><span class="__cf_email__" data-cfemail="c8a9ababadbbbba1aaa1a4a1bcb188b8a9baa9a4a4a9afbaa7bdb8e6aba7a5">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <div class="role">Law Enforcement / Legal Process</div>
-          <a href="mailto:subpoenas@parallagroup.com">subpoenas@parallagroup.com</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="rule"></div>
-
-    <!-- Grants & Philanthropy + Careers & Community side by side -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; flex-wrap:wrap;">
-
-      <div>
-        <div class="section-label">Grants &amp; Philanthropy</div>
-        <div class="contact-card">
-          <h3>Giving &amp; Funding</h3>
-          <div class="contact-item">
-            <div class="role">Grants</div>
-            <a href="mailto:grants@parallagroup.com">grants@parallagroup.com</a>
-          </div>
-          <div class="contact-item">
-            <div class="role">Philanthropy</div>
-            <a href="mailto:philanthropy@parallagroup.com">philanthropy@parallagroup.com</a>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="section-label">Careers &amp; Community</div>
-        <div class="contact-card">
-          <h3>People &amp; Outreach</h3>
-          <div class="contact-item">
-            <div class="role">Careers</div>
-            <a href="mailto:careers@parallagroup.com">careers@parallagroup.com</a>
-          </div>
-          <div class="contact-item">
-            <div class="role">Community Outreach</div>
-            <a href="mailto:community@parallagroup.com">community@parallagroup.com</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="rule"></div>
-
-    <!-- General -->
-    <div class="section-label">General</div>
-    <div class="general-box">
-      <p>Not sure where to start? Send us a general inquiry and we'll route you to the right team.</p>
-      <a href="mailto:contact@parallagroup.com">contact@parallagroup.com</a>
-    </div>
-
-  </div>
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <div>© 2026 Paralla Group™. All rights reserved.</div>
-  </div>
-</footer>
-
-</body>
-</html>
+          <a href=

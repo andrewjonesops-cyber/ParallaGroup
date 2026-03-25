@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RibbonPathWorks™ by Paralla Group — Long-term continuity and support through the phases of cancer and beyond.">
+<title>RibbonPathWorks™ — Paralla Group</title>
+
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --fuchsia:#A21CAF;
+  --fuchsia-light:rgba(162,28,175,.07);
+  --fuchsia-border:rgba(162,28,175,.22);
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
+
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
+
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
+
+/* ================= NAV ================= */
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+  position:relative;
+  z-index:100;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-inner > a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner > a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+/* ================= DROPDOWN ================= */
+
+.nav-dropdown{
+  position:relative;
+  margin:6px 0;
+}
+
+.nav-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-dropdown > a::after{
+  content:'';
+  display:inline-block;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid currentColor;
+  margin-top:1px;
+  transition:transform .2s ease;
+}
+
+.nav-dropdown:hover > a,
+.nav-dropdown:focus-within > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.09);
+  padding:8px;
+  z-index:200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu{
+  display:block;
+}
+
+.dropdown-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  padding:6px 10px 4px;
+  font-weight:600;
+}
+
+.dropdown-divider{
+  height:1px;
+  background:var(--line);
+  margin:6px 0;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:8px;
+  transition:background .12s ease, color .12s ease;
+  white-space:nowrap;
+}
+
+.dropdown-menu a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.dropdown-menu a.parent-link{
+  font-weight:700;
+  color:var(--cobalt);
+  font-size:14px;
+}
+
+.dropdown-menu a.active-program{
+  font-weight:700;
+  color:var(--fuchsia);
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:70px 24px 60px;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+}
+
+/* ================= PAGE HERO ================= */
+
+.page-hero{
+  max-width:740px;
+  margin-bottom:56px;
+}
+
+.program-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:600;
+  color:var(--fuchsia);
+  background:var(--fuchsia-light);
+  border:1px solid var(--fuchsia-border);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:20px;
+}
+
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
+
+.page-hero .lead{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+  max-width:64ch;
+  line-height:1.7;
+}
+
+/* ================= RULES ================= */
+
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(162,28,175,.35),transparent);
+  margin:44px 0;
+}
+
+.rule-cobalt{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.4),transparent);
+  margin:44px 0;
+}
+
+/* ================= SECTION LABEL ================= */
+
+.section-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+/* ================= FOCUS CARDS ================= */
+
+.focus-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.focus-card{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+}
+
+.focus-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--fuchsia);
+  margin-bottom:8px;
+}
+
+.focus-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* ================= HOW WE WORK ================= */
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.work-card{
+  padding:22px;
+  border:1px solid var(--fuchsia-border);
+  border-radius:14px;
+  background:var(--fuchsia-light);
+}
+
+.work-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  color:var(--fuchsia);
+  margin-bottom:6px;
+}
+
+.work-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink);
+  line-height:1.6;
+}
+
+/* ================= FRAMING BOX ================= */
+
+.framing-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:var(--fuchsia-light);
+  border:1px solid var(--fuchsia-border);
+  border-radius:var(--radius);
+}
+
+.framing-box p{
+  margin:0;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.7;
+}
+
+.framing-box strong{
+  color:var(--fuchsia);
+}
+
+/* ================= WHAT WE'RE NOT ================= */
+
+.not-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.not-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.not-x{
+  font-size:16px;
+  font-weight:800;
+  color:#dc2626;
+  flex-shrink:0;
+  line-height:1.4;
+}
+
+.not-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= GUARDRAILS BOX ================= */
+
+.guardrail-box{
+  margin-top:20px;
+  padding:24px 28px;
+  background:rgba(11,77,255,.03);
+  border:1px solid rgba(11,77,255,.2);
+  border-radius:var(--radius);
+}
+
+.guardrail-box p{
+  margin:0 0 10px;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.guardrail-box p:last-child{
+  margin-bottom:0;
+}
+
+/* ================= GRANT CARDS ================= */
+
+.grant-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.grant-card{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#ffffff;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.grant-badge{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  padding:3px 8px;
+  border-radius:999px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+
+.grant-badge.primary{
+  background:var(--fuchsia-light);
+  color:var(--fuchsia);
+  border:1px solid var(--fuchsia-border);
+}
+
+.grant-badge.secondary{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.grant-badge.selective{
+  background:var(--panel);
+  color:var(--muted);
+  border:1px solid var(--line);
+}
+
+.grant-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink);
+  font-weight:500;
+}
+
+/* ================= CTA BOX ================= */
+
+.cta-box{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  border-radius:var(--radius);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.cta-box p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:56ch;
+  line-height:1.6;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+  .focus-grid,
+  .work-grid,
+  .not-grid,
+  .grant-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+
+    <a href="index.html">Homepage</a>
+    <a href="about.html">About Paralla Group</a>
+
+    <!-- ChangeWorks Dropdown -->
+    <div class="nav-dropdown">
+      <a href="changeworks.html" class="active">ChangeWorks™</a>
+      <div class="dropdown-menu">
+        <a href="changeworks.html" class="parent-link">ChangeWorks™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="earthformworks.html">EarthFormWorks™</a>
+        <a href="greenleafworks.html">GreenLeafWorks™</a>
+        <a href="heartlineworks.html">HeartLineWorks™</a>
+        <a href="neuroframeworks.html">NeuroFrameWorks™</a>
+        <a href="petcareworks.html">PetCareWorks™</a>
+        <a href="ribbonpathworks.html" class="active-program">RibbonPathWorks™</a>
+      </div>
+    </div>
+
+    <!-- CounterCore Dropdown -->
+    <div class="nav-dropdown">
+      <a href="countercore.html">CounterCore™</a>
+      <div class="dropdown-menu">
+        <a href="countercore.html" class="parent-link">CounterCore™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="controlframeworkscore.html">ControlFrameworksCore™</a>
+        <a href="impactstresscore.html">ImpactStressCore™</a>
+        <a href="optiondesigncore.html">OptionDesignCore™</a>
+        <a href="primeassumptioncore.html">PrimeAssumptionCore™</a>
+        <a href="truenorthcore.html">TrueNorthCore™</a>
+        <a href="validationmetricscore.html">ValidationMetricsCore™</a>
+      </div>
+    </div>
+
+    <a href="consulting.html">Business Consulting</a>
+    <a href="contact.html">Contact Us</a>
+
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="program-tag">ChangeWorks™ Program</div>
+      <h1>The journey doesn't end when treatment does.</h1>
+      <p class="lead">
+        RibbonPathWorks™ is Paralla Group's long-term continuity and support program,
+        focused first on the cancer journey and the life that continues around it. It
+        exists for the often-neglected phases — after treatment, in remission, through
+        recurrence, and in the long recovery or grief that follows — when formal systems
+        step back but the impact on daily life remains.
+      </p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- What We Do -->
+    <div class="section-label">What RibbonPathWorks™ Does</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      Practical, non-clinical structures for individuals, families, and caregivers
+      navigating the long path that cancer and prolonged illness leave behind.
+    </p>
+
+    <div class="focus-grid">
+      <div class="focus-card">
+        <strong>Long-Tail Continuity After Treatment</strong>
+        <p>Support structures for remission, recurrence, and the extended recovery period — the phases where formal care typically recedes but the emotional, cognitive, and logistical demands remain very real.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Caregiver &amp; Survivor Planning</strong>
+        <p>Practical frameworks that acknowledge the prolonged invisible labor of caregiving — planning tools, role structures, and continuity designs built for real timelines, not idealized recovery arcs.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Grief-Aware Systems Design</strong>
+        <p>Workflow and environment design for workplaces, schools, and communities that accounts for the presence of grief — reducing friction for those carrying loss while still functioning in everyday systems.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Reintegration Support</strong>
+        <p>Structured pathways back into work, school, and community at a humane pace — without forced closure, artificial timelines, or pressure to perform "back to normal" before capacity is genuinely restored.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Stabilization Frameworks</strong>
+        <p>Practical tools that help individuals and families plan and stabilize during high-uncertainty phases — when decisions still need to be made and life still needs to function despite enormous disruption.</p>
+      </div>
+      <div class="focus-card">
+        <strong>Beyond Cancer</strong>
+        <p>While cancer is the central use case, the same continuity models apply to other prolonged illness and long-term caregiving scenarios where support typically recedes too early and the burden persists.</p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- How We Work -->
+    <div class="section-label">How We Work</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <strong>Humane Pacing</strong>
+        <p>Every engagement is structured around realistic human timelines — not clinical discharge dates or HR return-to-work windows. Recovery and grief do not follow schedules.</p>
+      </div>
+      <div class="work-card">
+        <strong>Non-Clinical Throughout</strong>
+        <p>RibbonPathWorks™ provides practical continuity planning and structural support. It does not replace oncology, palliative care, therapy, or crisis services — it works alongside them.</p>
+      </div>
+      <div class="work-card">
+        <strong>Privacy &amp; Consent-First</strong>
+        <p>Individuals and families retain full control over what is shared and with whom. Our frameworks are built around consent and dignity, not disclosure requirements.</p>
+      </div>
+      <div class="work-card">
+        <strong>Continuity Over Closure</strong>
+        <p>We do not pressure for resolution or push "moving on" narratives. The goal is sustainable function over time — not a finish line that may never feel right to cross.</p>
+      </div>
+    </div>
+
+    <!-- Framing Box -->
+    <div class="framing-box">
+      <p><strong>On the "long tail" of cancer:</strong> Research and clinical attention rightly focus on diagnosis and treatment. But the years that follow — managing survivorship, navigating recurrence fear, supporting a caregiver who has been running on empty, reintegrating into a workplace that moved on — these phases carry enormous weight with very little structural support. RibbonPathWorks™ is built specifically for that gap.</p>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- What We Are Not -->
+    <div class="section-label">What RibbonPathWorks™ Is Not</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      These boundaries ensure the program complements, rather than replaces, the
+      clinical care and formal support people may also need.
+    </p>
+
+    <div class="not-grid">
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>Medical care, clinical navigation, or treatment guidance</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>Hospice services or emergency and crisis response</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>Therapy, grief counseling, or mental health treatment</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A promise of recovery outcomes or fixed timelines</p>
+      </div>
+      <div class="not-card">
+        <div class="not-x">✕</div>
+        <p>A replacement for licensed professionals in oncology, palliative care, or mental health</p>
+      </div>
+    </div>
+
+    <div class="guardrail-box" style="margin-top:24px;">
+      <p>All RibbonPathWorks™ engagements must clearly distinguish non-clinical continuity planning from medical or therapeutic services; avoid offering diagnosis, treatment, or crisis intervention; respect privacy, consent, and grief-aware practices; and prioritize sustainable pacing over pressure for closure.</p>
+      <p>These guardrails ensure the program supports — rather than substitutes for — the clinical care and professional services people navigating cancer and prolonged illness deserve.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Philanthropic Alignment -->
+    <div class="section-label">Philanthropic Alignment</div>
+    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+      RibbonPathWorks™ is supported by and aligned with the following Paralla Group grant and philanthropy initiatives.
+    </p>
+
+    <div class="grant-grid">
+      <div class="grant-card">
+        <div class="grant-badge primary">Primary</div>
+        <p>No More Tears Fund</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-badge secondary">Secondary</div>
+        <p>Community Resilience Fund</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-badge selective">Selective</div>
+        <p>Employee Empowerment Mini-Grant</p>
+      </div>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>If you or your organization supports people navigating the long path of cancer or prolonged illness — and the systems around them aren't keeping up — RibbonPathWorks™ is built for that work.</p>
+      <a class="cta-link" href="contact.html">Get in Touch</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

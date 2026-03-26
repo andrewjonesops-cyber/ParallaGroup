@@ -94,6 +94,12 @@ nav{
   display:flex;
   align-items:center;
   gap:4px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{
+  display:none;
 }
 
 .nav-inner > a{

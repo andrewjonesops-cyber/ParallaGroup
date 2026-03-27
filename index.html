@@ -407,6 +407,27 @@ footer{
   }
 
 }
+
+/* Mobile dropdown support */
+.nav-dropdown.open > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown.open > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown.open .dropdown-menu{
+  display:block;
+}
+
+/* Dropdowns use fixed positioning to escape overflow container */
+.dropdown-menu{
+  position:fixed !important;
+  top:auto;
+  left:auto;
+}
 </style>
 </head>
 

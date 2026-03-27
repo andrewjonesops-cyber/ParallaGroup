@@ -566,6 +566,27 @@ footer{
   }
 
 }
+
+/* Mobile dropdown support */
+.nav-dropdown.open > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown.open > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown.open .dropdown-menu{
+  display:block;
+}
+
+/* Dropdowns use fixed positioning to escape overflow container */
+.dropdown-menu{
+  position:fixed !important;
+  top:auto;
+  left:auto;
+}
 </style>
 </head>
 
@@ -787,5 +808,69 @@ footer{
   </div>
 </footer>
 
+
+<script>
+(function(){
+  function positionDropdown(dropdown) {
+    var menu = dropdown.querySelector('.dropdown-menu');
+    if (!menu) return;
+    var trigger = dropdown.querySelector('a');
+    var rect = trigger.getBoundingClientRect();
+    menu.style.top = (rect.bottom + 4) + 'px';
+    // Keep dropdown within viewport
+    var left = rect.left;
+    var menuWidth = menu.offsetWidth || 230;
+    if (left + menuWidth > window.innerWidth - 8) {
+      left = window.innerWidth - menuWidth - 8;
+    }
+    menu.style.left = left + 'px';
+  }
+
+  function openDropdown(dropdown) {
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+      if (d !== dropdown) d.classList.remove('open');
+    });
+    dropdown.classList.add('open');
+    positionDropdown(dropdown);
+  }
+
+  function closeAll() {
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+      d.classList.remove('open');
+    });
+  }
+
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+    var trigger = dropdown.querySelector('a');
+
+    // Desktop hover
+    dropdown.addEventListener('mouseenter', function() {
+      openDropdown(dropdown);
+    });
+    dropdown.addEventListener('mouseleave', function() {
+      dropdown.classList.remove('open');
+    });
+
+    // Mobile tap
+    trigger.addEventListener('click', function(e) {
+      if (window.matchMedia('(hover: none)').matches) {
+        e.preventDefault();
+        var isOpen = dropdown.classList.contains('open');
+        closeAll();
+        if (!isOpen) openDropdown(dropdown);
+      }
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) closeAll();
+  });
+
+  // Reposition on scroll/resize
+  window.addEventListener('scroll', closeAll);
+  window.addEventListener('resize', closeAll);
+})();
+</script>
 </body>
 </html>

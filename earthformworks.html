@@ -584,6 +584,263 @@ footer{
   top:auto;
   left:auto;
 }
+
+/* ================= TOOLS & RESOURCES ================= */
+
+.tools-section{
+  margin-top:0;
+}
+
+.tools-intro{
+  font-size:15px;
+  color:var(--muted);
+  max-width:68ch;
+  margin:0 0 36px;
+  line-height:1.7;
+}
+
+/* Tier block */
+.tier-block{
+  margin-bottom:36px;
+}
+
+.tier-block:last-child{
+  margin-bottom:0;
+}
+
+/* Tier header bar */
+.tier-header{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  padding:14px 20px;
+  border-radius:12px 12px 0 0;
+  border:1px solid transparent;
+  border-bottom:none;
+}
+
+.tier-header.tier-free{
+  background:var(--emerald-light);
+  border-color:var(--emerald-border);
+}
+
+.tier-header.tier-paid{
+  background:rgba(11,77,255,.06);
+  border-color:rgba(11,77,255,.2);
+}
+
+.tier-header.tier-premium{
+  background:rgba(11,77,255,.1);
+  border-color:rgba(11,77,255,.3);
+}
+
+.tier-name{
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+
+.tier-free .tier-name{ color:var(--emerald); }
+.tier-paid .tier-name{ color:var(--cobalt); }
+.tier-premium .tier-name{ color:var(--cobalt); }
+
+.tier-tagline{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Product card grid */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  gap:0;
+  border:1px solid var(--line);
+  border-radius:0 0 12px 12px;
+  overflow:hidden;
+}
+
+.tier-free + .product-grid,
+.tier-block:has(.tier-free) .product-grid{
+  border-color:var(--emerald-border);
+}
+
+.tier-paid + .product-grid,
+.tier-block:has(.tier-paid) .product-grid{
+  border-color:rgba(11,77,255,.2);
+}
+
+.tier-premium + .product-grid,
+.tier-block:has(.tier-premium) .product-grid{
+  border-color:rgba(11,77,255,.3);
+}
+
+/* Individual product card */
+.product-card{
+  padding:24px;
+  background:#ffffff;
+  position:relative;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+
+.product-card:last-child{
+  border-right:none;
+}
+
+/* Coming Soon overlay state */
+.product-card.coming-soon{
+  background:var(--panel);
+}
+
+.cs-badge{
+  display:inline-flex;
+  align-items:center;
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:3px 10px;
+  margin-bottom:14px;
+  width:fit-content;
+}
+
+.product-name{
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+  line-height:1.3;
+}
+
+.product-desc{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:14px;
+  flex:1;
+}
+
+/* File format tags */
+.product-formats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:14px;
+}
+
+.fmt-tag{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.04em;
+  padding:3px 9px;
+  border-radius:6px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:var(--muted);
+}
+
+/* Use case note */
+.product-use{
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:18px;
+  font-style:italic;
+}
+
+/* Price + button row */
+.product-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:auto;
+}
+
+.product-price{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:-.5px;
+  color:var(--ink);
+}
+
+.product-price.price-free{
+  color:var(--emerald);
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:0;
+}
+
+/* Buttons */
+.btn-action{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+  line-height:1;
+}
+
+.btn-action:hover:not(:disabled){
+  opacity:.85;
+}
+
+.btn-download{
+  background:var(--emerald);
+  color:#ffffff;
+}
+
+.btn-buy{
+  background:var(--cobalt);
+  color:#ffffff;
+}
+
+.btn-action:disabled,
+.btn-action[disabled]{
+  background:var(--line);
+  color:var(--muted);
+  cursor:not-allowed;
+  opacity:1;
+}
+
+/* License note */
+.license-note{
+  margin-top:20px;
+  padding:16px 20px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.license-note strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* Responsive: stack cards on mobile */
+@media (max-width:700px){
+  .product-grid{
+    grid-template-columns:1fr;
+  }
+  .product-card{
+    border-right:none;
+  }
+}
 </style>
 </head>
 
@@ -778,6 +1035,151 @@ footer{
         <div class="grant-badge indirect">Indirect</div>
         <p>No More Tears Fund</p>
       </div>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <!-- ===== TOOLS & RESOURCES ===== -->
+    <div class="section-label">Tools &amp; Resources</div>
+    <p class="tools-intro">
+      Practical EarthFormWorks™ deliverables — built for operational use, not shelf decoration.
+      Each resource is designed to be applied directly inside your organization.
+      Instant digital delivery on all purchases.
+    </p>
+
+    <div class="tools-section">
+
+      <!-- FREE TIER -->
+      <div class="tier-block">
+        <div class="tier-header tier-free">
+          <div class="tier-name">Free Resources</div>
+          <div class="tier-tagline">Entry-level tools — no cost, instant access.</div>
+        </div>
+        <div class="product-grid">
+
+          <div class="product-card coming-soon">
+            <div class="cs-badge">Coming Soon</div>
+            <div class="product-name">EarthFormWorks™ Program Overview</div>
+            <div class="product-desc">A concise orientation document covering what EarthFormWorks™ does, how it works, and where to start. Designed for internal distribution before an engagement begins.</div>
+            <div class="product-formats">
+              <span class="fmt-tag">PDF</span>
+            </div>
+            <div class="product-use">Best for: Leadership orientation, initial stakeholder briefings</div>
+            <div class="product-footer">
+              <div class="product-price price-free">Free</div>
+              <button class="btn-action btn-download" disabled>Download Free</button>
+            </div>
+          </div>
+
+          <div class="product-card coming-soon">
+            <div class="cs-badge">Coming Soon</div>
+            <div class="product-name">Waste &amp; Loss Self-Assessment Worksheet</div>
+            <div class="product-desc">A single-page diagnostic tool for identifying high-leverage waste and resource loss in everyday operations. Complete it independently before engaging a program advisor.</div>
+            <div class="product-formats">
+              <span class="fmt-tag">PDF</span>
+              <span class="fmt-tag">DOCX</span>
+            </div>
+            <div class="product-use">Best for: Operations leads, facility managers, first assessments</div>
+            <div class="product-footer">
+              <div class="product-price price-free">Free</div>
+              <button class="btn-action btn-download" disabled>Download Free</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PAID TIER -->
+      <div class="tier-block">
+        <div class="tier-header tier-paid">
+          <div class="tier-name">Paid Toolkit</div>
+          <div class="tier-tagline">Core operational documents — practical, ready to deploy.</div>
+        </div>
+        <div class="product-grid">
+
+          <div class="product-card coming-soon">
+            <div class="cs-badge">Coming Soon</div>
+            <div class="product-name">Resource Efficiency Tracker</div>
+            <div class="product-desc">A structured workbook for tracking energy, materials, water, and space usage across departments. Includes baseline-setting templates and period-over-period comparison tools.</div>
+            <div class="product-formats">
+              <span class="fmt-tag">XLSX</span>
+            </div>
+            <div class="product-use">Best for: Operations teams managing recurring resource costs</div>
+            <div class="product-footer">
+              <div class="product-price">—</div>
+              <button class="btn-action btn-buy" disabled>Buy Now</button>
+            </div>
+          </div>
+
+          <div class="product-card coming-soon">
+            <div class="cs-badge">Coming Soon</div>
+            <div class="product-name">Environmental Risk Action Planner</div>
+            <div class="product-desc">Translates identified environmental risks into a prioritized, actionable decision log. Includes risk categorization, response options, and a documentation framework for assumptions and constraints.</div>
+            <div class="product-formats">
+              <span class="fmt-tag">DOCX</span>
+              <span class="fmt-tag">PDF</span>
+            </div>
+            <div class="product-use">Best for: Risk leads, planning teams, operational continuity efforts</div>
+            <div class="product-footer">
+              <div class="product-price">—</div>
+              <button class="btn-action btn-buy" disabled>Buy Now</button>
+            </div>
+          </div>
+
+          <div class="product-card coming-soon">
+            <div class="cs-badge">Coming Soon</div>
+            <div class="product-name">Sustainable Workspace Design Checklist</div>
+            <div class="product-desc">A practical evaluation tool for auditing physical facilities against budget-realistic environmental improvement criteria. Structured for project managers and facility owners working without outside consultants.</div>
+            <div class="product-formats">
+              <span class="fmt-tag">DOCX</span>
+              <span class="fmt-tag">PDF</span>
+            </div>
+            <div class="product-use">Best for: Facility owners, office managers, capital planning teams</div>
+            <div class="product-footer">
+              <div class="product-price">—</div>
+              <button class="btn-action btn-buy" disabled>Buy Now</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PREMIUM TIER -->
+      <div class="tier-block">
+        <div class="tier-header tier-premium">
+          <div class="tier-name">Premium Package</div>
+          <div class="tier-tagline">Full system implementation resources — advanced frameworks, measurement tools, and QA documentation.</div>
+        </div>
+        <div class="product-grid">
+
+          <div class="product-card coming-soon">
+            <div class="cs-badge">Coming Soon</div>
+            <div class="product-name">EarthFormWorks™ Full Implementation Package</div>
+            <div class="product-desc">The complete EarthFormWorks™ resource library — every toolkit document plus advanced implementation frameworks, measurable outcome documentation templates, and a QA validation guide. Everything needed to operationalize environmental responsibility from assessment through reporting.</div>
+            <div class="product-formats">
+              <span class="fmt-tag">DOCX</span>
+              <span class="fmt-tag">XLSX</span>
+              <span class="fmt-tag">PDF</span>
+              <span class="fmt-tag">PPTX</span>
+              <span class="fmt-tag">ZIP</span>
+            </div>
+            <div class="product-use">Best for: Organizations running a full EarthFormWorks™ engagement</div>
+            <div class="product-footer">
+              <div class="product-price">—</div>
+              <button class="btn-action btn-buy" disabled>Buy Now</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /tools-section -->
+
+    <!-- License note -->
+    <div class="license-note">
+      <strong>License:</strong> All EarthFormWorks™ resources are licensed for internal business use only.
+      Redistribution, resale, and transfer to third parties are not permitted.
+      Digital delivery — download link provided immediately after purchase.
     </div>
 
     <div class="rule-cobalt"></div>

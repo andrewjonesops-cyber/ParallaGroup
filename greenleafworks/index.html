@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GreenLeafWorks™ by Paralla Group — business, operational, and compliance-focused resources for lawful cannabis industry participants.">
+<link rel="canonical" href="https://www.parallagroup.com/greenleafworks/">
+<title>GreenLeafWorks™ — Paralla Group</title>
+
+<style>
+:root{
+  --cobalt:#0B4DFF;
+  --green:#1a7f4b;
+  --green-light:rgba(26,127,75,.08);
+  --green-border:rgba(26,127,75,.25);
+  --ink:#101828;
+  --muted:#667085;
+  --line:#E6EAF2;
+  --panel:#F7F9FC;
+  --radius:16px;
+  --max:1100px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.5;
+}
+
+header{
+  border-bottom:1px solid var(--line);
+  padding:18px 24px;
+  background:#ffffff;
+}
+
+.topbar{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.brand-name{
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.badge{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.06);
+  color:var(--cobalt);
+  font-weight:500;
+}
+
+.accent{
+  height:3px;
+  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+}
+
+nav{
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  padding:0 24px;
+  position:relative;
+  z-index:100;
+}
+
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{
+  display:none;
+}
+
+.nav-inner > a{
+  display:inline-block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  margin:6px 0;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-inner > a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-inner > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.nav-dropdown{
+  position:relative;
+  margin:6px 0;
+}
+
+.nav-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  border-radius:999px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.nav-dropdown > a::after{
+  content:'';
+  display:inline-block;
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid currentColor;
+  margin-top:1px;
+  transition:transform .2s ease;
+}
+
+.nav-dropdown:hover > a,
+.nav-dropdown:focus-within > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown > a.active{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+  font-weight:600;
+}
+
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.09);
+  padding:8px;
+  z-index:200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu{
+  display:block;
+}
+
+.dropdown-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  padding:6px 10px 4px;
+  font-weight:600;
+}
+
+.dropdown-divider{
+  height:1px;
+  background:var(--line);
+  margin:6px 0;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:8px;
+  transition:background .12s ease, color .12s ease;
+  white-space:nowrap;
+}
+
+.dropdown-menu a:hover{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.dropdown-menu a.parent-link{
+  font-weight:700;
+  color:var(--cobalt);
+  font-size:14px;
+}
+
+.dropdown-menu a.active-program{
+  font-weight:700;
+  color:var(--green);
+}
+
+main{
+  padding:70px 24px 60px;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+}
+
+.page-hero{
+  max-width:760px;
+  margin-bottom:56px;
+}
+
+.program-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:600;
+  color:var(--green);
+  background:var(--green-light);
+  border:1px solid var(--green-border);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:20px;
+}
+
+.page-hero h1{
+  font-size:clamp(30px,3.2vw,44px);
+  line-height:1.1;
+  margin:0 0 20px;
+  letter-spacing:-.5px;
+}
+
+.page-hero .lead{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+  max-width:64ch;
+}
+
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(26,127,75,.4),transparent);
+  margin:44px 0;
+}
+
+.rule-cobalt{
+  height:1px;
+  background:linear-gradient(90deg,rgba(11,77,255,.4),transparent);
+  margin:44px 0;
+}
+
+.section-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+.intro-box,
+.disclaimer,
+.cta-box{
+  border-radius:var(--radius);
+}
+
+.intro-box{
+  padding:28px;
+  border:1px solid var(--green-border);
+  background:var(--green-light);
+}
+
+.intro-box p{
+  margin:0;
+  color:var(--ink);
+  font-size:15px;
+  line-height:1.75;
+  max-width:78ch;
+}
+
+.disclaimer{
+  padding:18px 22px;
+  background:#FFFBEB;
+  border:1px solid #F59E0B;
+  font-size:13px;
+  color:#78350F;
+  line-height:1.7;
+}
+
+.disclaimer strong{
+  color:#92400E;
+}
+
+.challenge-grid,
+.help-grid,
+.principles-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.challenge-card,
+.help-card,
+.principle-card{
+  padding:22px;
+  border-radius:14px;
+}
+
+.challenge-card{
+  border:1px solid var(--line);
+  background:var(--panel);
+}
+
+.help-card{
+  border:1px solid var(--green-border);
+  background:var(--green-light);
+}
+
+.principle-card{
+  border:1px solid rgba(11,77,255,.2);
+  background:rgba(11,77,255,.04);
+}
+
+.challenge-card strong,
+.help-card strong,
+.principle-card strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.challenge-card strong{ color:var(--ink); }
+.help-card strong{ color:var(--green); }
+.principle-card strong{ color:var(--cobalt); }
+
+.challenge-card p,
+.help-card p,
+.principle-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.65;
+}
+
+.cta-box{
+  margin-top:20px;
+  padding:32px;
+  border:1px solid rgba(11,77,255,.25);
+  background:rgba(11,77,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.cta-box p{
+  margin:0;
+  font-size:16px;
+  color:var(--ink);
+  max-width:58ch;
+  line-height:1.6;
+}
+
+.cta-link{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--cobalt);
+  color:#ffffff;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity .15s ease;
+}
+
+.cta-link:hover{
+  opacity:.88;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:24px;
+  font-size:13px;
+  color:var(--muted);
+  background:#ffffff;
+}
+
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+@media (max-width:900px){
+  .topbar{
+    gap:12px;
+    flex-wrap:wrap;
+  }
+}
+
+.nav-dropdown.open > a{
+  background:rgba(11,77,255,.07);
+  color:var(--cobalt);
+}
+
+.nav-dropdown.open > a::after{
+  transform:rotate(180deg);
+}
+
+.nav-dropdown.open .dropdown-menu{
+  display:block;
+}
+
+.dropdown-menu{
+  position:fixed !important;
+  top:auto;
+  left:auto;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="/">
+      <img src="/logo.png" alt="Paralla Group logo">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+    <div class="badge">Launching Soon</div>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/">Homepage</a>
+    <a href="/about/">About Paralla Group</a>
+
+    <div class="nav-dropdown">
+      <a href="/changeworks/" class="active">ChangeWorks™</a>
+      <div class="dropdown-menu">
+        <a href="/changeworks/" class="parent-link">ChangeWorks™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="/earthformworks/">EarthFormWorks™</a>
+        <a href="/greenleafworks/" class="active-program">GreenLeafWorks™</a>
+        <a href="/heartlineworks/">HeartLineWorks™</a>
+        <a href="/neuroframeworks/">NeuroFrameWorks™</a>
+        <a href="/petcareworks/">PetCareWorks™</a>
+        <a href="/ribbonpathworks/">RibbonPathWorks™</a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown">
+      <a href="/countercore/">CounterCore™</a>
+      <div class="dropdown-menu">
+        <a href="/countercore/" class="parent-link">CounterCore™</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-label">Programs</div>
+        <a href="/controlframeworkscore/">ControlFrameworksCore™</a>
+        <a href="/impactstresscore/">ImpactStressCore™</a>
+        <a href="/optiondesigncore/">OptionDesignCore™</a>
+        <a href="/primeassumptioncore/">PrimeAssumptionCore™</a>
+        <a href="/truenorthcore/">TrueNorthCore™</a>
+        <a href="/validationmetricscore/">ValidationMetricsCore™</a>
+      </div>
+    </div>
+
+    <a href="/consulting/">Business Consulting</a>
+    <a href="/contact/">Contact Us</a>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <div class="page-hero">
+      <div class="program-tag">ChangeWorks™ Program</div>
+      <h1>Operational tools for a lawful industry still forced to work uphill.</h1>
+      <p class="lead">
+        GreenLeafWorks™ helps cannabis businesses build stronger operations, clearer documentation,
+        and more defensible systems in an environment shaped by regulation, stigma, cash pressure,
+        and uneven access to financial services.
+      </p>
+    </div>
+
+    <div class="intro-box">
+      <p>
+        This program is positioned for lawful cannabis industry participants, operators, and teams that need
+        practical business resources rather than vague advice. Our focus is operational discipline: workflows,
+        governance-ready documentation, compliance support structures, training tools, and business materials
+        that help legitimate operators run more consistently under scrutiny.
+      </p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section-label">Where the Industry Gets Pressured</div>
+    <div class="challenge-grid">
+      <div class="challenge-card">
+        <strong>Banking Friction</strong>
+        <p>
+          Many operators still face restricted account options, enhanced diligence requirements, abrupt vendor
+          hesitation, and a heavier administrative burden than similarly sized businesses in other industries.
+        </p>
+      </div>
+      <div class="challenge-card">
+        <strong>Cash-Handling Exposure</strong>
+        <p>
+          Limited banking and payment flexibility can create downstream pressure on security, reconciliations,
+          payroll handling, documentation discipline, and day-to-day controls.
+        </p>
+      </div>
+      <div class="challenge-card">
+        <strong>Tax and Recordkeeping Strain</strong>
+        <p>
+          Cannabis businesses often operate with elevated documentation expectations and tighter margins,
+          making process quality, audit readiness, and expense discipline materially more important.
+        </p>
+      </div>
+      <div class="challenge-card">
+        <strong>Credibility Barriers</strong>
+        <p>
+          Operators are frequently asked to prove legitimacy repeatedly to financial institutions, landlords,
+          vendors, and service providers. Weak internal systems make that harder, not easier.
+        </p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section-label">How GreenLeafWorks™ Helps</div>
+    <div class="help-grid">
+      <div class="help-card">
+        <strong>Operational Systems</strong>
+        <p>
+          Business-use tools that support cleaner workflows, role clarity, process consistency, and stronger daily execution.
+        </p>
+      </div>
+      <div class="help-card">
+        <strong>Compliance Documentation</strong>
+        <p>
+          Structured templates and supporting resources that help operators maintain records with greater consistency and review readiness.
+        </p>
+      </div>
+      <div class="help-card">
+        <strong>Training Resources</strong>
+        <p>
+          Practical materials for onboarding, staff expectations, procedural discipline, and internal alignment.
+        </p>
+      </div>
+      <div class="help-card">
+        <strong>Financial Navigation Support</strong>
+        <p>
+          Resources designed to help businesses organize financial processes, prepare for scrutiny, and support more defensible operations.
+        </p>
+      </div>
+      <div class="help-card">
+        <strong>Governance-Ready Materials</strong>
+        <p>
+          Business documents built to support internal controls, ownership continuity, accountability, and professional presentation.
+        </p>
+      </div>
+      <div class="help-card">
+        <strong>Customer Experience Design</strong>
+        <p>
+          Systems that help legal cannabis businesses deliver a more consistent, professional, and trustworthy customer experience.
+        </p>
+      </div>
+    </div>
+
+    <div class="rule-cobalt"></div>
+
+    <div class="section-label">Program Positioning</div>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <strong>Business-Focused</strong>
+        <p>
+          GreenLeafWorks™ is framed around operational and organizational support for lawful businesses, not consumer product promotion.
+        </p>
+      </div>
+      <div class="principle-card">
+        <strong>Evidence-Conscious</strong>
+        <p>
+          We avoid inflated claims and keep the focus on documentation quality, business process strength, and practical execution.
+        </p>
+      </div>
+      <div class="principle-card">
+        <strong>Built for Scrutiny</strong>
+        <p>
+          The objective is not to make a business look polished on the surface. It is to help it hold up better under real review.
+        </p>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="disclaimer">
+      <strong>Important note:</strong> GreenLeafWorks™ provides business, operational, and educational resources for lawful participants in the cannabis industry. No cannabis, hemp-derived consumer products, or medical treatment is sold through this site. Content is provided for informational and business-use purposes only and is not medical, legal, or tax advice. Use of any resource should be evaluated against applicable federal, state, tribal, and local requirements.
+    </div>
+
+    <div class="cta-box" style="margin-top:44px;">
+      <p>
+        If your organization needs stronger operational structure, clearer documentation, or more professional
+        systems in a heavily scrutinized environment, GreenLeafWorks™ is built for that work.
+      </p>
+      <a class="cta-link" href="/contact/">Get in Touch</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 Paralla Group™. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function positionDropdown(dropdown) {
+    var menu = dropdown.querySelector('.dropdown-menu');
+    if (!menu) return;
+    var trigger = dropdown.querySelector('a');
+    var rect = trigger.getBoundingClientRect();
+    menu.style.top = (rect.bottom + 4) + 'px';
+    var left = rect.left;
+    var menuWidth = menu.offsetWidth || 230;
+    if (left + menuWidth > window.innerWidth - 8) {
+      left = window.innerWidth - menuWidth - 8;
+    }
+    menu.style.left = left + 'px';
+  }
+
+  function openDropdown(dropdown) {
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+      if (d !== dropdown) d.classList.remove('open');
+    });
+    dropdown.classList.add('open');
+    positionDropdown(dropdown);
+  }
+
+  function closeAll() {
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+      d.classList.remove('open');
+    });
+  }
+
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+    var trigger = dropdown.querySelector('a');
+
+    dropdown.addEventListener('mouseenter', function() {
+      openDropdown(dropdown);
+    });
+    dropdown.addEventListener('mouseleave', function() {
+      dropdown.classList.remove('open');
+    });
+
+    trigger.addEventListener('click', function(e) {
+      if (window.matchMedia('(hover: none)').matches) {
+        e.preventDefault();
+        var isOpen = dropdown.classList.contains('open');
+        closeAll();
+        if (!isOpen) openDropdown(dropdown);
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) closeAll();
+  });
+
+  window.addEventListener('scroll', closeAll);
+  window.addEventListener('resize', closeAll);
+})();
+</script>
+</body>
+</html>

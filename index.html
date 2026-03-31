@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Paralla Group — Designing systems that help people and hold up under scrutiny.">
+<meta name="description" content="Paralla Group — Designing frameworks that help people and hold up under scrutiny.">
 <title>Paralla Group — Launching Soon</title>
 
 <style>
@@ -436,7 +436,7 @@ footer{
 <header>
   <div class="topbar">
     <a class="brand" href="/">
-      <img src="logo.png" alt="Paralla Group logo">
+      <img src="/logo.png" alt="Paralla Group logo">
       <div class="brand-name">Paralla Group™</div>
     </a>
     <div class="badge">Launching Soon</div>
@@ -449,42 +449,42 @@ footer{
   <div class="nav-inner">
 
     <a href="/" class="active">Homepage</a>
-    <a href="about.html">About Paralla Group</a>
+    <a href="/about/">About Paralla Group</a>
 
     <!-- ChangeWorks Dropdown -->
     <div class="nav-dropdown">
-      <a href="changeworks.html">ChangeWorks™</a>
+      <a href="/changeworks/">ChangeWorks™</a>
       <div class="dropdown-menu">
-        <a href="changeworks.html" class="parent-link">ChangeWorks™</a>
+        <a href="/changeworks/" class="parent-link">ChangeWorks™</a>
         <div class="dropdown-divider"></div>
         <div class="dropdown-label">Programs</div>
-        <a href="earthformworks.html">EarthFormWorks™</a>
-        <a href="greenleafworks.html">GreenLeafWorks™</a>
-        <a href="heartlineworks.html">HeartLineWorks™</a>
-        <a href="neuroframeworks.html">NeuroFrameWorks™</a>
-        <a href="petcareworks.html">PetCareWorks™</a>
-        <a href="ribbonpathworks.html">RibbonPathWorks™</a>
+        <a href="/earthformworks/">EarthFormWorks™</a>
+        <a href="/greenleafworks/">GreenLeafWorks™</a>
+        <a href="/heartlineworks/">HeartLineWorks™</a>
+        <a href="/neuroframeworks/">NeuroFrameWorks™</a>
+        <a href="/petcareworks/">PetCareWorks™</a>
+        <a href="/ribbonpathworks/">RibbonPathWorks™</a>
       </div>
     </div>
 
     <!-- CounterCore Dropdown -->
     <div class="nav-dropdown">
-      <a href="countercore.html">CounterCore™</a>
+      <a href="/countercore/">CounterCore™</a>
       <div class="dropdown-menu">
-        <a href="countercore.html" class="parent-link">CounterCore™</a>
+        <a href="/countercore/" class="parent-link">CounterCore™</a>
         <div class="dropdown-divider"></div>
         <div class="dropdown-label">Programs</div>
-        <a href="controlframeworkscore.html">ControlFrameworksCore™</a>
-        <a href="impactstresscore.html">ImpactStressCore™</a>
-        <a href="optiondesigncore.html">OptionDesignCore™</a>
-        <a href="primeassumptioncore.html">PrimeAssumptionCore™</a>
-        <a href="truenorthcore.html">TrueNorthCore™</a>
-        <a href="validationmetricscore.html">ValidationMetricsCore™</a>
+        <a href="/controlframeworkscore/">ControlFrameworksCore™</a>
+        <a href="/impactstresscore/">ImpactStressCore™</a>
+        <a href="/optiondesigncore/">OptionDesignCore™</a>
+        <a href="/primeassumptioncore/">PrimeAssumptionCore™</a>
+        <a href="/truenorthcore/">TrueNorthCore™</a>
+        <a href="/validationmetricscore/">ValidationMetricsCore™</a>
       </div>
     </div>
 
-    <a href="consulting.html">Business Consulting</a>
-    <a href="contact.html">Contact Us</a>
+    <a href="/consulting/">Business Consulting</a>
+    <a href="/contact/">Contact Us</a>
 
   </div>
 </nav>
@@ -492,12 +492,12 @@ footer{
 <main>
   <div class="container">
 
-    <img class="watermark" src="logo.png" alt="">
+    <img class="watermark" src="/logo.png" alt="">
 
     <div class="grid">
 
       <section>
-        <h1>Design systems that help people—and hold up under scrutiny.</h1>
+        <h1>Build frameworks that help people—and hold up under scrutiny.</h1>
 
         <p class="lead">
           Paralla Group is preparing the launch of its full digital platform.
@@ -511,7 +511,7 @@ footer{
 
         <div class="capabilities">
           <div class="cap-item">
-            <strong>Systems Architecture & Operational Integrity</strong>
+            <strong>Operational Architecture & Integrity</strong>
             <span>Structures designed to remain stable under real-world constraints.</span>
           </div>
 
@@ -572,5 +572,68 @@ footer{
   </div>
 </footer>
 
+<script>
+(function(){
+  function positionDropdown(dropdown) {
+    var menu = dropdown.querySelector('.dropdown-menu');
+    if (!menu) return;
+    var trigger = dropdown.querySelector('a');
+    var rect = trigger.getBoundingClientRect();
+    menu.style.top = (rect.bottom + 4) + 'px';
+    // Keep dropdown within viewport
+    var left = rect.left;
+    var menuWidth = menu.offsetWidth || 230;
+    if (left + menuWidth > window.innerWidth - 8) {
+      left = window.innerWidth - menuWidth - 8;
+    }
+    menu.style.left = left + 'px';
+  }
+
+  function openDropdown(dropdown) {
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+      if (d !== dropdown) d.classList.remove('open');
+    });
+    dropdown.classList.add('open');
+    positionDropdown(dropdown);
+  }
+
+  function closeAll() {
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+      d.classList.remove('open');
+    });
+  }
+
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+    var trigger = dropdown.querySelector('a');
+
+    // Desktop hover
+    dropdown.addEventListener('mouseenter', function() {
+      openDropdown(dropdown);
+    });
+    dropdown.addEventListener('mouseleave', function() {
+      dropdown.classList.remove('open');
+    });
+
+    // Mobile tap
+    trigger.addEventListener('click', function(e) {
+      if (window.matchMedia('(hover: none)').matches) {
+        e.preventDefault();
+        var isOpen = dropdown.classList.contains('open');
+        closeAll();
+        if (!isOpen) openDropdown(dropdown);
+      }
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) closeAll();
+  });
+
+  // Reposition on scroll/resize
+  window.addEventListener('scroll', closeAll);
+  window.addEventListener('resize', closeAll);
+})();
+</script>
 </body>
 </html>

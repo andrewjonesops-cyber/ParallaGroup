@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CounterCore by Paralla Group — Portfolio launch planned for May 2026.">
+  <title>CounterCore™ | Paralla Group</title>
+
+  <style>
+    :root{
+      --cobalt:#0B4DFF;
+      --ink:#101828;
+      --muted:#667085;
+      --line:#E6EAF2;
+      --panel:#F7F9FC;
+      --radius:16px;
+      --max:1100px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      background:#ffffff;
+      line-height:1.5;
+    }
+
+    header{
+      border-bottom:1px solid var(--line);
+      padding:18px 24px;
+      background:#ffffff;
+    }
+
+    .topbar{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .brand img{
+      height:42px;
+      width:auto;
+      display:block;
+    }
+
+    .brand-name{
+      font-weight:600;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+
+    .badge{
+      font-size:13px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(11,77,255,.25);
+      background:rgba(11,77,255,.06);
+      color:var(--cobalt);
+      font-weight:500;
+      white-space:nowrap;
+    }
+
+    .accent{
+      height:3px;
+      background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+    }
+
+    nav{
+      background:#ffffff;
+      border-bottom:1px solid var(--line);
+      padding:0 24px;
+    }
+
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:4px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+
+    .nav-inner::-webkit-scrollbar{
+      display:none;
+    }
+
+    .nav-inner a{
+      display:inline-block;
+      padding:12px 16px;
+      font-size:14px;
+      font-weight:500;
+      color:var(--muted);
+      text-decoration:none;
+      white-space:nowrap;
+      border-radius:999px;
+      margin:6px 0;
+      transition:background .15s ease, color .15s ease;
+    }
+
+    .nav-inner a:hover{
+      background:rgba(11,77,255,.07);
+      color:var(--cobalt);
+    }
+
+    .nav-inner a.active{
+      background:rgba(11,77,255,.07);
+      color:var(--cobalt);
+      font-weight:600;
+    }
+
+    main{
+      padding:70px 24px 60px;
+    }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+    }
+
+    .page-hero{
+      max-width:760px;
+      margin-bottom:56px;
+    }
+
+    .page-hero h1{
+      font-size:clamp(30px,3.2vw,44px);
+      line-height:1.1;
+      margin:0 0 20px;
+      letter-spacing:-.5px;
+    }
+
+    .page-hero .lead{
+      font-size:18px;
+      color:var(--muted);
+      margin:0;
+      max-width:64ch;
+    }
+
+    .rule{
+      height:1px;
+      background:linear-gradient(90deg,rgba(11,77,255,.5),transparent);
+      margin:40px 0;
+    }
+
+    .section-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+
+    .status-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px;
+      margin-top:20px;
+    }
+
+    .status-card h2{
+      margin:0 0 12px;
+      font-size:22px;
+    }
+
+    .status-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.7;
+      max-width:72ch;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .info-item{
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#ffffff;
+    }
+
+    .info-item strong{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+      font-size:15px;
+      color:var(--cobalt);
+    }
+
+    .info-item span{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .contact-box{
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      margin-top:20px;
+    }
+
+    .contact-box p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:15px;
+      max-width:68ch;
+    }
+
+    .email-box{
+      display:inline-block;
+      padding:14px 16px;
+      border-radius:12px;
+      border:1px solid rgba(11,77,255,.25);
+      background:var(--panel);
+    }
+
+    .email-box a{
+      color:var(--cobalt);
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    .email-box a:hover{
+      text-decoration:underline;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px;
+      font-size:13px;
+      color:var(--muted);
+      background:#ffffff;
+    }
+
+    .footer-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width:900px){
+      .topbar{
+        flex-wrap:wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="topbar">
+      <a class="brand" href="/">
+        <img src="/logo.png" alt="Paralla Group logo">
+        <div class="brand-name">Paralla Group™</div>
+      </a>
+      <div class="badge">Launching Soon</div>
+    </div>
+  </header>
+
+  <div class="accent"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/">Homepage</a>
+      <a href="/about/">About Paralla Group</a>
+      <a href="/changeworks/">ChangeWorks™</a>
+      <a href="/countercore/" class="active">CounterCore™</a>
+      <a href="/consulting/">Business Consulting</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <div class="page-hero">
+        <h1>CounterCore™ is preparing for a May 2026 portfolio launch.</h1>
+        <p class="lead">
+          CounterCore™ by Paralla Group is being finalized as a focused portfolio of practical resources designed to strengthen review, sharpen decision-making, and improve operational discipline under real-world conditions.
+        </p>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="section-label">Launch Status</div>
+      <div class="status-card">
+        <h2>Portfolio launch planned for May 2026</h2>
+        <p>
+          The CounterCore™ portfolio is currently under final review as we prepare materials for release. This page will be updated as launch readiness is completed and portfolio details are published.
+        </p>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="section-label">What CounterCore™ Is Built For</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>Stronger review</strong>
+          <span>Resources designed to help organizations examine assumptions, surface weaknesses, and improve the quality of internal decisions.</span>
+        </div>
+
+        <div class="info-item">
+          <strong>Operational discipline</strong>
+          <span>Frameworks developed to support accountability, consistency, and better evaluation under pressure.</span>
+        </div>
+
+        <div class="info-item">
+          <strong>Practical oversight</strong>
+          <span>Materials intended to be used in real operating environments where evidence, control, and follow-through matter.</span>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="section-label">Inquiries</div>
+      <div class="contact-box">
+        <p>
+          For early inquiries regarding CounterCore™, portfolio timing, or business discussions, please use the contact address below.
+        </p>
+
+        <div class="email-box">
+          <a id="contact-email" href="#"></a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 Paralla Group™. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var u = 'contact', d = 'parallagroup.com';
+      var el = document.getElementById('contact-email');
+      if (el) {
+        el.href = 'mailto:' + u + '@' + d;
+        el.textContent = u + '@' + d;
+      }
+    })();
+  </script>
+
+</body>
+</html>

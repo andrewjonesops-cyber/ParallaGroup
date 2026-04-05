@@ -1,696 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="About Paralla Group — We build frameworks that serve people and withstand reality.">
-<title>About Paralla Group</title>
-
-<style>
-:root{
-  --cobalt:#0B4DFF;
-  --ink:#101828;
-  --muted:#667085;
-  --line:#E6EAF2;
-  --panel:#F7F9FC;
-  --radius:16px;
-  --max:1100px;
-}
-
-*{ box-sizing:border-box; }
-
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  color:var(--ink);
-  background:#ffffff;
-  line-height:1.5;
-}
-
-/* ================= HEADER ================= */
-
-header{
-  border-bottom:1px solid var(--line);
-  padding:18px 24px;
-  background:#ffffff;
-}
-
-.topbar{
-  max-width:var(--max);
-  margin:0 auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:inherit;
-}
-
-.brand img{
-  height:42px;
-  width:auto;
-  display:block;
-}
-
-.brand-name{
-  font-weight:600;
-  font-size:18px;
-  letter-spacing:.2px;
-}
-
-.badge{
-  font-size:13px;
-  padding:8px 14px;
-  border-radius:999px;
-  border:1px solid rgba(11,77,255,.25);
-  background:rgba(11,77,255,.06);
-  color:var(--cobalt);
-  font-weight:500;
-}
-
-.accent{
-  height:3px;
-  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
-}
-
-/* ================= NAV ================= */
-
-nav{
-  background:#ffffff;
-  border-bottom:1px solid var(--line);
-  padding:0 24px;
-  position:relative;
-  z-index:100;
-}
-
-.nav-inner{
-  max-width:var(--max);
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  gap:4px;
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-
-.nav-inner::-webkit-scrollbar{
-  display:none;
-}
-
-.nav-inner > a{
-  display:inline-block;
-  padding:12px 16px;
-  font-size:14px;
-  font-weight:500;
-  color:var(--muted);
-  text-decoration:none;
-  white-space:nowrap;
-  border-radius:999px;
-  margin:6px 0;
-  transition:background .15s ease, color .15s ease;
-}
-
-.nav-inner > a:hover{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-}
-
-.nav-inner > a.active{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-  font-weight:600;
-}
-
-/* ================= DROPDOWN ================= */
-
-.nav-dropdown{
-  position:relative;
-  margin:6px 0;
-}
-
-.nav-dropdown > a{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:12px 16px;
-  font-size:14px;
-  font-weight:500;
-  color:var(--muted);
-  text-decoration:none;
-  white-space:nowrap;
-  border-radius:999px;
-  transition:background .15s ease, color .15s ease;
-}
-
-.nav-dropdown > a::after{
-  content:'';
-  display:inline-block;
-  width:0;
-  height:0;
-  border-left:4px solid transparent;
-  border-right:4px solid transparent;
-  border-top:4px solid currentColor;
-  margin-top:1px;
-  transition:transform .2s ease;
-}
-
-.nav-dropdown:hover > a,
-.nav-dropdown:focus-within > a{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-}
-
-.nav-dropdown:hover > a::after,
-.nav-dropdown:focus-within > a::after{
-  transform:rotate(180deg);
-}
-
-.nav-dropdown > a.active{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-  font-weight:600;
-}
-
-.dropdown-menu{
-  display:none;
-  position:absolute;
-  top:calc(100% + 4px);
-  left:0;
-  min-width:230px;
-  background:#ffffff;
-  border:1px solid var(--line);
-  border-radius:14px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.09);
-  padding:8px;
-  z-index:200;
-}
-
-.nav-dropdown:hover .dropdown-menu,
-.nav-dropdown:focus-within .dropdown-menu{
-  display:block;
-}
-
-.dropdown-label{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--muted);
-  padding:6px 10px 4px;
-  font-weight:600;
-}
-
-.dropdown-divider{
-  height:1px;
-  background:var(--line);
-  margin:6px 0;
-}
-
-.dropdown-menu a{
-  display:block;
-  padding:9px 12px;
-  font-size:13px;
-  font-weight:500;
-  color:var(--ink);
-  text-decoration:none;
-  border-radius:8px;
-  transition:background .12s ease, color .12s ease;
-  white-space:nowrap;
-}
-
-.dropdown-menu a:hover{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-}
-
-.dropdown-menu a.parent-link{
-  font-weight:700;
-  color:var(--cobalt);
-  font-size:14px;
-}
-
-/* ================= MAIN ================= */
-
-main{
-  padding:70px 24px 60px;
-}
-
-.container{
-  max-width:var(--max);
-  margin:0 auto;
-}
-
-/* ================= PAGE HERO ================= */
-
-.page-hero{
-  max-width:680px;
-  margin-bottom:56px;
-}
-
-.page-hero h1{
-  font-size:clamp(30px,3.2vw,44px);
-  line-height:1.1;
-  margin:0 0 20px;
-  letter-spacing:-.5px;
-}
-
-.page-hero .lead{
-  font-size:18px;
-  color:var(--muted);
-  margin:0;
-  max-width:60ch;
-}
-
-.rule{
-  height:1px;
-  background:linear-gradient(90deg,rgba(11,77,255,.5),transparent);
-  margin:40px 0;
-}
-
-/* ================= SECTION LABEL ================= */
-
-.section-label{
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:.15em;
-  color:var(--muted);
-  margin-bottom:16px;
-}
-
-/* ================= TWO HEMISPHERES ================= */
-
-.hemispheres{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  margin-top:20px;
-}
-
-.hemi-card{
-  padding:24px;
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:#ffffff;
-}
-
-.hemi-card .hemi-title{
-  font-size:16px;
-  font-weight:700;
-  color:var(--cobalt);
-  margin:0 0 10px;
-}
-
-.hemi-card p{
-  margin:0;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.6;
-}
-
-/* ================= COMBINED MODEL ================= */
-
-.model-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-top:20px;
-}
-
-.model-item{
-  padding:18px 20px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:var(--panel);
-}
-
-.model-item strong{
-  display:block;
-  margin-bottom:6px;
-  font-weight:600;
-  font-size:15px;
-}
-
-.model-item span{
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* ================= WHO WE SERVE ================= */
-
-.serve-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
-  gap:16px;
-  margin-top:20px;
-}
-
-.serve-item{
-  padding:16px 18px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:#ffffff;
-  color:var(--ink);
-  font-size:14px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.serve-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--cobalt);
-  flex-shrink:0;
-}
-
-/* ================= HOW WE'RE DIFFERENT ================= */
-
-.diff-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
-  gap:16px;
-  margin-top:20px;
-}
-
-.diff-item{
-  padding:20px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:#ffffff;
-}
-
-.diff-item strong{
-  display:block;
-  margin-bottom:6px;
-  font-weight:600;
-  font-size:14px;
-  color:var(--cobalt);
-}
-
-.diff-item span{
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* ================= COMMITMENT ================= */
-
-.commitment-box{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:32px;
-  margin-top:20px;
-}
-
-.commitment-box p{
-  margin:0;
-  font-size:16px;
-  color:var(--muted);
-  line-height:1.7;
-  max-width:72ch;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  border-top:1px solid var(--line);
-  padding:24px;
-  font-size:13px;
-  color:var(--muted);
-  background:#ffffff;
-}
-
-.footer-inner{
-  max-width:var(--max);
-  margin:0 auto;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:900px){
-
-  .hemispheres,
-  .model-row{
-    grid-template-columns:1fr;
-  }
-
-}
-
-/* Mobile dropdown support */
-.nav-dropdown.open > a{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-}
-
-.nav-dropdown.open > a::after{
-  transform:rotate(180deg);
-}
-
-.nav-dropdown.open .dropdown-menu{
-  display:block;
-}
-
-/* Dropdowns use fixed positioning to escape overflow container */
-.dropdown-menu{
-  position:fixed !important;
-  top:auto;
-  left:auto;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Paralla Group — Practical consulting frameworks built to support people, strengthen operations, and hold up in the real world.">
+  <title>About Paralla Group</title>
+
+  <style>
+    :root{
+      --cobalt:#0B4DFF;
+      --ink:#101828;
+      --muted:#667085;
+      --line:#E6EAF2;
+      --panel:#F7F9FC;
+      --radius:16px;
+      --max:1100px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      background:#ffffff;
+      line-height:1.5;
+    }
+
+    header{
+      border-bottom:1px solid var(--line);
+      padding:18px 24px;
+      background:#ffffff;
+    }
+
+    .topbar{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .brand img{
+      height:42px;
+      width:auto;
+      display:block;
+    }
+
+    .brand-name{
+      font-weight:600;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+
+    .badge{
+      font-size:13px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(11,77,255,.25);
+      background:rgba(11,77,255,.06);
+      color:var(--cobalt);
+      font-weight:500;
+      white-space:nowrap;
+    }
+
+    .accent{
+      height:3px;
+      background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+    }
+
+    nav{
+      background:#ffffff;
+      border-bottom:1px solid var(--line);
+      padding:0 24px;
+      position:relative;
+      z-index:100;
+    }
+
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:4px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+
+    .nav-inner::-webkit-scrollbar{
+      display:none;
+    }
+
+    .nav-inner a{
+      display:inline-block;
+      padding:12px 16px;
+      font-size:14px;
+      font-weight:500;
+      color:var(--muted);
+      text-decoration:none;
+      white-space:nowrap;
+      border-radius:999px;
+      margin:6px 0;
+      transition:background .15s ease, color .15s ease;
+    }
+
+    .nav-inner a:hover{
+      background:rgba(11,77,255,.07);
+      color:var(--cobalt);
+    }
+
+    .nav-inner a.active{
+      background:rgba(11,77,255,.07);
+      color:var(--cobalt);
+      font-weight:600;
+    }
+
+    main{
+      padding:70px 24px 60px;
+    }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+    }
+
+    .page-hero{
+      max-width:760px;
+      margin-bottom:56px;
+    }
+
+    .page-hero h1{
+      font-size:clamp(30px,3.2vw,44px);
+      line-height:1.1;
+      margin:0 0 20px;
+      letter-spacing:-.5px;
+    }
+
+    .page-hero .lead{
+      font-size:18px;
+      color:var(--muted);
+      margin:0;
+      max-width:64ch;
+    }
+
+    .rule{
+      height:1px;
+      background:linear-gradient(90deg,rgba(11,77,255,.5),transparent);
+      margin:40px 0;
+    }
+
+    .section-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:20px;
+      margin-top:20px;
+    }
+
+    .content-card{
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#ffffff;
+    }
+
+    .content-card h2{
+      margin:0 0 12px;
+      font-size:18px;
+      color:var(--ink);
+    }
+
+    .content-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.7;
+    }
+
+    .principles-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .principle-item{
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#ffffff;
+    }
+
+    .principle-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-weight:600;
+      font-size:14px;
+      color:var(--cobalt);
+    }
+
+    .principle-item span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .serve-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .serve-item{
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#ffffff;
+      color:var(--ink);
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .serve-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--cobalt);
+      flex-shrink:0;
+    }
+
+    .commitment-box{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      margin-top:20px;
+    }
+
+    .commitment-box p{
+      margin:0;
+      font-size:16px;
+      color:var(--muted);
+      line-height:1.7;
+      max-width:72ch;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px;
+      font-size:13px;
+      color:var(--muted);
+      background:#ffffff;
+    }
+
+    .footer-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width:900px){
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+
+      .topbar{
+        flex-wrap:wrap;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="topbar">
-    <a class="brand" href="/">
-      <img src="/logo.png" alt="Paralla Group logo">
-      <div class="brand-name">Paralla Group™</div>
-    </a>
-    <div class="badge">Launching Soon</div>
-  </div>
-</header>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="/">
+        <img src="/logo.png" alt="Paralla Group logo">
+        <div class="brand-name">Paralla Group™</div>
+      </a>
+      <div class="badge">Launching Soon</div>
+    </div>
+  </header>
 
-<div class="accent"></div>
+  <div class="accent"></div>
 
-<nav>
-  <div class="nav-inner">
-    <a href="/">Homepage</a>
-    <a href="/about/" class="active">About Paralla Group</a>
-
-    <!-- ChangeWorks Dropdown -->
-    <div class="nav-dropdown">
+  <nav>
+    <div class="nav-inner">
+      <a href="/">Homepage</a>
+      <a href="/about/" class="active">About Paralla Group</a>
       <a href="/changeworks/">ChangeWorks™</a>
-      <div class="dropdown-menu">
-        <a href="/changeworks/" class="parent-link">ChangeWorks™</a>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-label">Programs</div>
-        <a href="/earthformworks/">EarthFormWorks™</a>
-        <a href="/greenleafworks/">GreenLeafWorks™</a>
-        <a href="/heartlineworks/">HeartLineWorks™</a>
-        <a href="/neuroframeworks/">NeuroFrameWorks™</a>
-        <a href="/petcareworks/">PetCareWorks™</a>
-        <a href="/ribbonpathworks/">RibbonPathWorks™</a>
-      </div>
-    </div>
-
-    <!-- CounterCore Dropdown -->
-    <div class="nav-dropdown">
       <a href="/countercore/">CounterCore™</a>
-      <div class="dropdown-menu">
-        <a href="/countercore/" class="parent-link">CounterCore™</a>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-label">Programs</div>
-        <a href="/controlframeworkscore/">ControlFrameworksCore™</a>
-        <a href="/impactstresscore/">ImpactStressCore™</a>
-        <a href="/optiondesigncore/">OptionDesignCore™</a>
-        <a href="/primeassumptioncore/">PrimeAssumptionCore™</a>
-        <a href="/truenorthcore/">TrueNorthCore™</a>
-        <a href="/validationmetricscore/">ValidationMetricsCore™</a>
-      </div>
+      <a href="/consulting/">Business Consulting</a>
+      <a href="/contact/">Contact Us</a>
     </div>
+  </nav>
 
-    <a href="/consulting/">Business Consulting</a>
-    <a href="/contact/">Contact Us</a>
-  </div>
-</nav>
+  <main>
+    <div class="container">
 
-<main>
-  <div class="container">
+      <div class="page-hero">
+        <h1>Built for real-world pressure, not just good intentions.</h1>
+        <p class="lead">
+          Paralla Group develops practical consulting frameworks for organizations that need stronger structure, clearer decision-making, and better operational follow-through. Our work is designed to support people, improve performance, and stand up to real-world demands.
+        </p>
+      </div>
 
-    <!-- Page Hero -->
-    <div class="page-hero">
-      <h1>We build frameworks that serve people—and withstand reality.</h1>
-      <p class="lead">
-        Paralla Group designs practical frameworks for organizations facing real human
-        and operational complexity. Our work is built around measurable outcomes,
-        ethical execution, and long-term sustainability.
+      <div class="rule"></div>
+
+      <div class="section-label">Who We Are</div>
+      <div class="content-grid">
+        <div class="content-card">
+          <h2>A practical consulting model</h2>
+          <p>
+            Paralla Group was built around a simple idea: good systems should work for the people using them and hold up under scrutiny. That means building tools, frameworks, and operating structures that are useful in practice, not just persuasive in presentation.
+          </p>
+        </div>
+        <div class="content-card">
+          <h2>What we focus on</h2>
+          <p>
+            We help organizations improve clarity, reduce friction, strengthen accountability, and create more stable operating environments. Our approach balances human realities with business discipline so the end result is both workable and durable.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="section-label">How We Work</div>
+      <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+        Our work is shaped by a few standards that stay consistent across engagements.
       </p>
-    </div>
-
-    <div class="rule"></div>
-
-    <!-- Two Hemispheres -->
-    <div class="section-label">Two Hemispheres. One Purpose.</div>
-    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
-      Paralla Group is built around two connected disciplines that together create a complete model for tackling complex problems.
-    </p>
-    <div class="hemispheres">
-      <div class="hemi-card">
-        <div class="hemi-title">ChangeWorks™</div>
-        <p>Focuses on human-centered design and organizational development. Helps organizations reduce friction, improve resilience, and build practical structures that support people in real operating environments.</p>
+      <div class="principles-grid">
+        <div class="principle-item">
+          <strong>Clarity first</strong>
+          <span>We simplify complexity without stripping out what matters.</span>
+        </div>
+        <div class="principle-item">
+          <strong>Useful over impressive</strong>
+          <span>We prioritize work that clients can actually apply and sustain.</span>
+        </div>
+        <div class="principle-item">
+          <strong>Measured thinking</strong>
+          <span>We value sound judgment, operational discipline, and defensible decisions.</span>
+        </div>
+        <div class="principle-item">
+          <strong>Built to last</strong>
+          <span>We aim for structures that remain effective after the initial engagement ends.</span>
+        </div>
       </div>
-      <div class="hemi-card">
-        <div class="hemi-title">CounterCore™</div>
-        <p>Provides the counterbalance. Brings disciplined skepticism, control thinking, risk analysis, evidence validation, and accountability to ensure good intentions hold up under pressure.</p>
-      </div>
-    </div>
 
-    <div class="model-row">
-      <div class="model-item">
-        <strong>ChangeWorks defines</strong>
-        <span>The human need, operational context, and intended outcome.</span>
-      </div>
-      <div class="model-item">
-        <strong>CounterCore tests</strong>
-        <span>The assumptions, validates the design, and strengthens the proof behind the work.</span>
-      </div>
-    </div>
+      <div class="rule"></div>
 
-    <div class="rule"></div>
-
-    <!-- Who We Serve -->
-    <div class="section-label">Who We Serve</div>
-    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
-      Paralla Group supports organizations carrying meaningful operational and human demands.
-    </p>
-    <div class="serve-grid">
-      <div class="serve-item"><div class="serve-dot"></div>Regulated and compliance-heavy environments</div>
-      <div class="serve-item"><div class="serve-dot"></div>High-stress or high-impact teams</div>
-      <div class="serve-item"><div class="serve-dot"></div>Small businesses needing operational clarity and structure</div>
-      <div class="serve-item"><div class="serve-dot"></div>Environmental and sustainability-focused operations</div>
-      <div class="serve-item"><div class="serve-dot"></div>Care-centered ecosystems requiring resilience and continuity</div>
-    </div>
-
-    <div class="rule"></div>
-
-    <!-- How We're Different -->
-    <div class="section-label">How We're Different</div>
-    <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
-      Paralla Group rejects the false choice between being people-first and performance-first. We believe good work can do both.
-    </p>
-    <div class="diff-grid">
-      <div class="diff-item">
-        <strong>Practical over performative</strong>
-        <span>Work that functions in real conditions, not just on paper.</span>
-      </div>
-      <div class="diff-item">
-        <strong>Evidence over narrative</strong>
-        <span>Claims supported by outcomes, not impressions.</span>
-      </div>
-      <div class="diff-item">
-        <strong>Sustainable over shiny</strong>
-        <span>Tools and structures clients can actually maintain.</span>
-      </div>
-      <div class="diff-item">
-        <strong>Ethical by design</strong>
-        <span>Guardrails that hold under pressure, incentives, and change.</span>
-      </div>
-    </div>
-
-    <div class="rule"></div>
-
-    <!-- Our Commitment -->
-    <div class="section-label">Our Commitment</div>
-    <div class="commitment-box">
-      <p>
-        Paralla Group exists to make hard problems simpler to solve. We build frameworks
-        that respect human realities while delivering operational rigor. We measure success
-        by whether our clients become stronger, clearer, and more self-sufficient — not by
-        how long they remain dependent on us.
+      <div class="section-label">Who We Support</div>
+      <p style="color:var(--muted); font-size:15px; max-width:68ch; margin:0 0 4px;">
+        Paralla Group works best with organizations that are dealing with real operational demands and cannot afford vague solutions.
       </p>
+      <div class="serve-grid">
+        <div class="serve-item"><div class="serve-dot"></div>Small businesses building stronger internal structure</div>
+        <div class="serve-item"><div class="serve-dot"></div>Teams operating in regulated or high-accountability environments</div>
+        <div class="serve-item"><div class="serve-dot"></div>Organizations facing process breakdowns, inconsistency, or role confusion</div>
+        <div class="serve-item"><div class="serve-dot"></div>Leaders who need systems that are both practical and defensible</div>
+        <div class="serve-item"><div class="serve-dot"></div>Operations that depend on continuity, trust, and reliable execution</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="section-label">Our Standard</div>
+      <div class="commitment-box">
+        <p>
+          We do not measure success by how complex our process looks or how long a client remains dependent on us. We measure success by whether the work creates real improvement: better structure, better judgment, better follow-through, and stronger long-term stability.
+        </p>
+      </div>
+
     </div>
+  </main>
 
-  </div>
-</main>
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 Paralla Group™. All rights reserved.</div>
+    </div>
+  </footer>
 
-<footer>
-  <div class="footer-inner">
-    <div>© 2026 Paralla Group™. All rights reserved.</div>
-  </div>
-</footer>
-
-
-<script>
-(function(){
-  function positionDropdown(dropdown) {
-    var menu = dropdown.querySelector('.dropdown-menu');
-    if (!menu) return;
-    var trigger = dropdown.querySelector('a');
-    var rect = trigger.getBoundingClientRect();
-    menu.style.top = (rect.bottom + 4) + 'px';
-    // Keep dropdown within viewport
-    var left = rect.left;
-    var menuWidth = menu.offsetWidth || 230;
-    if (left + menuWidth > window.innerWidth - 8) {
-      left = window.innerWidth - menuWidth - 8;
-    }
-    menu.style.left = left + 'px';
-  }
-
-  function openDropdown(dropdown) {
-    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
-      if (d !== dropdown) d.classList.remove('open');
-    });
-    dropdown.classList.add('open');
-    positionDropdown(dropdown);
-  }
-
-  function closeAll() {
-    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
-      d.classList.remove('open');
-    });
-  }
-
-  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
-    var trigger = dropdown.querySelector('a');
-
-    // Desktop hover
-    dropdown.addEventListener('mouseenter', function() {
-      openDropdown(dropdown);
-    });
-    dropdown.addEventListener('mouseleave', function() {
-      dropdown.classList.remove('open');
-    });
-
-    // Mobile tap
-    trigger.addEventListener('click', function(e) {
-      if (window.matchMedia('(hover: none)').matches) {
-        e.preventDefault();
-        var isOpen = dropdown.classList.contains('open');
-        closeAll();
-        if (!isOpen) openDropdown(dropdown);
-      }
-    });
-  });
-
-  // Close on outside click
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.nav-dropdown')) closeAll();
-  });
-
-  // Reposition on scroll/resize
-  window.addEventListener('scroll', closeAll);
-  window.addEventListener('resize', closeAll);
-})();
-</script>
 </body>
 </html>

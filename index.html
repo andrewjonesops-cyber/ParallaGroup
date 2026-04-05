@@ -1,639 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Paralla Group — Designing frameworks that help people and hold up under scrutiny.">
-<title>Paralla Group — Launching Soon</title>
-
-<style>
-:root{
-  --cobalt:#0B4DFF;
-  --ink:#101828;
-  --muted:#667085;
-  --line:#E6EAF2;
-  --panel:#F7F9FC;
-  --radius:16px;
-  --max:1100px;
-}
-
-*{ box-sizing:border-box; }
-
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  color:var(--ink);
-  background:#ffffff;
-  line-height:1.5;
-}
-
-/* ================= HEADER ================= */
-
-header{
-  border-bottom:1px solid var(--line);
-  padding:18px 24px;
-  background:#ffffff;
-}
-
-.topbar{
-  max-width:var(--max);
-  margin:0 auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:inherit;
-}
-
-.brand img{
-  height:42px;
-  width:auto;
-  display:block;
-}
-
-.brand-name{
-  font-weight:600;
-  font-size:18px;
-  letter-spacing:.2px;
-}
-
-.badge{
-  font-size:13px;
-  padding:8px 14px;
-  border-radius:999px;
-  border:1px solid rgba(11,77,255,.25);
-  background:rgba(11,77,255,.06);
-  color:var(--cobalt);
-  font-weight:500;
-}
-
-.accent{
-  height:3px;
-  background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
-}
-
-/* ================= NAV ================= */
-
-nav{
-  background:#ffffff;
-  border-bottom:1px solid var(--line);
-  padding:0 24px;
-  position:relative;
-  z-index:100;
-}
-
-.nav-inner{
-  max-width:var(--max);
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  gap:4px;
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-
-.nav-inner::-webkit-scrollbar{
-  display:none;
-}
-
-/* Plain nav links */
-.nav-inner > a{
-  display:inline-block;
-  padding:12px 16px;
-  font-size:14px;
-  font-weight:500;
-  color:var(--muted);
-  text-decoration:none;
-  white-space:nowrap;
-  border-radius:999px;
-  margin:6px 0;
-  transition:background .15s ease, color .15s ease;
-}
-
-.nav-inner > a:hover{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-}
-
-.nav-inner > a.active{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-  font-weight:600;
-}
-
-/* ================= DROPDOWN ================= */
-
-.nav-dropdown{
-  position:relative;
-  margin:6px 0;
-}
-
-.nav-dropdown > a{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:12px 16px;
-  font-size:14px;
-  font-weight:500;
-  color:var(--muted);
-  text-decoration:none;
-  white-space:nowrap;
-  border-radius:999px;
-  transition:background .15s ease, color .15s ease;
-}
-
-.nav-dropdown > a::after{
-  content:'';
-  display:inline-block;
-  width:0;
-  height:0;
-  border-left:4px solid transparent;
-  border-right:4px solid transparent;
-  border-top:4px solid currentColor;
-  margin-top:1px;
-  transition:transform .2s ease;
-}
-
-.nav-dropdown:hover > a,
-.nav-dropdown:focus-within > a{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-}
-
-.nav-dropdown:hover > a::after,
-.nav-dropdown:focus-within > a::after{
-  transform:rotate(180deg);
-}
-
-.nav-dropdown > a.active{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-  font-weight:600;
-}
-
-/* Dropdown menu panel */
-.dropdown-menu{
-  display:none;
-  position:absolute;
-  top:calc(100% + 4px);
-  left:0;
-  min-width:230px;
-  background:#ffffff;
-  border:1px solid var(--line);
-  border-radius:14px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.09);
-  padding:8px;
-  z-index:200;
-}
-
-.nav-dropdown:hover .dropdown-menu,
-.nav-dropdown:focus-within .dropdown-menu{
-  display:block;
-}
-
-.dropdown-label{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--muted);
-  padding:6px 10px 4px;
-  font-weight:600;
-}
-
-.dropdown-divider{
-  height:1px;
-  background:var(--line);
-  margin:6px 0;
-}
-
-.dropdown-menu a{
-  display:block;
-  padding:9px 12px;
-  font-size:13px;
-  font-weight:500;
-  color:var(--ink);
-  text-decoration:none;
-  border-radius:8px;
-  transition:background .12s ease, color .12s ease;
-  white-space:nowrap;
-}
-
-.dropdown-menu a:hover{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-}
-
-.dropdown-menu a.parent-link{
-  font-weight:700;
-  color:var(--cobalt);
-  font-size:14px;
-}
-
-/* ================= MAIN ================= */
-
-main{
-  padding:70px 24px 50px;
-}
-
-.container{
-  max-width:var(--max);
-  margin:0 auto;
-  position:relative;
-}
-
-.watermark{
-  position:absolute;
-  right:0;
-  top:-40px;
-  width:min(480px,60vw);
-  opacity:.05;
-  pointer-events:none;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:40px;
-  align-items:start;
-}
-
-h1{
-  font-size:clamp(32px,3.5vw,48px);
-  line-height:1.1;
-  margin:0 0 20px;
-  letter-spacing:-.5px;
-}
-
-.lead{
-  font-size:18px;
-  color:var(--muted);
-  margin-bottom:30px;
-  max-width:60ch;
-}
-
-.rule{
-  height:1px;
-  background:linear-gradient(90deg,rgba(11,77,255,.5),transparent);
-  margin:30px 0;
-}
-
-.section-label{
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:.15em;
-  color:var(--muted);
-  margin-bottom:16px;
-}
-
-.capabilities{
-  display:grid;
-  gap:16px;
-}
-
-.cap-item{
-  padding:16px 18px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:#ffffff;
-}
-
-.cap-item strong{
-  display:block;
-  margin-bottom:6px;
-  font-weight:600;
-}
-
-.cap-item span{
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* ================= SIDEBAR CARD ================= */
-
-.card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:28px;
-}
-
-.card h2{
-  margin:0 0 14px;
-  font-size:18px;
-}
-
-.email-box{
-  margin-top:20px;
-  padding:14px 16px;
-  border-radius:12px;
-  border:1px solid rgba(11,77,255,.25);
-  background:#ffffff;
-}
-
-.email-box a{
-  color:var(--cobalt);
-  font-weight:600;
-  text-decoration:none;
-}
-
-.email-box a:hover{
-  text-decoration:underline;
-}
-
-/* ================= VIDEO ================= */
-
-.video-section{
-  margin-top:48px;
-}
-
-.video-section .section-label{
-  margin-bottom:16px;
-}
-
-.video-wrapper{
-  position:relative;
-  padding-bottom:56.25%;
-  height:0;
-  overflow:hidden;
-  border-radius:14px;
-  border:1px solid var(--line);
-  box-shadow:0 4px 24px rgba(0,0,0,0.08);
-}
-
-.video-wrapper iframe{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  border-top:1px solid var(--line);
-  padding:24px;
-  font-size:13px;
-  color:var(--muted);
-  background:#ffffff;
-}
-
-.footer-inner{
-  max-width:var(--max);
-  margin:0 auto;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:900px){
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .watermark{
-    position:static;
-    width:200px;
-    margin-bottom:30px;
-  }
-
-}
-
-/* Mobile dropdown support */
-.nav-dropdown.open > a{
-  background:rgba(11,77,255,.07);
-  color:var(--cobalt);
-}
-
-.nav-dropdown.open > a::after{
-  transform:rotate(180deg);
-}
-
-.nav-dropdown.open .dropdown-menu{
-  display:block;
-}
-
-/* Dropdowns use fixed positioning to escape overflow container */
-.dropdown-menu{
-  position:fixed !important;
-  top:auto;
-  left:auto;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Paralla Group — Designing frameworks that help people and hold up under scrutiny.">
+  <title>Paralla Group — Launching Soon</title>
+
+  <style>
+    :root{
+      --cobalt:#0B4DFF;
+      --ink:#101828;
+      --muted:#667085;
+      --line:#E6EAF2;
+      --panel:#F7F9FC;
+      --radius:16px;
+      --max:1100px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      background:#ffffff;
+      line-height:1.5;
+    }
+
+    header{
+      border-bottom:1px solid var(--line);
+      padding:18px 24px;
+      background:#ffffff;
+    }
+
+    .topbar{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .brand img{
+      height:42px;
+      width:auto;
+      display:block;
+    }
+
+    .brand-name{
+      font-weight:600;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+
+    .badge{
+      font-size:13px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(11,77,255,.25);
+      background:rgba(11,77,255,.06);
+      color:var(--cobalt);
+      font-weight:500;
+      white-space:nowrap;
+    }
+
+    .accent{
+      height:3px;
+      background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+    }
+
+    nav{
+      background:#ffffff;
+      border-bottom:1px solid var(--line);
+      padding:0 24px;
+      position:relative;
+      z-index:100;
+    }
+
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:4px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+
+    .nav-inner::-webkit-scrollbar{
+      display:none;
+    }
+
+    .nav-inner a{
+      display:inline-block;
+      padding:12px 16px;
+      font-size:14px;
+      font-weight:500;
+      color:var(--muted);
+      text-decoration:none;
+      white-space:nowrap;
+      border-radius:999px;
+      margin:6px 0;
+      transition:background .15s ease, color .15s ease;
+    }
+
+    .nav-inner a:hover{
+      background:rgba(11,77,255,.07);
+      color:var(--cobalt);
+    }
+
+    .nav-inner a.active{
+      background:rgba(11,77,255,.07);
+      color:var(--cobalt);
+      font-weight:600;
+    }
+
+    main{
+      padding:70px 24px 50px;
+    }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      position:relative;
+    }
+
+    .watermark{
+      position:absolute;
+      right:0;
+      top:-40px;
+      width:min(480px,60vw);
+      opacity:.05;
+      pointer-events:none;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:40px;
+      align-items:start;
+    }
+
+    h1{
+      font-size:clamp(32px,3.5vw,48px);
+      line-height:1.1;
+      margin:0 0 20px;
+      letter-spacing:-.5px;
+    }
+
+    .lead{
+      font-size:18px;
+      color:var(--muted);
+      margin-bottom:30px;
+      max-width:60ch;
+    }
+
+    .rule{
+      height:1px;
+      background:linear-gradient(90deg,rgba(11,77,255,.5),transparent);
+      margin:30px 0;
+    }
+
+    .section-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+
+    .capabilities{
+      display:grid;
+      gap:16px;
+    }
+
+    .cap-item{
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#ffffff;
+    }
+
+    .cap-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-weight:600;
+    }
+
+    .cap-item span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+    }
+
+    .card h2{
+      margin:0 0 14px;
+      font-size:18px;
+    }
+
+    .email-box{
+      margin-top:20px;
+      padding:14px 16px;
+      border-radius:12px;
+      border:1px solid rgba(11,77,255,.25);
+      background:#ffffff;
+    }
+
+    .email-box a{
+      color:var(--cobalt);
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    .email-box a:hover{
+      text-decoration:underline;
+    }
+
+    .video-section{
+      margin-top:48px;
+    }
+
+    .video-section .section-label{
+      margin-bottom:16px;
+    }
+
+    .video-wrapper{
+      position:relative;
+      padding-bottom:56.25%;
+      height:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid var(--line);
+      box-shadow:0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .video-wrapper iframe{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px;
+      font-size:13px;
+      color:var(--muted);
+      background:#ffffff;
+    }
+
+    .footer-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width:900px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .watermark{
+        position:static;
+        width:200px;
+        margin-bottom:30px;
+      }
+
+      .topbar{
+        flex-wrap:wrap;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="topbar">
-    <a class="brand" href="/">
-      <img src="/logo.png" alt="Paralla Group logo">
-      <div class="brand-name">Paralla Group™</div>
-    </a>
-    <div class="badge">Launching Soon</div>
-  </div>
-</header>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="/">
+        <img src="/logo.png" alt="Paralla Group logo">
+        <div class="brand-name">Paralla Group™</div>
+      </a>
+      <div class="badge">Launching Soon</div>
+    </div>
+  </header>
 
-<div class="accent"></div>
+  <div class="accent"></div>
 
-<nav>
-  <div class="nav-inner">
-
-    <a href="/" class="active">Homepage</a>
-    <a href="/about/">About Paralla Group</a>
-
-    <!-- ChangeWorks Dropdown -->
-    <div class="nav-dropdown">
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="active">Homepage</a>
+      <a href="/about/">About Paralla Group</a>
       <a href="/changeworks/">ChangeWorks™</a>
-      <div class="dropdown-menu">
-        <a href="/changeworks/" class="parent-link">ChangeWorks™</a>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-label">Programs</div>
-        <a href="/earthformworks/">EarthFormWorks™</a>
-        <a href="/greenleafworks/">GreenLeafWorks™</a>
-        <a href="/heartlineworks/">HeartLineWorks™</a>
-        <a href="/neuroframeworks/">NeuroFrameWorks™</a>
-        <a href="/petcareworks/">PetCareWorks™</a>
-        <a href="/ribbonpathworks/">RibbonPathWorks™</a>
-      </div>
-    </div>
-
-    <!-- CounterCore Dropdown -->
-    <div class="nav-dropdown">
       <a href="/countercore/">CounterCore™</a>
-      <div class="dropdown-menu">
-        <a href="/countercore/" class="parent-link">CounterCore™</a>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-label">Programs</div>
-        <a href="/controlframeworkscore/">ControlFrameworksCore™</a>
-        <a href="/impactstresscore/">ImpactStressCore™</a>
-        <a href="/optiondesigncore/">OptionDesignCore™</a>
-        <a href="/primeassumptioncore/">PrimeAssumptionCore™</a>
-        <a href="/truenorthcore/">TrueNorthCore™</a>
-        <a href="/validationmetricscore/">ValidationMetricsCore™</a>
+      <a href="/consulting/">Business Consulting</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <img class="watermark" src="/logo.png" alt="">
+
+      <div class="grid">
+
+        <section>
+          <h1>Build frameworks that help people—and hold up under scrutiny.</h1>
+
+          <p class="lead">
+            Paralla Group is preparing the launch of its full digital platform.
+            We deliver practical consulting frameworks that produce measurable
+            human impact and operational results.
+          </p>
+
+          <div class="rule"></div>
+
+          <div class="section-label">Core Focus Areas</div>
+
+          <div class="capabilities">
+            <div class="cap-item">
+              <strong>Operational Architecture &amp; Integrity</strong>
+              <span>Structures designed to remain stable under real-world constraints.</span>
+            </div>
+
+            <div class="cap-item">
+              <strong>Human-Centered Workflow Design</strong>
+              <span>Reducing friction, burnout, and failure points while improving outcomes.</span>
+            </div>
+
+            <div class="cap-item">
+              <strong>Governance-Ready Documentation</strong>
+              <span>Clear, auditable materials built for stakeholders and reviewers.</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="card">
+          <h2>Inquiries &amp; Partnerships</h2>
+
+          <p>
+            For consulting engagements, partnership discussions, or early inquiries,
+            please reach out below.
+          </p>
+
+          <div class="email-box">
+            <a id="contact-email" href="#"></a>
+          </div>
+        </aside>
+
       </div>
-    </div>
 
-    <a href="/consulting/">Business Consulting</a>
-    <a href="/contact/">Contact Us</a>
-
-  </div>
-</nav>
-
-<main>
-  <div class="container">
-
-    <img class="watermark" src="/logo.png" alt="">
-
-    <div class="grid">
-
-      <section>
-        <h1>Build frameworks that help people—and hold up under scrutiny.</h1>
-
-        <p class="lead">
-          Paralla Group is preparing the launch of its full digital platform.
-          We deliver practical consulting frameworks that produce measurable
-          human impact and operational results.
-        </p>
-
-        <div class="rule"></div>
-
-        <div class="section-label">Core Focus Areas</div>
-
-        <div class="capabilities">
-          <div class="cap-item">
-            <strong>Operational Architecture & Integrity</strong>
-            <span>Structures designed to remain stable under real-world constraints.</span>
-          </div>
-
-          <div class="cap-item">
-            <strong>Human-Centered Workflow Design</strong>
-            <span>Reducing friction, burnout, and failure points while improving outcomes.</span>
-          </div>
-
-          <div class="cap-item">
-            <strong>Governance-Ready Documentation</strong>
-            <span>Clear, auditable materials built for stakeholders and reviewers.</span>
-          </div>
+      <div class="video-section">
+        <div class="section-label">Watch Our Overview</div>
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/63m40kHJ2Qo"
+            title="Paralla Group Homepage Video 2026"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
         </div>
-      </section>
-
-      <aside class="card">
-        <h2>Inquiries & Partnerships</h2>
-
-        <p>
-          For consulting engagements, program collaboration, or early discussions,
-          please reach out below.
-        </p>
-
-        <div class="email-box">
-          <a id="contact-email" href="#"></a>
-          <script>
-            (function(){
-              var u='contact',d='parallagroup.com';
-              var el=document.getElementById('contact-email');
-              el.href='mailto:'+u+'@'+d;
-              el.textContent=u+'@'+d;
-            })();
-          </script>
-        </div>
-      </aside>
-
-    </div>
-
-    <!-- Video Section -->
-    <div class="video-section">
-      <div class="section-label">Watch Our Overview</div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/63m40kHJ2Qo"
-          title="Paralla Group Homepage Video 2026"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
       </div>
+
     </div>
+  </main>
 
-  </div>
-</main>
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Paralla Group™. All rights reserved.</span>
+    </div>
+  </footer>
 
-<footer>
-  <div class="footer-inner">
-    <span>© 2026 Paralla Group™. All rights reserved.</span>
-  </div>
-</footer>
-
-<script>
-(function(){
-  function positionDropdown(dropdown) {
-    var menu = dropdown.querySelector('.dropdown-menu');
-    if (!menu) return;
-    var trigger = dropdown.querySelector('a');
-    var rect = trigger.getBoundingClientRect();
-    menu.style.top = (rect.bottom + 4) + 'px';
-    // Keep dropdown within viewport
-    var left = rect.left;
-    var menuWidth = menu.offsetWidth || 230;
-    if (left + menuWidth > window.innerWidth - 8) {
-      left = window.innerWidth - menuWidth - 8;
-    }
-    menu.style.left = left + 'px';
-  }
-
-  function openDropdown(dropdown) {
-    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
-      if (d !== dropdown) d.classList.remove('open');
-    });
-    dropdown.classList.add('open');
-    positionDropdown(dropdown);
-  }
-
-  function closeAll() {
-    document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
-      d.classList.remove('open');
-    });
-  }
-
-  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
-    var trigger = dropdown.querySelector('a');
-
-    // Desktop hover
-    dropdown.addEventListener('mouseenter', function() {
-      openDropdown(dropdown);
-    });
-    dropdown.addEventListener('mouseleave', function() {
-      dropdown.classList.remove('open');
-    });
-
-    // Mobile tap
-    trigger.addEventListener('click', function(e) {
-      if (window.matchMedia('(hover: none)').matches) {
-        e.preventDefault();
-        var isOpen = dropdown.classList.contains('open');
-        closeAll();
-        if (!isOpen) openDropdown(dropdown);
+  <script>
+    (function(){
+      var u = 'contact', d = 'parallagroup.com';
+      var el = document.getElementById('contact-email');
+      if (el) {
+        el.href = 'mailto:' + u + '@' + d;
+        el.textContent = u + '@' + d;
       }
-    });
-  });
+    })();
+  </script>
 
-  // Close on outside click
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.nav-dropdown')) closeAll();
-  });
-
-  // Reposition on scroll/resize
-  window.addEventListener('scroll', closeAll);
-  window.addEventListener('resize', closeAll);
-})();
-</script>
 </body>
 </html>

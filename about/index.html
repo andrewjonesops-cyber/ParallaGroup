@@ -134,8 +134,16 @@
     }
 
     .page-hero{
-      max-width:760px;
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(260px,360px);
+      gap:32px;
+      align-items:start;
+      max-width:none;
       margin-bottom:56px;
+    }
+
+    .page-hero-copy{
+      max-width:760px;
     }
 
     .page-hero h1{
@@ -150,6 +158,25 @@
       color:var(--muted);
       margin:0;
       max-width:64ch;
+    }
+
+    .hero-image-wrap{
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-start;
+    }
+
+    .hero-image{
+      display:block;
+      width:100%;
+      max-width:340px;
+      aspect-ratio:4 / 5;
+      object-fit:cover;
+      object-position:center;
+      border-radius:24px;
+      border:1px solid var(--line);
+      box-shadow:0 10px 30px rgba(16,24,40,.10);
+      background:#ffffff;
     }
 
     .rule{
@@ -284,6 +311,19 @@
         grid-template-columns:1fr;
       }
 
+      .page-hero{
+        grid-template-columns:1fr;
+        gap:24px;
+      }
+
+      .hero-image-wrap{
+        justify-content:flex-start;
+      }
+
+      .hero-image{
+        max-width:420px;
+      }
+
       .topbar{
         flex-wrap:wrap;
       }
@@ -320,10 +360,19 @@
     <div class="container">
 
       <div class="page-hero">
-        <h1>Built for real-world pressure, not just good intentions.</h1>
-        <p class="lead">
-          Paralla Group develops practical consulting frameworks for organizations that need stronger structure, clearer decision-making, and better operational follow-through. Our work is designed to support people, improve performance, and stand up to real-world demands.
-        </p>
+        <div class="page-hero-copy">
+          <h1>Built for real-world pressure, not just good intentions.</h1>
+          <p class="lead">
+            Paralla Group develops practical consulting frameworks for organizations that need stronger structure, clearer decision-making, and better operational follow-through. Our work is designed to support people, improve performance, and stand up to real-world demands.
+          </p>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img
+            class="hero-image"
+            src="/images/ChatGPT-generated%20AI%20Image%202026.04.05%201805.png"
+            alt="Business professionals meeting in a modern office">
+        </div>
       </div>
 
       <div class="rule"></div>

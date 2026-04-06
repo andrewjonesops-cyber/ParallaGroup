@@ -132,8 +132,16 @@
     }
  
     .page-hero{
-      max-width:760px;
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(260px,360px);
+      gap:32px;
+      align-items:start;
+      max-width:none;
       margin-bottom:56px;
+    }
+
+    .page-hero-copy{
+      max-width:760px;
     }
  
     .page-hero h1{
@@ -148,6 +156,27 @@
       color:var(--muted);
       margin:0 0 14px;
       max-width:64ch;
+    }
+
+    .hero-image-wrap{
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-start;
+    }
+
+    .hero-image{
+      display:block;
+      width:100%;
+      max-width:340px;
+      aspect-ratio:4 / 5;
+      object-fit:cover;
+      object-position:center;
+      border-radius:24px;
+      border:none;
+      box-shadow:none;
+      background:transparent;
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 100%);
     }
  
     .rule{
@@ -361,6 +390,19 @@
       .engagement-grid{
         grid-template-columns:1fr;
       }
+
+      .page-hero{
+        grid-template-columns:1fr;
+        gap:24px;
+      }
+
+      .hero-image-wrap{
+        justify-content:flex-start;
+      }
+
+      .hero-image{
+        max-width:420px;
+      }
  
       .steps{
         grid-template-columns:1fr 1fr;
@@ -408,13 +450,22 @@
     <div class="container">
  
       <div class="page-hero">
-        <h1>Business consulting built for organizations that need real operational improvement.</h1>
-        <p class="lead">
-          Paralla Group works with businesses that need clearer structure, stronger execution, and better follow-through. We focus on practical operating solutions that can be implemented, managed, and sustained in real conditions.
-        </p>
-        <p class="lead">
-          Our work is best suited for organizations where responsibilities matter, inconsistency creates drag, and leadership needs more than general advice. We help turn operational problems into workable structure.
-        </p>
+        <div class="page-hero-copy">
+          <h1>Business consulting built for organizations that need real operational improvement.</h1>
+          <p class="lead">
+            Paralla Group works with businesses that need clearer structure, stronger execution, and better follow-through. We focus on practical operating solutions that can be implemented, managed, and sustained in real conditions.
+          </p>
+          <p class="lead">
+            Our work is best suited for organizations where responsibilities matter, inconsistency creates drag, and leadership needs more than general advice. We help turn operational problems into workable structure.
+          </p>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img
+            class="hero-image"
+            src="/images/consulting-operations-workflow-hero.png"
+            alt="Professional operations and workflow planning workspace">
+        </div>
       </div>
  
       <div class="rule"></div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Paralla Group — Practical consulting frameworks that improve operations and support real-world performance.">
-  <title>Paralla Group — Launching Soon</title>
+  <title>Paralla Group</title>
 
   <style>
     :root{
@@ -60,17 +60,6 @@
       font-weight:600;
       font-size:18px;
       letter-spacing:.2px;
-    }
-
-    .badge{
-      font-size:13px;
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(11,77,255,.25);
-      background:rgba(11,77,255,.06);
-      color:var(--cobalt);
-      font-weight:500;
-      white-space:nowrap;
     }
 
     .accent{
@@ -213,6 +202,11 @@
       font-size:18px;
     }
 
+    .card p{
+      color:var(--muted);
+      margin:0;
+    }
+
     .email-box{
       margin-top:20px;
       padding:14px 16px;
@@ -231,12 +225,29 @@
       text-decoration:underline;
     }
 
+    .outcomes{
+      display:grid;
+      gap:14px;
+    }
+
+    .outcome-item{
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--panel);
+      font-size:14px;
+      color:var(--ink);
+    }
+
     .video-section{
       margin-top:48px;
     }
 
-    .video-section .section-label{
-      margin-bottom:16px;
+    .video-intro{
+      color:var(--muted);
+      font-size:15px;
+      max-width:68ch;
+      margin:0 0 16px;
     }
 
     .video-wrapper{
@@ -299,7 +310,6 @@
         <img src="/logo.png" alt="Paralla Group logo">
         <div class="brand-name">Paralla Group™</div>
       </a>
-      <div class="badge">Launching Soon</div>
     </div>
   </header>
 
@@ -308,11 +318,11 @@
   <nav>
     <div class="nav-inner">
       <a href="/" class="active">Homepage</a>
-      <a href="/about/">About Paralla Group</a>
+      <a href="/about/">About</a>
       <a href="/changeworks/">ChangeWorks™</a>
       <a href="/countercore/">CounterCore™</a>
-      <a href="/consulting/">Business Consulting</a>
-      <a href="/contact/">Contact Us</a>
+      <a href="/consulting/">Consulting</a>
+      <a href="/contact/">Contact</a>
     </div>
   </nav>
 
@@ -324,10 +334,10 @@
       <div class="grid">
 
         <section>
-          <h1>Practical frameworks that improve how organizations operate.</h1>
+          <h1>Practical frameworks that improve how organizations actually operate.</h1>
 
           <p class="lead">
-            Paralla Group is preparing the launch of its full digital platform. We develop structured, real-world consulting frameworks designed to strengthen operations, improve decision-making, and support consistent execution.
+            Paralla Group develops structured, real-world consulting frameworks designed to strengthen operations, improve decision-making, and support consistent execution.
           </p>
 
           <div class="rule"></div>
@@ -350,10 +360,20 @@
               <span>Clear, structured materials built for accountability and long-term use.</span>
             </div>
           </div>
+
+          <div class="rule"></div>
+
+          <div class="section-label">Operational Outcomes</div>
+
+          <div class="outcomes">
+            <div class="outcome-item">Reduced process breakdowns and rework</div>
+            <div class="outcome-item">Improved role clarity and accountability</div>
+            <div class="outcome-item">Increased consistency in execution</div>
+          </div>
         </section>
 
         <aside class="card">
-          <h2>Inquiries &amp; Partnerships</h2>
+          <h2>Start a Conversation</h2>
 
           <p>
             For consulting engagements, partnership discussions, or early inquiries,
@@ -369,6 +389,9 @@
 
       <div class="video-section">
         <div class="section-label">Watch Our Overview</div>
+        <p class="video-intro">
+          A brief overview of how we approach structure, execution, and real-world performance.
+        </p>
         <div class="video-wrapper">
           <iframe
             src="https://www.youtube.com/embed/63m40kHJ2Qo"
@@ -393,8 +416,8 @@
       var u = 'contact', d = 'parallagroup.com';
       var el = document.getElementById('contact-email');
       if (el) {
-        el.href = 'mailto:' + u + '@' + d;
-        el.textContent = u + '@' + d;
+        el.href = 'mailto:'+u+'@'+d;
+        el.textContent = u+'@'+d;
       }
     })();
   </script>

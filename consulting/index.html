@@ -62,17 +62,6 @@
       letter-spacing:.2px;
     }
  
-    .badge{
-      font-size:13px;
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(11,77,255,.25);
-      background:rgba(11,77,255,.06);
-      color:var(--cobalt);
-      font-weight:500;
-      white-space:nowrap;
-    }
- 
     .accent{
       height:3px;
       background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
@@ -193,6 +182,13 @@
       margin-bottom:16px;
     }
  
+    .section-intro{
+      color:var(--muted);
+      font-size:15px;
+      max-width:68ch;
+      margin:0 0 4px;
+    }
+
     .two-col{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -429,7 +425,6 @@
         <img src="/logo.png" alt="Paralla Group logo">
         <div class="brand-name">Paralla Group™</div>
       </a>
-      <div class="badge">Launching Soon</div>
     </div>
   </header>
  
@@ -438,11 +433,11 @@
   <nav>
     <div class="nav-inner">
       <a href="/">Homepage</a>
-      <a href="/about/">About Paralla Group</a>
+      <a href="/about/">About</a>
       <a href="/changeworks/">ChangeWorks™</a>
       <a href="/countercore/">CounterCore™</a>
-      <a href="/consulting/" class="active">Business Consulting</a>
-      <a href="/contact/">Contact Us</a>
+      <a href="/consulting/" class="active">Consulting</a>
+      <a href="/contact/">Contact</a>
     </div>
   </nav>
  
@@ -471,6 +466,9 @@
       <div class="rule"></div>
  
       <div class="section-label">What We Help Improve</div>
+      <p class="section-intro">
+        Reducing operational friction and improving consistency where breakdowns occur.
+      </p>
       <div class="two-col">
         <div class="item-card"><div class="item-dot"></div><span>Operational structure and role clarity</span></div>
         <div class="item-card"><div class="item-dot"></div><span>Process design and process correction</span></div>
@@ -482,6 +480,9 @@
       <div class="rule"></div>
  
       <div class="section-label">How We Work</div>
+      <p class="section-intro">
+        Our work follows a structured approach designed to move from problem identification to practical implementation.
+      </p>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
@@ -576,7 +577,7 @@
       <div class="section-label">Bottom Line</div>
       <div class="bottom-line">
         <p>
-          If your business needs stronger structure and better execution, we can help build it.
+          If your business needs stronger structure and more reliable execution, we can help build it.
           <em>We focus on practical work that improves how the business actually runs.</em>
         </p>
         <a class="cta-link" href="/contact/">Get in Touch</a>

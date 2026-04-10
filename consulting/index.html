@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Business Consulting — Paralla Group helps organizations build clearer structure, stronger operations, and better follow-through.">
   <title>Business Consulting — Paralla Group</title>
- 
+
   <style>
     :root{
       --cobalt:#0B4DFF;
@@ -16,9 +16,9 @@
       --radius:16px;
       --max:1100px;
     }
- 
+
     *{ box-sizing:border-box; }
- 
+
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
@@ -26,22 +26,21 @@
       background:#ffffff;
       line-height:1.5;
     }
- 
+
     header{
       border-bottom:1px solid var(--line);
       padding:18px 24px;
       background:#ffffff;
     }
- 
+
     .topbar{
       max-width:var(--max);
       margin:0 auto;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:16px;
     }
- 
+
     .brand{
       display:flex;
       align-items:center;
@@ -49,144 +48,91 @@
       text-decoration:none;
       color:inherit;
     }
- 
+
     .brand img{
       height:42px;
-      width:auto;
-      display:block;
     }
- 
+
     .brand-name{
       font-weight:600;
       font-size:18px;
-      letter-spacing:.2px;
     }
- 
+
     .accent{
       height:3px;
-      background:linear-gradient(90deg,var(--cobalt),rgba(11,77,255,.2),transparent);
+      background:linear-gradient(90deg,var(--cobalt),transparent);
     }
- 
+
     nav{
-      background:#ffffff;
       border-bottom:1px solid var(--line);
       padding:0 24px;
     }
- 
+
     .nav-inner{
       max-width:var(--max);
       margin:0 auto;
       display:flex;
-      align-items:center;
       gap:4px;
       overflow-x:auto;
-      scrollbar-width:none;
     }
- 
-    .nav-inner::-webkit-scrollbar{
-      display:none;
-    }
- 
+
     .nav-inner a{
-      display:inline-block;
       padding:12px 16px;
       font-size:14px;
-      font-weight:500;
       color:var(--muted);
       text-decoration:none;
-      white-space:nowrap;
       border-radius:999px;
-      margin:6px 0;
-      transition:background .15s ease, color .15s ease;
     }
- 
-    .nav-inner a:hover{
-      background:rgba(11,77,255,.07);
-      color:var(--cobalt);
-    }
- 
+
     .nav-inner a.active{
       background:rgba(11,77,255,.07);
       color:var(--cobalt);
       font-weight:600;
     }
- 
+
     main{
       padding:70px 24px 60px;
     }
- 
+
     .container{
       max-width:var(--max);
       margin:0 auto;
     }
- 
+
     .page-hero{
       display:grid;
-      grid-template-columns:minmax(0,1.1fr) minmax(260px,360px);
+      grid-template-columns:1.1fr .9fr;
       gap:32px;
-      align-items:start;
-      max-width:none;
       margin-bottom:56px;
     }
 
-    .page-hero-copy{
-      max-width:760px;
-    }
- 
     .page-hero h1{
-      font-size:clamp(30px,3.2vw,44px);
-      line-height:1.1;
-      margin:0 0 20px;
-      letter-spacing:-.5px;
+      font-size:36px;
+      margin-bottom:20px;
     }
- 
-    .page-hero .lead{
-      font-size:18px;
+
+    .lead{
       color:var(--muted);
-      margin:0 0 14px;
-      max-width:64ch;
+      margin-bottom:14px;
     }
 
-    .hero-image-wrap{
-      display:flex;
-      justify-content:flex-end;
-      align-items:flex-start;
-    }
-
-    .hero-image{
-      display:block;
-      width:100%;
-      max-width:340px;
-      aspect-ratio:4 / 5;
-      object-fit:cover;
-      object-position:center;
-      border-radius:24px;
-      border:none;
-      box-shadow:none;
-      background:transparent;
-      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 100%);
-      mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 100%);
-    }
- 
     .rule{
       height:1px;
       background:linear-gradient(90deg,rgba(11,77,255,.5),transparent);
       margin:40px 0;
     }
- 
+
     .section-label{
       font-size:12px;
       text-transform:uppercase;
-      letter-spacing:.15em;
       color:var(--muted);
       margin-bottom:16px;
     }
- 
+
     .section-intro{
       color:var(--muted);
       font-size:15px;
       max-width:68ch;
-      margin:0 0 4px;
     }
 
     .two-col{
@@ -195,402 +141,119 @@
       gap:20px;
       margin-top:20px;
     }
- 
+
     .item-card{
       padding:20px;
       border:1px solid var(--line);
       border-radius:14px;
-      background:#ffffff;
       display:flex;
-      align-items:flex-start;
       gap:12px;
     }
- 
+
     .item-dot{
       width:8px;
       height:8px;
       border-radius:50%;
       background:var(--cobalt);
-      flex-shrink:0;
       margin-top:6px;
     }
- 
-    .item-card span{
-      font-size:14px;
-      color:var(--ink);
-      font-weight:500;
-    }
- 
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(5, 1fr);
-      gap:12px;
-      margin-top:20px;
-    }
- 
-    .step{
-      padding:20px 16px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:#ffffff;
-      text-align:center;
-    }
- 
-    .step-num{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:32px;
-      height:32px;
-      border-radius:50%;
-      background:rgba(11,77,255,.08);
-      color:var(--cobalt);
-      font-size:13px;
-      font-weight:700;
-      margin-bottom:10px;
-    }
- 
-    .step strong{
-      display:block;
-      font-size:13px;
-      font-weight:600;
-      color:var(--ink);
-      margin-bottom:4px;
-    }
- 
-    .step span{
-      font-size:12px;
-      color:var(--muted);
-    }
- 
-    .diff-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
-      gap:16px;
-      margin-top:20px;
-    }
- 
-    .diff-item{
-      padding:20px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--panel);
-    }
- 
-    .diff-item strong{
-      display:block;
-      font-size:14px;
-      font-weight:700;
-      color:var(--cobalt);
-      margin-bottom:6px;
-    }
- 
-    .diff-item span{
-      font-size:13px;
-      color:var(--muted);
-    }
- 
-    .engagement-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:20px;
-      margin-top:20px;
-    }
- 
-    .engagement-card{
-      padding:24px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:var(--panel);
-    }
- 
-    .engagement-card strong{
-      display:block;
-      font-size:15px;
-      font-weight:700;
-      color:var(--ink);
-      margin-bottom:8px;
-    }
- 
-    .engagement-card p{
-      margin:0;
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-    }
- 
-    .bottom-line{
-      margin-top:20px;
-      padding:32px;
-      border:1px solid rgba(11,77,255,.25);
-      border-radius:var(--radius);
-      background:rgba(11,77,255,.03);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:20px;
-    }
- 
-    .bottom-line p{
-      margin:0;
-      font-size:16px;
-      color:var(--ink);
-      max-width:56ch;
-      line-height:1.6;
-    }
- 
-    .bottom-line p em{
-      color:var(--muted);
-      font-style:normal;
-      font-size:14px;
-      display:block;
-      margin-top:6px;
-    }
- 
-    .cta-link{
-      display:inline-block;
-      padding:12px 24px;
-      background:var(--cobalt);
-      color:#ffffff;
-      font-size:14px;
-      font-weight:600;
-      border-radius:999px;
-      text-decoration:none;
-      white-space:nowrap;
-      transition:opacity .15s ease;
-    }
- 
-    .cta-link:hover{
-      opacity:.88;
-    }
- 
+
     footer{
       border-top:1px solid var(--line);
       padding:24px;
       font-size:13px;
       color:var(--muted);
-      background:#ffffff;
-    }
- 
-    .footer-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
- 
-    @media (max-width:900px){
-      .two-col,
-      .engagement-grid{
-        grid-template-columns:1fr;
-      }
-
-      .page-hero{
-        grid-template-columns:1fr;
-        gap:24px;
-      }
-
-      .hero-image-wrap{
-        justify-content:flex-start;
-      }
-
-      .hero-image{
-        max-width:420px;
-      }
- 
-      .steps{
-        grid-template-columns:1fr 1fr;
-      }
- 
-      .topbar{
-        flex-wrap:wrap;
-      }
-    }
- 
-    @media (max-width:500px){
-      .steps{
-        grid-template-columns:1fr;
-      }
     }
   </style>
 </head>
- 
-<body>
- 
-  <header>
-    <div class="topbar">
-      <a class="brand" href="/">
-        <img src="/logo.png" alt="Paralla Group logo">
-        <div class="brand-name">Paralla Group™</div>
-      </a>
-    </div>
-  </header>
- 
-  <div class="accent"></div>
- 
-  <nav>
-    <div class="nav-inner">
-      <a href="/">Homepage</a>
-      <a href="/about/">About Paralla Group</a>
-      <a href="/changeworks/">ChangeWorks™</a>
-      <a href="/countercore/">CounterCore™</a>
-      <a href="/consulting/" class="active">Business Consulting</a>
-      <a href="/contact/">Contact Us</a>
-    </div>
-  </nav>
- 
-  <main>
-    <div class="container">
- 
-      <div class="page-hero">
-        <div class="page-hero-copy">
-          <h1>Business consulting built for organizations that need real operational improvement.</h1>
-          <p class="lead">
-            Paralla Group works with businesses that need clearer structure, stronger execution, and better follow-through. We focus on practical operating solutions that can be implemented, managed, and sustained in real conditions.
-          </p>
-          <p class="lead">
-            Our work is best suited for organizations where responsibilities matter, inconsistency creates drag, and leadership needs more than general advice. We help turn operational problems into workable structure.
-          </p>
-        </div>
 
-        <div class="hero-image-wrap">
-          <img
-            class="hero-image"
-            src="/images/consulting-operations-workflow-hero.png"
-            alt="Professional operations and workflow planning workspace">
-        </div>
-      </div>
- 
-      <div class="rule"></div>
- 
-      <div class="section-label">What We Help Improve</div>
-      <p class="section-intro">
-        Reducing operational friction and improving consistency where breakdowns occur.
-      </p>
-      <div class="two-col">
-        <div class="item-card"><div class="item-dot"></div><span>Operational structure and role clarity</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Process design and process correction</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Accountability systems and internal expectations</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Decision support and operating discipline</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Documentation, workflows, and implementation planning</span></div>
-      </div>
- 
-      <div class="rule"></div>
- 
-      <div class="section-label">How We Work</div>
-      <p class="section-intro">
-        Our work follows a structured approach designed to move from problem identification to practical implementation.
-      </p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <strong>Assess</strong>
-          <span>Review current operations, friction points, and practical constraints.</span>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <strong>Define</strong>
-          <span>Clarify the problem, operating need, and intended outcome.</span>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <strong>Design</strong>
-          <span>Build a structure that fits the business and can hold up in use.</span>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <strong>Implement</strong>
-          <span>Translate the work into usable materials, expectations, and rollout steps.</span>
-        </div>
-        <div class="step">
-          <div class="step-num">5</div>
-          <strong>Measure</strong>
-          <span>Check whether the work is improving performance in practice.</span>
-        </div>
-      </div>
- 
-      <div class="rule"></div>
- 
-      <div class="section-label">Who This Fits Best</div>
-      <div class="two-col">
-        <div class="item-card"><div class="item-dot"></div><span>Organizations dealing with process breakdowns or operational inconsistency</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Businesses in regulated or high-accountability environments</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Teams growing faster than their internal structure</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Smaller organizations building a stronger operating foundation</span></div>
-      </div>
- 
-      <div class="rule"></div>
- 
-      <div class="section-label">What Makes Our Approach Different</div>
-      <div class="diff-grid">
-        <div class="diff-item">
-          <strong>Built for use</strong>
-          <span>We focus on systems people can actually run, not ideas that stay on paper.</span>
-        </div>
-        <div class="diff-item">
-          <strong>Grounded in reality</strong>
-          <span>Recommendations are shaped around actual workload, risk, and operating conditions.</span>
-        </div>
-        <div class="diff-item">
-          <strong>Clear accountability</strong>
-          <span>We care about whether the work improves execution, not just whether it sounds polished.</span>
-        </div>
-        <div class="diff-item">
-          <strong>Designed to last</strong>
-          <span>The goal is stronger long-term structure, not ongoing dependence.</span>
-        </div>
-      </div>
- 
-      <div class="rule"></div>
- 
-      <div class="section-label">Typical Deliverables</div>
-      <div class="two-col">
-        <div class="item-card"><div class="item-dot"></div><span>Operational maps and process documentation</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Standard operating procedures and workflow materials</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Accountability frameworks and role structure</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Decision tools and review frameworks</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Implementation plans and operational rollout guidance</span></div>
-      </div>
- 
-      <div class="rule"></div>
- 
-      <div class="section-label">Engagement Options</div>
-      <div class="engagement-grid">
-        <div class="engagement-card">
-          <strong>Targeted Engagements</strong>
-          <p>Focused support for a specific process, problem area, or operational gap with defined scope and a clear end point.</p>
-        </div>
-        <div class="engagement-card">
-          <strong>Full Structure Builds</strong>
-          <p>Broader work to design or rebuild operating structure across roles, processes, documentation, and implementation.</p>
-        </div>
-        <div class="engagement-card">
-          <strong>Advisory Support</strong>
-          <p>Ongoing strategic support for organizations managing change, growth, operational complexity, or internal redesign.</p>
-        </div>
-      </div>
- 
-      <div class="rule"></div>
- 
-      <div class="section-label">Bottom Line</div>
-      <div class="bottom-line">
-        <p>
-          If your business needs stronger structure and more reliable execution, we can help build it.
-          <em>We focus on practical work that improves how the business actually runs.</em>
-        </p>
-        <a class="cta-link" href="/contact/">Get in Touch</a>
-      </div>
- 
-    </div>
-  </main>
- 
-  <footer>
-    <div class="footer-inner">
-      <div>© 2026 Paralla Group™. All rights reserved.</div>
-    </div>
-  </footer>
- 
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="/">
+      <img src="/logo.png">
+      <div class="brand-name">Paralla Group™</div>
+    </a>
+  </div>
+</header>
+
+<div class="accent"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/">Homepage</a>
+    <a href="/about/">About Paralla Group</a>
+    <a href="/changeworks/">ChangeWorks™</a>
+    <a href="/countercore/">CounterCore™</a>
+    <a href="/consulting/" class="active">Business Consulting</a>
+    <a href="/contact/">Contact Us</a>
+  </div>
+</nav>
+
+<main>
+<div class="container">
+
+<div class="page-hero">
+  <div>
+    <h1>Business consulting built for organizations that need real operational improvement.</h1>
+    <p class="lead">Paralla Group works with businesses that need clearer structure, stronger execution, and better follow-through.</p>
+    <p class="lead">We focus on practical operating solutions that can be implemented, managed, and sustained in real conditions.</p>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<div class="section-label">Tools & Resources</div>
+<p class="section-intro">
+In addition to consulting engagements, Paralla Group develops practical tools and operational systems designed for direct use by business owners and internal teams.
+</p>
+
+<div class="rule"></div>
+
+<div class="section-label">Free Resources</div>
+
+<div class="two-col">
+<div class="item-card"><div class="item-dot"></div><span><strong>Smart Attendance & Time Tracker (Lite)</strong><br>Basic time tracking with automatic hour calculations.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Cash Flow Snapshot Tool</strong><br>Track income, expenses, and financial position.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Task & Accountability Tracker</strong><br>Organize tasks and ownership.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Customer Interaction Log</strong><br>Track customer communication.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Pricing Calculator</strong><br>Calculate pricing and margins.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Business Health Snapshot</strong><br>Evaluate overall business performance.</span></div>
+</div>
+
+<div class="rule"></div>
+
+<div class="section-label">Paid Resources</div>
+
+<div class="two-col">
+<div class="item-card"><div class="item-dot"></div><span><strong>Advanced Attendance & Workforce Manager</strong><br>Full workforce tracking, scoring, and alerts.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Cash Flow & Forecasting Tool (Pro)</strong><br>Forecast and plan financial outcomes.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Smart CRM (Pro)</strong><br>Manage customer relationships and revenue.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Operational KPI Dashboard</strong><br>Track business performance metrics.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Hiring & Interview Tracker</strong><br>Structure hiring decisions.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>SOP Builder Toolkit</strong><br>Create structured processes.</span></div>
+</div>
+
+<div class="rule"></div>
+
+<div class="section-label">Premium Systems</div>
+
+<div class="two-col">
+<div class="item-card"><div class="item-dot"></div><span><strong>Small Business Operating System</strong><br>All-in-one operational system.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Decision Intelligence Engine</strong><br>Structured decision-making framework.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Workforce Performance & Risk System</strong><br>Track performance and risk.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Business Scenario Simulator</strong><br>Model decisions before execution.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>Client Profitability Analyzer</strong><br>Identify profitable clients.</span></div>
+<div class="item-card"><div class="item-dot"></div><span><strong>SOP & Compliance System</strong><br>Manage operational structure and documentation.</span></div>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <div>© 2026 Paralla Group™</div>
+</footer>
+
 </body>
 </html>

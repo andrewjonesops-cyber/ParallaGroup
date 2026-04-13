@@ -220,6 +220,61 @@
       color:var(--ink);
       font-weight:500;
     }
+
+    .resource-card{
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#ffffff;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .resource-card.premium{
+      border:1px solid rgba(11,77,255,.25);
+      background:rgba(11,77,255,.03);
+    }
+
+    .resource-card h3{
+      margin:0;
+      font-size:18px;
+      line-height:1.25;
+      color:var(--ink);
+    }
+
+    .resource-card p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .resource-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .resource-price{
+      font-size:18px;
+      font-weight:700;
+      color:var(--ink);
+    }
+
+    .resource-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .resource-note{
+      font-size:12px;
+      color:var(--muted);
+    }
  
     .steps{
       display:grid;
@@ -586,12 +641,53 @@
         Foundational tools designed to provide immediate value and establish clearer operational visibility.
       </p>
       <div class="two-col">
-        <div class="item-card"><div class="item-dot"></div><span><strong>Smart Attendance & Time Tracker (Lite)</strong><br>Basic time tracking with automatic hour calculations and attendance visibility.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Cash Flow Snapshot Tool</strong><br>Simple monthly tracking of income, expenses, and overall financial position.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Task & Accountability Tracker</strong><br>Structured task tracking with ownership and due date visibility.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Customer Interaction Log</strong><br>Organized tracking of customer communication, follow-ups, and notes.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Pricing Calculator</strong><br>Quick pricing support based on cost inputs and target margins.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Business Health Snapshot</strong><br>A structured self-assessment across core operational areas.</span></div>
+        <div class="resource-card">
+          <h3>Smart Attendance & Time Tracker (Lite)</h3>
+          <p>Basic time tracking with automatic hour calculations and attendance visibility.</p>
+          <div class="resource-meta">
+            <span class="resource-note">Free download</span>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Cash Flow Snapshot Tool</h3>
+          <p>Simple monthly tracking of income, expenses, and overall financial position.</p>
+          <div class="resource-meta">
+            <span class="resource-note">Free download</span>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Task & Accountability Tracker</h3>
+          <p>Structured task tracking with ownership and due date visibility.</p>
+          <div class="resource-meta">
+            <span class="resource-note">Free download</span>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Customer Interaction Log</h3>
+          <p>Organized tracking of customer communication, follow-ups, and notes.</p>
+          <div class="resource-meta">
+            <span class="resource-note">Free download</span>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Pricing Calculator</h3>
+          <p>Quick pricing support based on cost inputs and target margins.</p>
+          <div class="resource-meta">
+            <span class="resource-note">Free download</span>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Business Health Snapshot</h3>
+          <p>A structured self-assessment across core operational areas.</p>
+          <div class="resource-meta">
+            <span class="resource-note">Free download</span>
+          </div>
+        </div>
       </div>
 
       <div class="rule"></div>
@@ -601,12 +697,71 @@
         More advanced tools designed to improve control, reduce inefficiencies, and support stronger operational management. All paid resources are available as one-time purchases with immediate digital delivery.
       </p>
       <div class="two-col">
-        <div class="item-card"><div class="item-dot"></div><span><strong>Advanced Attendance & Workforce Manager</strong><br>A full workforce management system with attendance tracking, overtime calculations, performance scoring, and automated alerts.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Cash Flow & Forecasting Tool (Pro)</strong><br>Forecast future financial position, model scenarios, and identify potential cash risks before they occur.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Smart CRM (Pro)</strong><br>Track customer relationships, manage pipelines, and monitor revenue performance across accounts.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Operational KPI Dashboard</strong><br>Centralized visibility into business performance metrics including revenue, costs, and operational trends.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Hiring & Interview Tracker</strong><br>Structured candidate tracking and evaluation system to improve hiring decisions.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>SOP Builder Toolkit</strong><br>Standardized templates for building repeatable, structured operational processes.</span></div>
+        <div class="resource-card">
+          <h3>Advanced Attendance & Workforce Manager</h3>
+          <p>Core workforce tracking and accountability system. High daily usage and strong ROI through improved attendance visibility and management control.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$49</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/eVq8wId3G6UMavbbVK5os00" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Cash Flow & Forecasting Tool</h3>
+          <p>Financial planning and forecasting system. High perceived value due to direct impact on financial clarity and decision-making.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$59</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/aFadR2bZCdja32J7Fu5os01" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Smart CRM (Pro)</h3>
+          <p>Customer tracking and pipeline management system. Direct tie to revenue generation and sales visibility.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$69</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/00wcMY2p24ME5aRe3S5os02" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Operational KPI Dashboard</h3>
+          <p>Performance monitoring dashboard. Provides executive-level visibility but typically used alongside other tools.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$39</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/cNi7sE9Ru3IAeLrgc05os03" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>Hiring & Interview Tracker</h3>
+          <p>Structured hiring and candidate evaluation system. Situational but valuable for growing teams.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$29</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/eVq4gs6Fi0wo5aR1h65os04" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <h3>SOP Builder Toolkit</h3>
+          <p>Process documentation and standardization toolkit. Strong operational value and bridge to compliance systems.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$59</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/8x2aEQ3t6bb26eV8Jy5os05" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="rule"></div>
@@ -616,24 +771,83 @@
         Integrated systems designed to support broader operational control, decision-making, and long-term business structure.
       </p>
       <div class="two-col">
-        <div class="item-card"><div class="item-dot"></div><span><strong>Small Business Operating System (SBOS)</strong><br>A centralized system combining financial tracking, workforce management, and operational visibility.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Decision Intelligence Engine</strong><br>Structured framework for evaluating decisions, tracking assumptions, and improving outcomes over time.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Workforce Performance & Risk System</strong><br>Performance scoring and risk identification across employees and teams.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Business Scenario Simulator</strong><br>Model operational and financial impact before making key business decisions.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>Client Profitability Analyzer</strong><br>Identify which customers drive profit and where resources are being lost.</span></div>
-        <div class="item-card"><div class="item-dot"></div><span><strong>SOP & Compliance Management System</strong><br>Full system for managing documentation, ownership, and operational consistency.</span></div>
+        <div class="resource-card premium">
+          <h3>Small Business Operating System (SBOS)</h3>
+          <p>Flagship system integrating core business functions. Positioned as a full operational command center.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$199</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/28E5kw2p2enefPvbVK5os06" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card premium">
+          <h3>Decision Intelligence Engine</h3>
+          <p>Structured decision-making system. Differentiates Paralla by focusing on decision quality and learning loops.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$149</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/5kQ00caVydjafPvaRG5os07" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card premium">
+          <h3>Workforce Performance & Risk System</h3>
+          <p>Advanced workforce analytics and risk identification system. Proactive management tool.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$129</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/eVq00cd3Gcf6fPv0d25os08" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card premium">
+          <h3>Business Scenario Simulator</h3>
+          <p>Scenario modeling engine to test decisions before execution. High strategic value.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$149</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/6oUfZa9Ru7YQgTze3S5os09" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card premium">
+          <h3>Client Profitability Analyzer</h3>
+          <p>Profit-focused system identifying high and low value customers. Direct impact on margins.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$129</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/cNi6oA7Jm2Ew6eVf7W5os0a" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-card premium">
+          <h3>SOP & Compliance Management System</h3>
+          <p>Governance and compliance tracking system. High perceived value for structured and growing businesses.</p>
+          <div class="resource-meta">
+            <span class="resource-price">$179</span>
+            <div class="resource-actions">
+              <a class="cta-link" href="https://buy.stripe.com/eVqaEQ2p2frigTz9NC5os0b" target="_blank" rel="noopener noreferrer">Purchase</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="rule"></div>
 
       <div class="section-label">Purchasing & Delivery</div>
       <p class="section-intro">
-        Paid and premium resources will be available through secure Stripe checkout with one-time purchase access and digital delivery. Free resources will be available as direct downloads.
+        Paid and premium resources are available through secure Stripe checkout with one-time purchase access and digital delivery. Free resources are available as direct downloads.
       </p>
       <div class="two-col">
-        <div class="item-card"><div class="item-dot"></div><span>One-time purchase model for paid resources</span></div>
+        <div class="item-card"><div class="item-dot"></div><span>One-time purchase model for paid and premium resources</span></div>
         <div class="item-card"><div class="item-dot"></div><span>Secure Stripe checkout for digital deliverables</span></div>
-        <div class="item-card"><div class="item-dot"></div><span>Immediate delivery for available products</span></div>
+        <div class="item-card"><div class="item-dot"></div><span>Immediate digital delivery after purchase configuration is completed</span></div>
         <div class="item-card"><div class="item-dot"></div><span>Designed for direct use by owners, managers, and internal teams</span></div>
       </div>
  

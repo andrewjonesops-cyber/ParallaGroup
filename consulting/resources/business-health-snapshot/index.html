@@ -19,6 +19,7 @@
       margin:0;
       font-family:system-ui,Segoe UI,Arial,sans-serif;
       color:var(--ink);
+      background:#fff;
     }
 
     header{
@@ -34,14 +35,15 @@
 
     h1{
       font-size:36px;
-      margin-bottom:12px;
+      margin:0 0 12px;
     }
 
     .lead{
       color:var(--muted);
       font-size:18px;
-      margin-bottom:30px;
+      margin:0 0 30px;
       line-height:1.6;
+      max-width:70ch;
     }
 
     .panel{
@@ -57,6 +59,13 @@
       margin-bottom:10px;
     }
 
+    .button-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
     .cta{
       display:inline-block;
       padding:12px 22px;
@@ -65,6 +74,17 @@
       border-radius:999px;
       text-decoration:none;
       font-weight:600;
+    }
+
+    .secondary{
+      display:inline-block;
+      padding:12px 22px;
+      border:1px solid var(--line);
+      color:var(--ink);
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      background:#fff;
     }
 
     .section{
@@ -152,7 +172,10 @@
 
   <div class="panel">
     <div class="price">Free Download</div>
-    <a href="ADD-YOUR-BOX-LINK-HERE" class="cta">Download Resource</a>
+    <div class="button-row">
+      <a href="https://app.box.com/s/2nflah12fi08er8j3ger08udm045btyj" class="cta" target="_blank" rel="noopener noreferrer">Download Resource</a>
+      <a href="/consulting/" class="secondary">Back to Business Consulting</a>
+    </div>
   </div>
 
   <div class="section">

@@ -17,8 +17,9 @@
 
     body{
       margin:0;
-      font-family:system-ui,Segoe UI,Arial;
+      font-family:system-ui,Segoe UI,Arial,sans-serif;
       color:var(--ink);
+      background:#fff;
     }
 
     header{
@@ -32,9 +33,18 @@
       padding:60px 24px;
     }
 
-    h1{font-size:36px;margin-bottom:12px;}
+    h1{
+      font-size:36px;
+      margin:0 0 12px;
+    }
 
-    .lead{color:var(--muted);font-size:18px;margin-bottom:30px;}
+    .lead{
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 30px;
+      line-height:1.6;
+      max-width:70ch;
+    }
 
     .panel{
       border:1px solid rgba(11,77,255,.25);
@@ -43,7 +53,18 @@
       border-radius:16px;
     }
 
-    .price{color:var(--cobalt);font-weight:700;margin-bottom:10px;}
+    .price{
+      color:var(--cobalt);
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .button-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
 
     .cta{
       display:inline-block;
@@ -55,21 +76,46 @@
       font-weight:600;
     }
 
-    .section{margin-top:40px;}
+    .secondary{
+      display:inline-block;
+      padding:12px 22px;
+      border:1px solid var(--line);
+      color:var(--ink);
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      background:#fff;
+    }
+
+    .section{
+      margin-top:40px;
+    }
 
     .section h2{
       font-size:13px;
       text-transform:uppercase;
       color:var(--muted);
+      letter-spacing:.12em;
+      margin-bottom:12px;
     }
 
     .card{
       border:1px solid var(--line);
       padding:18px;
       border-radius:12px;
+      background:#fff;
     }
 
-    ul{padding-left:18px;color:var(--muted);}
+    ul{
+      padding-left:18px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    li{
+      margin-bottom:6px;
+      line-height:1.6;
+    }
 
     .back{
       display:inline-block;
@@ -95,7 +141,10 @@
 
   <div class="panel">
     <div class="price">Free Download</div>
-    <a href="ADD-YOUR-BOX-LINK-HERE" class="cta">Download Resource</a>
+    <div class="button-row">
+      <a href="https://app.box.com/s/puqhmtkjijxkkcvj7m947cjah41d4cir" class="cta" target="_blank" rel="noopener noreferrer">Download Resource</a>
+      <a href="/consulting/" class="secondary">Back to Business Consulting</a>
+    </div>
   </div>
 
   <div class="section">
